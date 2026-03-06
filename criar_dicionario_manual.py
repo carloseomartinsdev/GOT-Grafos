@@ -5,7 +5,7 @@ print("CRIADOR DE DICIONÁRIO MANUAL - GoT")
 print("="*60)
 
 # Carrega dataset
-df = pd.read_csv('dataset_personagens.csv')
+df = pd.read_csv('datasets/dataset_personagens.csv')
 exclude = ['CUT TO', 'INT', 'EXT', 'MAN', 'WOMAN', 'ALL', 'MEN', 'WOMEN', 'CROWD']
 df_filtered = df[~df['personagem'].isin(exclude)]
 
@@ -44,11 +44,12 @@ for personagem in df_filtered['personagem']:
         dicionario[personagem] = {'variacoes': '', 'familia': 'Unknown'}
 
 # Salva CSV
-with open('personagens_dicionario.csv', 'w', encoding='utf-8') as f:
+with open('datasets/personagens_dicionario.csv', 'w', encoding='utf-8') as f:
     f.write('Nome,Variações,Familia\n')
     for nome, info in dicionario.items():
         f.write(f'"{nome}","{info["variacoes"]}","{info["familia"]}"\n')
 
 print(f"\n✓ Dicionário criado com {len(dicionario)} personagens")
-print("✓ Salvo em: personagens_dicionario.csv")
+print("✓ Salvo em: datasets/personagens_dicionario.csv")
 print("\nVocê pode editar o CSV manualmente para adicionar mais variações.")
+input("\nPressione Enter para sair...")

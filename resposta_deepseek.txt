@@ -3,112 +3,102 @@
   "personagens": [
     {
       "nome": "Tyrion Lannister",
-      "variacoes": "TYRION",
+      "variacoes": "TYRION, TRION, TYRIOM, YTRION",
+      "familia": "Lannister"
+    },
+    {
+      "nome": "Cersei Lannister",
+      "variacoes": "CERSEI, CERSEI, ERSEI",
       "familia": "Lannister"
     },
     {
       "nome": "Daenerys Targaryen",
-      "variacoes": "DAENERYS TARGARYEN",
+      "variacoes": "DAENERYS, DANY, DANAERYS, DENERYS, DAEYNERYS, DAERNEYS",
       "familia": "Targaryen"
     },
     {
-      "nome": "Cersei Lannister",
-      "variacoes": "",
-      "familia": "Lannister"
-    },
-    {
       "nome": "Jon Snow",
-      "variacoes": "JON SNOW, JON",
+      "variacoes": "JON, JON SNOW, JOHN",
       "familia": "Stark/Night's Watch"
     },
     {
       "nome": "Jaime Lannister",
-      "variacoes": "",
+      "variacoes": "JAIME",
       "familia": "Lannister"
     },
     {
       "nome": "Sansa Stark",
-      "variacoes": "",
+      "variacoes": "SANSA",
       "familia": "Stark"
     },
     {
       "nome": "Arya Stark",
-      "variacoes": "",
+      "variacoes": "ARYA, ARAY, AYRA",
       "familia": "Stark"
     },
     {
       "nome": "Davos Seaworth",
-      "variacoes": "",
-      "familia": "Baratheon (leal)"
+      "variacoes": "DAVOS, DAV OS",
+      "familia": "Baratheon (leal a Stannis)"
     },
     {
       "nome": "Theon Greyjoy",
-      "variacoes": "",
+      "variacoes": "THEON, THENN WARG",
       "familia": "Greyjoy"
     },
     {
       "nome": "Samwell Tarly",
-      "variacoes": "SAM",
-      "familia": "Night's Watch"
+      "variacoes": "SAM, SAMWELL, SAMMY",
+      "familia": "Tarly/Night's Watch"
     },
     {
       "nome": "Brienne of Tarth",
-      "variacoes": "",
+      "variacoes": "BRIENNE, BRINENNE",
       "familia": "Tarth"
     },
     {
-      "nome": "Sandor Clegane",
-      "variacoes": "THE HOUND, HOUND",
-      "familia": "Clegane"
-    },
-    {
-      "nome": "Petyr Baelish",
-      "variacoes": "LITTLEFINGER",
-      "familia": "Baelish"
-    },
-    {
       "nome": "Bronn",
-      "variacoes": "",
+      "variacoes": "BRONN, BRON",
       "familia": "Mercenário"
     },
     {
       "nome": "Tywin Lannister",
-      "variacoes": "",
+      "variacoes": "TYWIN, TWYIN, TYWEN",
       "familia": "Lannister"
     },
     {
       "nome": "Varys",
-      "variacoes": "",
-      "familia": "Conselho do Rei"
+      "variacoes": "VARYS",
+      "familia": "Conselheiro do Rei"
     },
     {
       "nome": "Bran Stark",
-      "variacoes": "",
+      "variacoes": "BRAN, BRAND",
       "familia": "Stark"
     },
     {
       "nome": "Jorah Mormont",
-      "variacoes": "JORAH",
+      "variacoes": "JORAH, SER JORAH",
       "familia": "Mormont"
     },
     {
       "nome": "Stannis Baratheon",
-      "variacoes": "",
+      "variacoes": "STANNIS",
       "familia": "Baratheon"
     },
     {
       "nome": "Margaery Tyrell",
-      "variacoes": "",
+      "variacoes": "MARGAERY",
       "familia": "Tyrell"
     },
     {
       "nome": "Ramsay Bolton",
-      "variacoes": "RAMSAY",
+      "variacoes": "RAMSAY, RAMSEY",
       "familia": "Bolton"
     },
     {
       "nome": "Melisandre",
-      "variacoes": "",
+      "variacoes": "MELISANDRE, MELISDANDRE",
       "familia": "Sacerdotisa Vermelha"
     },
     {
@@ -118,373 +108,398 @@
     },
     {
       "nome": "Tormund Giantsbane",
-      "variacoes": "",
+      "variacoes": "TORMUND, TORMUD",
       "familia": "Selvagens"
     },
     {
+      "nome": "Petyr Baelish",
+      "variacoes": "LITTLEFINGER, BAELISH, PETYR",
+      "familia": "Conselheiro do Rei"
+    },
+    {
       "nome": "Joffrey Baratheon",
-      "variacoes": "",
+      "variacoes": "JOFFREY, JOFFFREY",
       "familia": "Baratheon/Lannister"
     },
     {
       "nome": "Olenna Tyrell",
-      "variacoes": "",
+      "variacoes": "OLENNA, OLEANNA, LADY OLENNA",
       "familia": "Tyrell"
     },
     {
       "nome": "Gilly",
-      "variacoes": "",
+      "variacoes": "GILLY",
       "familia": "Selvagens"
     },
     {
       "nome": "Gendry",
-      "variacoes": "",
+      "variacoes": "GENDRY",
       "familia": "Baratheon (bastardo)"
     },
     {
       "nome": "Shae",
-      "variacoes": "",
-      "familia": "Cortesã"
+      "variacoes": "SHAE",
+      "familia": "Serva/Prostituta"
     },
     {
       "nome": "Missandei",
-      "variacoes": "",
+      "variacoes": "MISSANDEI",
       "familia": "Conselheira de Daenerys"
     },
     {
       "nome": "Catelyn Stark",
-      "variacoes": "",
+      "variacoes": "CATELYN, CATELYIN",
       "familia": "Stark/Tully"
     },
     {
       "nome": "Ygritte",
-      "variacoes": "",
+      "variacoes": "YGRITTE",
       "familia": "Selvagens"
     },
     {
-      "nome": "High Sparrow",
-      "variacoes": "",
-      "familia": "Fé dos Sete"
+      "nome": "Daario Naharis",
+      "variacoes": "DAARIO, DARIO, DAAERIO, DARRIO",
+      "familia": "Mercenário"
     },
     {
-      "nome": "Daario Naharis",
-      "variacoes": "",
-      "familia": "Segundos Filhos/Mercenário"
+      "nome": "Sandor Clegane",
+      "variacoes": "THE HOUND, HOUND, SANDOR",
+      "familia": "Clegane"
     },
     {
       "nome": "Podrick Payne",
-      "variacoes": "",
+      "variacoes": "PODRICK",
       "familia": "Payne"
     },
     {
       "nome": "Yara Greyjoy",
-      "variacoes": "",
+      "variacoes": "YARA",
       "familia": "Greyjoy"
     },
     {
       "nome": "Oberyn Martell",
-      "variacoes": "",
+      "variacoes": "OBERYN",
       "familia": "Martell"
     },
     {
       "nome": "Tommen Baratheon",
-      "variacoes": "",
+      "variacoes": "TOMMEN",
       "familia": "Baratheon/Lannister"
     },
     {
       "nome": "Qyburn",
-      "variacoes": "",
-      "familia": "Conselho do Rei"
+      "variacoes": "QYBURN, QYBURNS",
+      "familia": "Conselheiro da Rainha"
     },
     {
       "nome": "Grey Worm",
-      "variacoes": "",
+      "variacoes": "GREY WORM, GREYWORM",
       "familia": "Imaculados"
     },
     {
       "nome": "Jaqen H'ghar",
-      "variacoes": "",
+      "variacoes": "JAQEN",
       "familia": "Homens sem Rosto"
     },
     {
       "nome": "Osha",
-      "variacoes": "",
+      "variacoes": "OSHA",
       "familia": "Selvagens"
     },
     {
       "nome": "Talisa Maegyr",
-      "variacoes": "",
+      "variacoes": "TALISA",
       "familia": "Stark (por casamento)"
     },
     {
       "nome": "Thoros of Myr",
-      "variacoes": "",
+      "variacoes": "THOROS",
       "familia": "Irmandade sem Estandartes"
     },
     {
       "nome": "Beric Dondarrion",
-      "variacoes": "",
+      "variacoes": "BERIC",
       "familia": "Irmandade sem Estandartes"
     },
     {
       "nome": "Meera Reed",
-      "variacoes": "",
+      "variacoes": "MEERA",
       "familia": "Reed"
     },
     {
       "nome": "Shireen Baratheon",
-      "variacoes": "",
+      "variacoes": "SHIREEN",
       "familia": "Baratheon"
     },
     {
+      "nome": "High Sparrow",
+      "variacoes": "HIGH SPARROW, SPARROW, HIGH SEPTON",
+      "familia": "Fé dos Sete"
+    },
+    {
       "nome": "Euron Greyjoy",
-      "variacoes": "",
+      "variacoes": "EURON, EURION",
       "familia": "Greyjoy"
     },
     {
-      "nome": "Eddison Tollett",
-      "variacoes": "EDD",
-      "familia": "Night's Watch"
-    },
-    {
-      "nome": "Alliser Thorne",
-      "variacoes": "",
-      "familia": "Night's Watch"
-    },
-    {
-      "nome": "Maester Pycelle",
-      "variacoes": "",
-      "familia": "Conselho do Rei"
-    },
-    {
-      "nome": "Barristan Selmy",
-      "variacoes": "",
-      "familia": "Kingsguard"
-    },
-    {
       "nome": "Roose Bolton",
-      "variacoes": "ROOSE",
+      "variacoes": "ROOSE, ROOSE BOLTON, LORD BOLTON",
       "familia": "Bolton"
     },
     {
       "nome": "Loras Tyrell",
-      "variacoes": "",
+      "variacoes": "LORAS",
       "familia": "Tyrell"
     },
     {
       "nome": "Jojen Reed",
-      "variacoes": "",
+      "variacoes": "JOJEN",
       "familia": "Reed"
     },
     {
+      "nome": "Pycelle",
+      "variacoes": "PYCELLE, MAESTER PYCELLE, GRAND MAESTER PYRCELLE, PYELLE, PYCELL",
+      "familia": "Conselheiro do Rei"
+    },
+    {
       "nome": "Hot Pie",
-      "variacoes": "",
+      "variacoes": "HOT PIE",
       "familia": "Padeiro"
     },
     {
-      "nome": "Ned Stark",
-      "variacoes": "",
+      "nome": "Barristan Selmy",
+      "variacoes": "BARRISTAN, SER BARRISTAN, BARRISTAN SELMY",
+      "familia": "Kingsguard"
+    },
+    {
+      "nome": "Mance Rayder",
+      "variacoes": "MANCE",
+      "familia": "Selvagens"
+    },
+    {
+      "nome": "Lancel Lannister",
+      "variacoes": "LANCEL, LANCEL LANNISTER",
+      "familia": "Lannister"
+    },
+    {
+      "nome": "Grenn",
+      "variacoes": "GRENN",
+      "familia": "Night's Watch"
+    },
+    {
+      "nome": "Eddard Stark",
+      "variacoes": "NED, NED STARK, YOUNG NED",
       "familia": "Stark"
     },
     {
       "nome": "Ellaria Sand",
-      "variacoes": "",
-      "familia": "Sand (Martell bastarda)"
-    },
-    {
-      "nome": "Lancel Lannister",
-      "variacoes": "",
-      "familia": "Lannister"
-    },
-    {
-      "nome": "Mance Rayder",
-      "variacoes": "",
-      "familia": "Selvagens"
-    },
-    {
-      "nome": "Janos Slynt",
-      "variacoes": "",
-      "familia": "Night's Watch"
-    },
-    {
-      "nome": "Grenn",
-      "variacoes": "",
-      "familia": "Night's Watch"
-    },
-    {
-      "nome": "Hodor",
-      "variacoes": "",
-      "familia": "Stark (servo)"
-    },
-    {
-      "nome": "Maester Luwin",
-      "variacoes": "",
-      "familia": "Winterfell (Meistre)"
-    },
-    {
-      "nome": "Renly Baratheon",
-      "variacoes": "",
-      "familia": "Baratheon"
-    },
-    {
-      "nome": "Brynden Tully",
-      "variacoes": "BLACKFISH",
-      "familia": "Tully"
-    },
-    {
-      "nome": "Gregor Clegane",
-      "variacoes": "THE MOUNTAIN, MOUNTAIN",
-      "familia": "Clegane"
+      "variacoes": "ELLARIA, ELARIA, ELLIA",
+      "familia": "Martell (Sand Snakes)"
     },
     {
       "nome": "Walder Frey",
-      "variacoes": "WALDER",
+      "variacoes": "WALDER, WALDER FREY, WALDERY FREY",
       "familia": "Frey"
     },
     {
-      "nome": "Jeor Mormont",
-      "variacoes": "JEOR",
-      "familia": "Mormont/Night's Watch"
+      "nome": "Maester Luwin",
+      "variacoes": "LUWIN, MAESTER LUWIN",
+      "familia": "Winterfell"
     },
     {
-      "nome": "Maester Aemon",
-      "variacoes": "",
-      "familia": "Targaryen/Night's Watch"
+      "nome": "Renly Baratheon",
+      "variacoes": "RENLY",
+      "familia": "Baratheon"
     },
     {
-      "nome": "Craster",
-      "variacoes": "",
-      "familia": "Selvagens"
+      "nome": "Janos Slynt",
+      "variacoes": "JANOS, JANOS SLYNT, JANOS SLUNT",
+      "familia": "Night's Watch"
     },
     {
-      "nome": "Mace Tyrell",
-      "variacoes": "",
-      "familia": "Tyrell"
+      "nome": "Eddison Tollett",
+      "variacoes": "DOLOROUS EDD, EDD, EDDISON, EDDISION, DOLOROUD EDD, DOLROUS EDD",
+      "familia": "Night's Watch"
     },
     {
-      "nome": "Myrcella Baratheon",
-      "variacoes": "",
-      "familia": "Baratheon/Lannister"
+      "nome": "Brynden Tully",
+      "variacoes": "BRYNDEN, BLACKFISH",
+      "familia": "Tully"
     },
     {
-      "nome": "Robin Arryn",
-      "variacoes": "",
+      "nome": "Waif",
+      "variacoes": "WAIF",
+      "familia": "Homens sem Rosto"
+    },
+    {
+      "nome": "Edmure Tully",
+      "variacoes": "EDMURE",
+      "familia": "Tully"
+    },
+    {
+      "nome": "Hizdahr zo Loraq",
+      "variacoes": "HIZDAHR, HIZDAHR ZO LORAQ",
+      "familia": "Meereen"
+    },
+    {
+      "nome": "Selyse Baratheon",
+      "variacoes": "SELYSE",
+      "familia": "Baratheon"
+    },
+    {
+      "nome": "Hodor",
+      "variacoes": "HODOR, YOUNG HODOR",
+      "familia": "Winterfell"
+    },
+    {
+      "nome": "Lysa Arryn",
+      "variacoes": "LYSA",
       "familia": "Arryn"
     },
     {
-      "nome": "Randyll Tarly",
-      "variacoes": "",
-      "familia": "Tarly"
+      "nome": "Lyanna Mormont",
+      "variacoes": "LYANNA, LYANNA MORMONT, YOUNG LYANNA",
+      "familia": "Mormont"
     },
     {
-      "nome": "Benjen Stark",
-      "variacoes": "",
-      "familia": "Stark/Night's Watch"
+      "nome": "Ros",
+      "variacoes": "ROS, ROZ",
+      "familia": "Prostituta"
+    },
+    {
+      "nome": "Balon Greyjoy",
+      "variacoes": "BALON",
+      "familia": "Greyjoy"
+    },
+    {
+      "nome": "Jeor Mormont",
+      "variacoes": "JEOR, LORD MORMONT",
+      "familia": "Mormont/Night's Watch"
+    },
+    {
+      "nome": "Alliser Thorne",
+      "variacoes": "ALLISER, ALLISER THORNE, ALLISER THORN, ALLISER THRONE, ALLISTER",
+      "familia": "Night's Watch"
+    },
+    {
+      "nome": "Craster",
+      "variacoes": "CRASTER",
+      "familia": "Selvagens"
+    },
+    {
+      "nome": "Gregor Clegane",
+      "variacoes": "THE MOUNTAIN, MOUNTAIN, MOUNTIAN",
+      "familia": "Clegane"
+    },
+    {
+      "nome": "Myrcella Baratheon",
+      "variacoes": "MYRCELLA",
+      "familia": "Baratheon/Lannister"
     },
     {
       "nome": "Doran Martell",
-      "variacoes": "",
+      "variacoes": "DORAN",
       "familia": "Martell"
     },
     {
       "nome": "Three-Eyed Raven",
-      "variacoes": "",
+      "variacoes": "THREE-EYED RAVEN",
       "familia": "Corvo de Três Olhos"
     },
     {
+      "nome": "Maester Aemon",
+      "variacoes": "AEMON, MAESTER AEMON",
+      "familia": "Targaryen/Night's Watch"
+    },
+    {
       "nome": "Olly",
-      "variacoes": "",
+      "variacoes": "OLLY",
       "familia": "Night's Watch"
+    },
+    {
+      "nome": "Benjen Stark",
+      "variacoes": "BENJEN, YOUNG BENJEN",
+      "familia": "Stark/Night's Watch"
+    },
+    {
+      "nome": "Karl Tanner",
+      "variacoes": "KARL TANNER, KARL, TANNER",
+      "familia": "Night's Watch (desertor)"
     },
     {
       "nome": "Kevan Lannister",
-      "variacoes": "",
+      "variacoes": "KEVAN, KEVAN LANNISTER",
       "familia": "Lannister"
     },
     {
-      "nome": "Jorah Mormont",
-      "variacoes": "SER DONTOS",
-      "familia": "Mormont"
-    },
-    {
-      "nome": "Yoren",
-      "variacoes": "",
-      "familia": "Night's Watch"
-    },
-    {
-      "nome": "Rodrik Cassel",
-      "variacoes": "",
-      "familia": "Stark (vassalo)"
-    },
-    {
-      "nome": "Robert Baratheon",
-      "variacoes": "",
-      "familia": "Baratheon"
+      "nome": "Viserys Targaryen",
+      "variacoes": "VISERYS",
+      "familia": "Targaryen"
     },
     {
       "nome": "Rickon Stark",
-      "variacoes": "",
+      "variacoes": "RICKON, RIKON",
       "familia": "Stark"
     },
     {
-      "nome": "Viserys Targaryen",
-      "variacoes": "",
-      "familia": "Targaryen"
+      "nome": "Khal Drogo",
+      "variacoes": "DROGO, KHAL DROGO",
+      "familia": "Dothraki"
+    },
+    {
+      "nome": "Rattleshirt",
+      "variacoes": "RATTLESHIRT, LORD OF BONES",
+      "familia": "Selvagens"
+    },
+    {
+      "nome": "Walda Bolton",
+      "variacoes": "WALDA, LADY WALDA",
+      "familia": "Bolton/Frey"
     },
     {
       "nome": "Septa Unella",
-      "variacoes": "",
+      "variacoes": "SEPTA UNELLA, SEPTA",
       "familia": "Fé dos Sete"
     },
     {
-      "nome": "Khal Drogo",
-      "variacoes": "",
-      "familia": "Dothraki"
-    },
-    {
-      "nome": "Areo Hotah",
-      "variacoes": "",
-      "familia": "Martell (guarda)"
-    },
-    {
-      "nome": "Maester Cressen",
-      "variacoes": "",
-      "familia": "Baratheon (Meistre)"
-    },
-    {
-      "nome": "Irri",
-      "variacoes": "",
-      "familia": "Dothraki"
-    },
-    {
-      "nome": "Blackfish",
-      "variacoes": "",
-      "familia": "Tully"
-    },
-    {
-      "nome": "Leaf",
-      "variacoes": "",
-      "familia": "Filhos da Floresta"
-    },
-    {
-      "nome": "Rhaegar Targaryen",
-      "variacoes": "",
-      "familia": "Targaryen"
-    },
-    {
-      "nome": "Lyanna Mormont",
-      "variacoes": "",
-      "familia": "Mormont"
-    },
-    {
-      "nome": "Septa Mordane",
-      "variacoes": "",
-      "familia": "Stark (septa)"
+      "nome": "Mace Tyrell",
+      "variacoes": "MACE, MACE TYRELL",
+      "familia": "Tyrell"
     },
     {
       "nome": "Wun Wun",
-      "variacoes": "",
-      "familia": "Gigantes"
+      "variacoes": "WUN WUN",
+      "familia": "Gigante"
+    },
+    {
+      "nome": "Lyanna Stark",
+      "variacoes": "LYANNA",
+      "familia": "Stark"
+    },
+    {
+      "nome": "Rhaegar Targaryen",
+      "variacoes": "RHAEGAR",
+      "familia": "Targaryen"
+    },
+    {
+      "nome": "Bowen Marsh",
+      "variacoes": "BOWEN MARSH",
+      "familia": "Night's Watch"
+    },
+    {
+      "nome": "Othell Yarwyck",
+      "variacoes": "YARWYCK, YARWICK, OTHELL YARWICK",
+      "familia": "Night's Watch"
+    },
+    {
+      "nome": "Robett Glover",
+      "variacoes": "ROBETT, ROBETT GLOVER, GLOVER",
+      "familia": "Glover"
+    },
+    {
+      "nome": "Rickard Karstark",
+      "variacoes": "RICKARD KARSTARK, RICKARD, LORD KARSTARK, KARSTARK",
+      "familia": "Karstark"
     }
   ]
 }

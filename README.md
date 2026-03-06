@@ -24,16 +24,16 @@ pip install networkx matplotlib
 ### Execução
 ```bash
 # 1. Extrair personagens
-python criar_dataset_personagens.py
+python src/criar_dataset_personagens.py
 
 # 2. Identificar duplicados e famílias (requer API Key DeepSeek)
-python identificar_duplicados.py
+python src/identificar_duplicados.py
 
 # 3. Gerar interações
-python criar_dataset_interacoes.py
+python src/criar_dataset_interacoes.py
 
 # 4. Criar e visualizar grafo de interações
-python criar_grafo.py
+python src/criar_grafo.py
 ```
 
 ## 📊 Datasets Gerados
@@ -71,17 +71,22 @@ Dataset completo de interações (500k+ registros)
 ## 📁 Estrutura do Projeto
 
 ```
-Disciplina_08/
+GOT-Grafos/
+├── src/                             # Scripts principais
+│   ├── criar_dataset_personagens.py # Extrai personagens
+│   ├── identificar_duplicados.py    # Identifica variações (IA)
+│   ├── criar_dataset_interacoes.py  # Gera interações
+│   └── criar_grafo.py               # Cria e visualiza grafo
+├── datasets/                        # Datasets gerados
+│   ├── dataset_personagens.csv
+│   ├── personagens_dicionario.csv
+│   └── dataset_interacoes_personagens.csv
 ├── genius/                          # Scripts originais (s01-s08)
-├── criar_dataset_personagens.py     # Extrai personagens
-├── identificar_duplicados.py        # Identifica variações (IA)
-├── criar_dataset_interacoes.py      # Gera interações
-├── criar_grafo.py                   # Cria e visualiza grafo
-├── converter_dicionario.py          # Utilitário de conversão
-├── dataset_personagens.csv          # Output 1
-├── personagens_dicionario.csv       # Output 2
-├── dataset_interacoes_personagens.csv # Output 3
-├── GUIA_INICIALIZACAO.md           # Guia detalhado
+├── notebooks/                       # Jupyter notebooks
+├── docs/                            # Documentação
+│   ├── GUIA_INICIALIZACAO.md
+│   ├── DATASETS_INFO.md
+│   └── DATASET_INTERACOES.md
 └── README.md                        # Este arquivo
 ```
 
@@ -96,9 +101,9 @@ O projeto usa a API do DeepSeek para:
 
 ## 📖 Documentação Adicional
 
-- [GUIA_INICIALIZACAO.md](GUIA_INICIALIZACAO.md) - Passo a passo detalhado
-- [DATASETS_INFO.md](DATASETS_INFO.md) - Informações sobre os datasets
-- [DATASET_INTERACOES.md](DATASET_INTERACOES.md) - Detalhes das interações
+- [docs/GUIA_INICIALIZACAO.md](docs/GUIA_INICIALIZACAO.md) - Passo a passo detalhado
+- [docs/DATASETS_INFO.md](docs/DATASETS_INFO.md) - Informações sobre os datasets
+- [docs/DATASET_INTERACOES.md](docs/DATASET_INTERACOES.md) - Detalhes das interações
 
 ## 🛠️ Troubleshooting
 
@@ -109,7 +114,7 @@ O projeto usa a API do DeepSeek para:
 
 ### KeyError em colunas
 - Execute os scripts na ordem correta
-- Certifique-se que `personagens_dicionario.csv` tem colunas: Nome, Variações, Familia
+- Certifique-se que `datasets/personagens_dicionario.csv` tem colunas: Nome, Variações, Familia
 
 ### Encoding error
 - Use UTF-8 em todos os arquivos
