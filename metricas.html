@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Thrones - Métricas Explicadas</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #000000;
+            color: white;
+            padding: 40px 20px;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+        #stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 { 
+            text-align: center; 
+            margin-bottom: 40px;
+            color: #4CAF50;
+        }
+        .metric {
+            background: #2a2a2a;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+        }
+        h2 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        .formula {
+            background: #1a1a1a;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .example {
+            background: #333;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 3px solid #ffeb3b;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .back-btn:hover { background: #45a049; }
+        ul { margin-left: 20px; margin-top: 10px; }
+        li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <canvas id="stars"></canvas>
+    <div class="container">
+        <a href="rankings.html" class="back-btn">← Voltar aos Rankings</a>
+        
+        <h1>📊 Métricas de Análise de Rede</h1>
+        
+        <div class="metric">
+            <h2>1. Influence Score (Score de Influência)</h2>
+            <p><strong>O que mede:</strong> A influência real de um personagem considerando com QUEM ele fala, QUANTO fala, e a QUALIDADE das suas interações.</p>
+            
+            <div class="formula">
+Influence Score = Σ(peso_conexão × PageRank_vizinho × média_fala/100) + (total_fala/10000)
+            </div>
+            
+            <p><strong>Como é calculado:</strong></p>
+            <ul>
+                <li>Para cada conexão do personagem, multiplica-se o número de interações pela importância do outro personagem (PageRank)</li>
+                <li>Pondera-se pelo tamanho médio das falas do personagem</li>
+                <li>Adiciona-se um bônus pelo volume total de fala</li>
+            </ul>
+            
+            <div class="example">
+                <strong>Exemplo:</strong> Lord Baelish tem poucas conexões (27), mas fala com pessoas muito importantes (Stark, Lannister). Seu Influence Score será alto porque a importância dos seus vizinhos é alta, mesmo tendo menos conexões que outros personagens.
+            </div>
+            
+            <p><strong>Uso:</strong> Identifica personagens que são verdadeiramente influentes na trama, não apenas populares. Tamanho dos nós no visualizador é baseado nesta métrica.</p>
+        </div>
+
+        <div class="metric">
+            <h2>2. PageRank</h2>
+            <p><strong>O que mede:</strong> Importância de um personagem baseada na importância de quem se conecta com ele (algoritmo do Google).</p>
+            
+            <div class="formula">
+PageRank(A) = (1-d) + d × Σ(PageRank(Ti) / C(Ti))
+Onde: d = 0.85, Ti = vizinhos, C(Ti) = conexões do vizinho
+            </div>
+            
+            <p><strong>Como é calculado:</strong></p>
+            <ul>
+                <li>Algoritmo iterativo que distribui "importância" pela rede</li>
+                <li>Considera o peso das conexões (número de interações)</li>
+                <li>Estar conectado a pessoas importantes te torna importante</li>
+            </ul>
+            
+            <div class="example">
+                <strong>Exemplo:</strong> Se Jon Snow (importante) fala muito com Daenerys, o PageRank de Daenerys aumenta. Se Daenerys fala com Tyrion, o PageRank de Tyrion também aumenta (efeito cascata).
+            </div>
+            
+            <p><strong>Uso:</strong> Identifica personagens centrais na estrutura da rede social.</p>
+        </div>
+
+        <div class="metric">
+            <h2>3. Betweenness Centrality (Centralidade de Intermediação)</h2>
+            <p><strong>O que mede:</strong> Quantas vezes um personagem está "no caminho" entre outros personagens. Identifica pontes e intermediários.</p>
+            
+            <div class="formula">
+Betweenness(v) = Σ(σst(v) / σst)
+Onde: σst = caminhos mais curtos entre s e t
+      σst(v) = caminhos que passam por v
+            </div>
+            
+            <p><strong>Como é calculado:</strong></p>
+            <ul>
+                <li>Para cada par de personagens, calcula os caminhos mais curtos entre eles</li>
+                <li>Conta quantos desses caminhos passam pelo personagem analisado</li>
+                <li>Considera o peso das conexões</li>
+            </ul>
+            
+            <div class="example">
+                <strong>Exemplo:</strong> Lord Baelish tem alta betweenness porque ele conecta diferentes facções (Stark ↔ Baelish ↔ Lannister). Ele é uma "ponte" entre comunidades que não se falam diretamente.
+            </div>
+            
+            <p><strong>Uso:</strong> Identifica personagens que controlam o fluxo de informação, negociadores, espiões, e intermediários políticos.</p>
+        </div>
+
+        <div class="metric">
+            <h2>4. Weighted Degree (Grau Ponderado)</h2>
+            <p><strong>O que mede:</strong> Intensidade total das interações de um personagem (soma dos pesos de todas as conexões).</p>
+            
+            <div class="formula">
+Weighted Degree = Σ(peso de cada conexão)
+            </div>
+            
+            <p><strong>Como é calculado:</strong></p>
+            <ul>
+                <li>Soma o número total de interações (falas) que o personagem teve com todos os outros</li>
+                <li>Cada fala no dataset adiciona +1 ao peso da conexão</li>
+            </ul>
+            
+            <div class="example">
+                <strong>Exemplo:</strong> Se Jon Snow fala 50 vezes com Daenerys, 30 vezes com Sansa, e 20 vezes com Arya, seu Weighted Degree = 50 + 30 + 20 = 100.
+            </div>
+            
+            <p><strong>Uso:</strong> Mede o volume total de interações. Personagens com alto weighted degree são muito ativos socialmente.</p>
+        </div>
+
+        <div class="metric">
+            <h2>5. Connections (Conexões)</h2>
+            <p><strong>O que mede:</strong> Número simples de personagens diferentes com quem o personagem interage.</p>
+            
+            <div class="formula">
+Connections = Número de vizinhos no grafo
+            </div>
+            
+            <p><strong>Como é calculado:</strong></p>
+            <ul>
+                <li>Conta quantos personagens diferentes aparecem em cenas/diálogos com o personagem analisado</li>
+                <li>Não considera quantas vezes interagem, apenas SE interagem</li>
+            </ul>
+            
+            <div class="example">
+                <strong>Exemplo:</strong> Se Tyrion fala com 50 personagens diferentes (mesmo que fale 1 vez com cada), ele tem 50 conexões. Se Jon fala 100 vezes com apenas 10 personagens, ele tem 10 conexões.
+            </div>
+            
+            <p><strong>Uso:</strong> Mede diversidade social. Personagens com muitas conexões conhecem muita gente diferente.</p>
+        </div>
+
+        <div class="metric" style="border-left-color: #2196F3;">
+            <h2>📌 Resumo Comparativo</h2>
+            <ul>
+                <li><strong>Connections:</strong> Quantas pessoas você conhece</li>
+                <li><strong>Weighted Degree:</strong> Quanto você fala no total</li>
+                <li><strong>PageRank:</strong> Quão importantes são as pessoas que você conhece</li>
+                <li><strong>Betweenness:</strong> O quanto você conecta grupos diferentes</li>
+                <li><strong>Influence Score:</strong> Combinação de tudo acima + qualidade das falas</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Criar estrelas de fundo
+        const canvas = document.getElementById('stars');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        for (let i = 0; i < 200; i++) {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const radius = Math.random() * 1.5;
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,700 @@
+{
+  "interacoes": [
+    {
+      "cena": 1,
+      "descricao_cena": "Três Patrulheiros da Patrulha da Noite investigam um acampamento selvagem mutilado.",
+      "falante_oficial": "WAYMAR ROYCE",
+      "ouvinte_oficial": "WILL",
+      "fala": "What d’you expect? They’re savages. One lot steals a goat from another lot and before you know it, they’re ripping each other to pieces.",
+      "tamanho_fala": 124,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 1,
+      "descricao_cena": "Três Patrulheiros da Patrulha da Noite investigam um acampamento selvagem mutilado.",
+      "falante_oficial": "WILL",
+      "ouvinte_oficial": "WAYMAR ROYCE",
+      "fala": "I’ve never seen wildlings do a thing like this. I’ve never seen a thing like this, not ever in my life.",
+      "tamanho_fala": 108,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 1,
+      "descricao_cena": "Três Patrulheiros da Patrulha da Noite investigam um acampamento selvagem mutilado.",
+      "falante_oficial": "WAYMAR ROYCE",
+      "ouvinte_oficial": "WILL",
+      "fala": "How close did you get?",
+      "tamanho_fala": 19,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 1,
+      "descricao_cena": "Três Patrulheiros da Patrulha da Noite investigam um acampamento selvagem mutilado.",
+      "falante_oficial": "WILL",
+      "ouvinte_oficial": "WAYMAR ROYCE",
+      "fala": "Close as any man would.",
+      "tamanho_fala": 24,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 1,
+      "descricao_cena": "Três Patrulheiros da Patrulha da Noite investigam um acampamento selvagem mutilado.",
+      "falante_oficial": "GARED",
+      "ouvinte_oficial": "WAYMAR ROYCE",
+      "fala": "We should head back to the wall.",
+      "tamanho_fala": 30,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 1,
+      "descricao_cena": "Três Patrulheiros da Patrulha da Noite investigam um acampamento selvagem mutilado.",
+      "falante_oficial": "WAYMAR ROYCE",
+      "ouvinte_oficial": "GARED",
+      "fala": "Do the dead frighten you?",
+      "tamanho_fala": 23,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 1,
+      "descricao_cena": "Três Patrulheiros da Patrulha da Noite investigam um acampamento selvagem mutilado.",
+      "falante_oficial": "GARED",
+      "ouvinte_oficial": "WAYMAR ROYCE",
+      "fala": "Our orders were to track the wildlings. We tracked them. They won’t trouble us no more.",
+      "tamanho_fala": 86,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 1,
+      "descricao_cena": "Três Patrulheiros da Patrulha da Noite investigam um acampamento selvagem mutilado.",
+      "falante_oficial": "WAYMAR ROYCE",
+      "ouvinte_oficial": "WILL",
+      "fala": "You don’t think he’ll ask us how they died? Get back on your horse.",
+      "tamanho_fala": 62,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 1,
+      "descricao_cena": "Três Patrulheiros da Patrulha da Noite investigam um acampamento selvagem mutilado.",
+      "falante_oficial": "WILL",
+      "ouvinte_oficial": "WAYMAR ROYCE",
+      "fala": "Whatever did it to them could do it to us. They even killed the children.",
+      "tamanho_fala": 71,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 1,
+      "descricao_cena": "Três Patrulheiros da Patrulha da Noite investigam um acampamento selvagem mutilado.",
+      "falante_oficial": "WAYMAR ROYCE",
+      "ouvinte_oficial": "WILL",
+      "fala": "It’s a good thing we’re not children. You want to run away south, run away. Of course, they will behead you as a deserter … If I don’t catch you first. Get back on your horse. I won’t say it again.",
+      "tamanho_fala": 154,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 2,
+      "descricao_cena": "Os Patrulheiros retornam ao acampamento, agora vazio.",
+      "falante_oficial": "WAYMAR ROYCE",
+      "ouvinte_oficial": "WILL",
+      "fala": "Your dead men seem to have moved camp.",
+      "tamanho_fala": 41,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 2,
+      "descricao_cena": "Os Patrulheiros retornam ao acampamento, agora vazio.",
+      "falante_oficial": "WILL",
+      "ouvinte_oficial": "WAYMAR ROYCE",
+      "fala": "They were here.",
+      "tamanho_fala": 13,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 2,
+      "descricao_cena": "Os Patrulheiros retornam ao acampamento, agora vazio.",
+      "falante_oficial": "GARED",
+      "ouvinte_oficial": "WAYMAR ROYCE",
+      "fala": "See where they went.",
+      "tamanho_fala": 19,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 2,
+      "descricao_cena": "Os Patrulheiros retornam ao acampamento, agora vazio.",
+      "falante_oficial": "WAYMAR ROYCE",
+      "ouvinte_oficial": "GARED",
+      "fala": "What is it?",
+      "tamanho_fala": 10,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 3,
+      "descricao_cena": "Bran pratica arco e flecha sob os olhos de Jon, Robb, Ned e Catelyn.",
+      "falante_oficial": "JON SNOW",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "Go on. Father’s watching.",
+      "tamanho_fala": 24,
+      "num_personagens_cena": 5,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 3,
+      "descricao_cena": "Bran pratica arco e flecha sob os olhos de Jon, Robb, Ned e Catelyn.",
+      "falante_oficial": "JON SNOW",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "And your mother.",
+      "tamanho_fala": 15,
+      "num_personagens_cena": 5,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 4,
+      "descricao_cena": "Sansa e Arya praticam costura com Septa Mordane.",
+      "falante_oficial": "SEPTA MORDANE",
+      "ouvinte_oficial": "SANSA STARK",
+      "fala": "Fine work, as always. Well done.",
+      "tamanho_fala": 33,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 4,
+      "descricao_cena": "Sansa e Arya praticam costura com Septa Mordane.",
+      "falante_oficial": "SANSA STARK",
+      "ouvinte_oficial": "SEPTA MORDANE",
+      "fala": "Thank you.",
+      "tamanho_fala": 9,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 5,
+      "descricao_cena": "Bran continua praticando arco e flecha.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "And which one of you was a marksman at ten? Keep practicing, Bran. Go on.",
+      "tamanho_fala": 68,
+      "num_personagens_cena": 5,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 5,
+      "descricao_cena": "Bran continua praticando arco e flecha.",
+      "falante_oficial": "JON SNOW",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "Don’t think too much, Bran.",
+      "tamanho_fala": 24,
+      "num_personagens_cena": 5,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 5,
+      "descricao_cena": "Bran continua praticando arco e flecha.",
+      "falante_oficial": "ROBB STARK",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "Relax your bow arm.",
+      "tamanho_fala": 20,
+      "num_personagens_cena": 5,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 5,
+      "descricao_cena": "Arya acerta um tiro perfeito e foge de Bran.",
+      "falante_oficial": "JON SNOW",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "Quick, Bran, faster!",
+      "tamanho_fala": 19,
+      "num_personagens_cena": 5,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 5,
+      "descricao_cena": "Arya acerta um tiro perfeito e foge de Bran.",
+      "falante_oficial": "ROBB STARK",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "Quick, Bran, faster!",
+      "tamanho_fala": 19,
+      "num_personagens_cena": 5,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 6,
+      "descricao_cena": "Rodrick Cassel e Theon Greyjoy informam Ned sobre um desertor.",
+      "falante_oficial": "RODRICK CASSEL",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "Lord Stark. My lady. A guardsman just rode in from the hills. They’ve captured a deserter from the Night’s Watch.",
+      "tamanho_fala": 98,
+      "num_personagens_cena": 4,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 6,
+      "descricao_cena": "Rodrick Cassel e Theon Greyjoy informam Ned sobre um desertor.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "THEON GREYJOY",
+      "fala": "Get the lads to saddle their horses.",
+      "tamanho_fala": 36,
+      "num_personagens_cena": 4,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 6,
+      "descricao_cena": "Rodrick Cassel e Theon Greyjoy informam Ned sobre um desertor.",
+      "falante_oficial": "CATELYN STARK",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "Do you have to?",
+      "tamanho_fala": 12,
+      "num_personagens_cena": 4,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 6,
+      "descricao_cena": "Rodrick Cassel e Theon Greyjoy informam Ned sobre um desertor.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "CATELYN STARK",
+      "fala": "He swore an oath, Cat.",
+      "tamanho_fala": 22,
+      "num_personagens_cena": 4,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 6,
+      "descricao_cena": "Rodrick Cassel e Theon Greyjoy informam Ned sobre um desertor.",
+      "falante_oficial": "RODRICK CASSEL",
+      "ouvinte_oficial": "CATELYN STARK",
+      "fala": "The law is law, my lady.",
+      "tamanho_fala": 22,
+      "num_personagens_cena": 4,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 6,
+      "descricao_cena": "Rodrick Cassel e Theon Greyjoy informam Ned sobre um desertor.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "RODRICK CASSEL",
+      "fala": "Tell Bran he’s coming, too.",
+      "tamanho_fala": 26,
+      "num_personagens_cena": 4,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 6,
+      "descricao_cena": "Rodrick Cassel e Theon Greyjoy informam Ned sobre um desertor.",
+      "falante_oficial": "CATELYN STARK",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "Ned. Ten is too young to see such things.",
+      "tamanho_fala": 38,
+      "num_personagens_cena": 4,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 6,
+      "descricao_cena": "Rodrick Cassel e Theon Greyjoy informam Ned sobre um desertor.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "CATELYN STARK",
+      "fala": "He won’t be a boy forever. And winter is coming.",
+      "tamanho_fala": 46,
+      "num_personagens_cena": 4,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 7,
+      "descricao_cena": "No pátio, Robb e Jon recolhem flechas. Catelyn olha para Jon.",
+      "falante_oficial": "ROBB STARK",
+      "ouvinte_oficial": "JON SNOW",
+      "fala": "Lad, go run back and get the rest.",
+      "tamanho_fala": 32,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 8,
+      "descricao_cena": "Will, o desertor, é levado para a execução.",
+      "falante_oficial": "WILL",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "White Walkers. I saw the White Walkers. White Walkers. The White Walkers, I saw them.",
+      "tamanho_fala": 78,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 8,
+      "descricao_cena": "Will, o desertor, é levado para a execução.",
+      "falante_oficial": "WILL",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "I know I broke my oath. And I know I’m a deserter. I should have gone back to the Wall and warned them. But I saw what I saw. I saw the White Walkers. People need to know. If you can get word to my family, tell them I’m no coward. Tell them I’m sorry.",
+      "tamanho_fala": 186,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 8,
+      "descricao_cena": "Will, o desertor, é levado para a execução.",
+      "falante_oficial": "WILL",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "Forgive me, lord.",
+      "tamanho_fala": 15,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 8,
+      "descricao_cena": "Will, o desertor, é levado para a execução.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "WILL",
+      "fala": "In the name of Robert of the House Baratheon, first of his name …",
+      "tamanho_fala": 62,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 8,
+      "descricao_cena": "Will, o desertor, é levado para a execução.",
+      "falante_oficial": "JON SNOW",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "Don’t look away.",
+      "tamanho_fala": 14,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 8,
+      "descricao_cena": "Will, o desertor, é levado para a execução.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "WILL",
+      "fala": "King of the Andals and the First Men …",
+      "tamanho_fala": 38,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 8,
+      "descricao_cena": "Will, o desertor, é levado para a execução.",
+      "falante_oficial": "JON SNOW",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "Father will know if you do.",
+      "tamanho_fala": 25,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 8,
+      "descricao_cena": "Will, o desertor, é levado para a execução.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "WILL",
+      "fala": "Lord of the Seven Kingdoms and protector of the realm, I, Eddard of the House Stark, Lord of Winterfell and Warden of the North, sentence you to die.",
+      "tamanho_fala": 119,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 9,
+      "descricao_cena": "Após a execução, Jon fala com Bran.",
+      "falante_oficial": "JON SNOW",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "You did well.",
+      "tamanho_fala": 12,
+      "num_personagens_cena": 3,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 10,
+      "descricao_cena": "Ned conversa com Bran sobre a execução.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "You understand why I did it?",
+      "tamanho_fala": 26,
+      "num_personagens_cena": 2,
+      "tipo_interacao": "direct"
+    },
+    {
+      "cena": 10,
+      "descricao_cena": "Ned conversa com Bran sobre a execução.",
+      "falante_oficial": "BRAN STARK",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "Jon said he was a deserter.",
+      "tamanho_fala": 26,
+      "num_personagens_cena": 2,
+      "tipo_interacao": "direct"
+    },
+    {
+      "cena": 10,
+      "descricao_cena": "Ned conversa com Bran sobre a execução.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "But do you understand why I had to kill him?",
+      "tamanho_fala": 40,
+      "num_personagens_cena": 2,
+      "tipo_interacao": "direct"
+    },
+    {
+      "cena": 10,
+      "descricao_cena": "Ned conversa com Bran sobre a execução.",
+      "falante_oficial": "BRAN STARK",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "Our way is the old way?",
+      "tamanho_fala": 22,
+      "num_personagens_cena": 2,
+      "tipo_interacao": "direct"
+    },
+    {
+      "cena": 10,
+      "descricao_cena": "Ned conversa com Bran sobre a execução.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "The man who passes the sentence should swing the sword.",
+      "tamanho_fala": 55,
+      "num_personagens_cena": 2,
+      "tipo_interacao": "direct"
+    },
+    {
+      "cena": 10,
+      "descricao_cena": "Ned conversa com Bran sobre a execução.",
+      "falante_oficial": "BRAN STARK",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "Is it true he saw the White Walkers?",
+      "tamanho_fala": 35,
+      "num_personagens_cena": 2,
+      "tipo_interacao": "direct"
+    },
+    {
+      "cena": 10,
+      "descricao_cena": "Ned conversa com Bran sobre a execução.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "The White Walkers have been gone for thousands of years.",
+      "tamanho_fala": 53,
+      "num_personagens_cena": 2,
+      "tipo_interacao": "direct"
+    },
+    {
+      "cena": 10,
+      "descricao_cena": "Ned conversa com Bran sobre a execução.",
+      "falante_oficial": "BRAN STARK",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "So he was lying?",
+      "tamanho_fala": 16,
+      "num_personagens_cena": 2,
+      "tipo_interacao": "direct"
+    },
+    {
+      "cena": 10,
+      "descricao_cena": "Ned conversa com Bran sobre a execução.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "A madman sees what he sees.",
+      "tamanho_fala": 27,
+      "num_personagens_cena": 2,
+      "tipo_interacao": "direct"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "JON SNOW",
+      "ouvinte_oficial": "THEON GREYJOY",
+      "fala": "What is it?",
+      "tamanho_fala": 9,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "THEON GREYJOY",
+      "ouvinte_oficial": "JON SNOW",
+      "fala": "Mountain lion?",
+      "tamanho_fala": 13,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "THEON GREYJOY",
+      "fala": "There are no mountain lions in these woods.",
+      "tamanho_fala": 39,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "THEON GREYJOY",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "It’s a freak.",
+      "tamanho_fala": 11,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "THEON GREYJOY",
+      "fala": "It’s a direwolf.",
+      "tamanho_fala": 14,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "RODRICK CASSEL",
+      "fala": "Tough old beast.",
+      "tamanho_fala": 16,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "ROBB STARK",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "There are no direwolves south of the Wall.",
+      "tamanho_fala": 38,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "JON SNOW",
+      "ouvinte_oficial": "ROBB STARK",
+      "fala": "Now there are five.",
+      "tamanho_fala": 18,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "JON SNOW",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "You want to hold it?",
+      "tamanho_fala": 19,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "BRAN STARK",
+      "ouvinte_oficial": "JON SNOW",
+      "fala": "Where will they go? Their mother’s dead.",
+      "tamanho_fala": 38,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "RODRICK CASSEL",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "They don’t belong down here.",
+      "tamanho_fala": 26,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "RODRICK CASSEL",
+      "fala": "Better a quick death. They won’t last without their mother.",
+      "tamanho_fala": 55,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "THEON GREYJOY",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "Right. Give it here.",
+      "tamanho_fala": 17,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "BRAN STARK",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "NO!",
+      "tamanho_fala": 3,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "ROBB STARK",
+      "ouvinte_oficial": "THEON GREYJOY",
+      "fala": "Put away your blade.",
+      "tamanho_fala": 19,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "THEON GREYJOY",
+      "ouvinte_oficial": "ROBB STARK",
+      "fala": "I take orders from your father, not you.",
+      "tamanho_fala": 37,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "BRAN STARK",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "Please, father!",
+      "tamanho_fala": 14,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "BRAN STARK",
+      "fala": "I’m sorry, Bran.",
+      "tamanho_fala": 14,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "JON SNOW",
+      "ouvinte_oficial": "NED STARK",
+      "fala": "Lord Stark? There are five pups. One for each of the Stark children. The direwolf is the sigil of your House. They were meant to have them.",
+      "tamanho_fala": 108,
+      "num_personagens_cena": 6,
+      "tipo_interacao": "group"
+    },
+    {
+      "cena": 11,
+      "descricao_cena": "Os homens de Winterfell encontram um cervo morto e uma loba gigante.",
+      "falante_oficial": "NED STARK",
+      "ouvinte_oficial": "JON SNOW",
+      "fala": "You will train them yourselves. You will feed them yourselves. And if they die, you will bury them yourselves.",
+      "tamanho_fala": 96,
+      "num_personagen

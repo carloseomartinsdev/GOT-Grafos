@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Thrones - Rede de Personagens 3D</title>
+    <style>
+        * { margin: 0; padding: 0; }
+        body { overflow: hidden; font-family: Arial, sans-serif; }
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            background: rgba(0,0,0,0.7);
+            padding: 15px;
+            border-radius: 5px;
+            z-index: 100;
+        }
+        #controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 300px;
+            color: white;
+            background: rgba(0,0,0,0.8);
+            padding: 15px;
+            border-radius: 5px;
+            z-index: 100;
+            max-height: 90vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            transition: transform 0.3s;
+        }
+        #controls.minimized {
+            transform: translateX(340px);
+        }
+        #toggleControls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 15px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 101;
+        }
+        #charInfo {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 300px;
+            color: white;
+            background: rgba(0,0,0,0.9);
+            padding: 15px;
+            border-radius: 5px;
+            z-index: 100;
+            display: none;
+        }
+        #charInfo h3 {
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+        #charInfo img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 3px solid #4CAF50;
+        }
+        #charInfo p {
+            margin: 5px 0;
+        }
+        #controls input, #controls select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 3px;
+            border: none;
+        }
+        #controls button {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 3px;
+            border: none;
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        #controls button:hover {
+            background: #45a049;
+        }
+        .community-filter {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        .community-filter input {
+            width: 20px;
+            margin-right: 10px;
+        }
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            background: rgba(0,0,0,0.8);
+            padding: 30px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        <h3>Game of Thrones - Rede 3D</h3>
+        <p>🖱️ Tab para ativar/desativar modo voo</p>
+        <p>🎮 WASD para mover</p>
+        <p>⚡ Shift para acelerar</p>
+        <p>👁️ Mouse para olhar</p>
+        <p>Personagens: <span id="nodeCount">0</span></p>
+        <p>Conexões: <span id="edgeCount">0</span></p>
+        <button onclick="window.location.href='rankings.html'" style="margin-top: 10px; padding: 8px 16px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">📊 Ver Rankings</button>
+    </div>
+    <div id="charInfo">
+        <img id="charPhoto" src="" alt="" />
+        <h3 id="charName"></h3>
+        <p><strong>Comunidade:</strong> <span id="charCommunity"></span></p>
+        <p><strong>Influence Score:</strong> <span id="charInfluence"></span></p>
+        <p><strong>PageRank:</strong> <span id="charPageRank"></span></p>
+        <p><strong>Betweenness:</strong> <span id="charBetweenness"></span></p>
+        <p><strong>Conexões:</strong> <span id="charConnections"></span></p>
+    </div>
+    <button id="toggleControls" onclick="toggleControls()">☰</button>
+    <div id="controls">
+        <h3>Controles</h3>
+        
+        <h4 style="margin-top: 15px;">Pesquisar Personagem</h4>
+        <input type="text" id="searchChar" placeholder="Digite o nome..." />
+        <select id="charList" size="5"></select>
+        <button onclick="selectCharacter()">Selecionar</button>
+        <button onclick="centerOnCharacter()">Centralizar</button>
+        <button onclick="clearSelection()">Limpar Seleção</button>
+        
+        <h4 style="margin-top: 15px;">Filtrar Comunidades</h4>
+        <div id="communityFilters"></div>
+    </div>
+    <div id="loading">Carregando dados...</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/PointerLockControls.js"></script>
+    <script>
+        let scene, camera, renderer, controls;
+        let moveForward = false, moveBackward = false, moveLeft = false, moveRight = false, sprint = false;
+        const velocity = new THREE.Vector3();
+        const direction = new THREE.Vector3();
+        let prevTime = performance.now();
+        
+        let allNodes = [];
+        let allEdges = [];
+        let graphData = null;
+        let selectedCharacter = null;
+        let hiddenCommunities = new Set();
+        let raycaster = new THREE.Raycaster();
+        let mouse = new THREE.Vector2();
+        let imageCache = {};
+        
+        const communityNames = [
+            'Stark/Norte',
+            'Lannister',
+            'Targaryen',
+            'Night\'s Watch',
+            'Baratheon',
+            'Outros',
+            'Secundários',
+            'Terciários'
+        ];
+
+        function init() {
+            // Scene
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x000000);
+
+            // Camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 20000);
+            camera.position.set(0, 0, 15000);
+
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            // PointerLock Controls
+            controls = new THREE.PointerLockControls(camera, document.body);
+            scene.add(controls.getObject());
+
+            // Teclado
+            document.addEventListener('keydown', onKeyDown);
+            document.addEventListener('keyup', onKeyUp);
+            
+            // Click para selecionar personagem
+            document.addEventListener('click', onMouseClick);
+
+            // Estrelas
+            createStars();
+
+            // Carregar dados
+            loadData();
+
+            // Resize
+            window.addEventListener('resize', onWindowResize);
+
+            animate();
+        }
+
+        function onKeyDown(event) {
+            switch (event.code) {
+                case 'KeyW': moveForward = true; break;
+                case 'KeyS': moveBackward = true; break;
+                case 'KeyA': moveLeft = true; break;
+                case 'KeyD': moveRight = true; break;
+                case 'ShiftLeft': sprint = true; break;
+                case 'Tab': 
+                    event.preventDefault();
+                    if (controls.isLocked) {
+                        controls.unlock();
+                    } else {
+                        controls.lock();
+                    }
+                    break;
+            }
+        }
+
+        function onKeyUp(event) {
+            switch (event.code) {
+                case 'KeyW': moveForward = false; break;
+                case 'KeyS': moveBackward = false; break;
+                case 'KeyA': moveLeft = false; break;
+                case 'KeyD': moveRight = false; break;
+                case 'ShiftLeft': sprint = false; break;
+            }
+        }
+        
+        function onMouseClick(event) {
+            if (controls.isLocked) return;
+            
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            
+            raycaster.setFromCamera(mouse, camera);
+            const sprites = allNodes.map(n => n.sphere);
+            const intersects = raycaster.intersectObjects(sprites);
+            
+            if (intersects.length > 0) {
+                const clickedSprite = intersects[0].object;
+                const charName = clickedSprite.userData.name;
+                document.getElementById('charList').value = charName;
+                selectCharacter();
+            }
+        }
+
+        function createStars() {
+            const starsGeometry = new THREE.BufferGeometry();
+            const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 2 });
+            
+            const starsVertices = [];
+            for (let i = 0; i < 5000; i++) {
+                const x = (Math.random() - 0.5) * 50000;
+                const y = (Math.random() - 0.5) * 50000;
+                const z = (Math.random() - 0.5) * 50000;
+                starsVertices.push(x, y, z);
+            }
+            
+            starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
+            const stars = new THREE.Points(starsGeometry, starsMaterial);
+            scene.add(stars);
+        }
+
+        function createCubeGrid() {
+            // Grid removido
+        }
+
+        async function loadData() {
+            try {
+                const response = await fetch('graph_data.json');
+                graphData = await response.json();
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('nodeCount').textContent = graphData.nodes.length;
+                document.getElementById('edgeCount').textContent = graphData.edges.length;
+                
+                createGraph(graphData);
+                setupControls(graphData);
+            } catch (error) {
+                console.error('Erro ao carregar dados:', error);
+                document.getElementById('loading').textContent = 'Erro ao carregar dados. Execute gerar_dados_grafo.py primeiro.';
+            }
+        }
+        
+        function setupControls(data) {
+            // Lista de personagens
+            const charList = document.getElementById('charList');
+            const searchInput = document.getElementById('searchChar');
+            
+            const sortedChars = data.nodes.map(n => n.id).sort();
+            sortedChars.forEach(char => {
+                const option = document.createElement('option');
+                option.value = char;
+                option.textContent = char;
+                charList.appendChild(option);
+            });
+            
+            searchInput.addEventListener('input', (e) => {
+                const search = e.target.value.toLowerCase();
+                Array.from(charList.options).forEach(opt => {
+                    opt.style.display = opt.value.toLowerCase().includes(search) ? '' : 'none';
+                });
+            });
+            
+            // Filtros de comunidade
+            const communities = [...new Set(data.nodes.map(n => n.community))].sort();
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500', '#800080'];
+            const filtersDiv = document.getElementById('communityFilters');
+            
+            communities.forEach(comm => {
+                const div = document.createElement('div');
+                div.className = 'community-filter';
+                const commName = communityNames[comm] || `Comunidade ${comm}`;
+                div.innerHTML = `
+                    <input type="checkbox" id="comm${comm}" checked onchange="toggleCommunity(${comm})" />
+                    <label for="comm${comm}" style="color: ${colors[comm % colors.length]}">${commName}</label>
+                `;
+                filtersDiv.appendChild(div);
+            });
+        }
+        
+        function selectCharacter() {
+            const charList = document.getElementById('charList');
+            const selected = charList.value;
+            if (!selected) return;
+            
+            selectedCharacter = selected;
+            
+            // Mostrar informações
+            const nodeData = graphData.nodes.find(n => n.id === selected);
+            if (nodeData) {
+                // Calcular ranks
+                const influenceRank = graphData.nodes.sort((a,b) => b.influence_score - a.influence_score).findIndex(n => n.id === selected) + 1;
+                const pagerankRank = graphData.nodes.sort((a,b) => b.pagerank - a.pagerank).findIndex(n => n.id === selected) + 1;
+                const betweennessRank = graphData.nodes.sort((a,b) => b.betweenness - a.betweenness).findIndex(n => n.id === selected) + 1;
+                const weightedRank = graphData.nodes.sort((a,b) => b.weighted_degree - a.weighted_degree).findIndex(n => n.id === selected) + 1;
+                
+                const commName = communityNames[nodeData.community] || `Comunidade ${nodeData.community}`;
+                const imgPath = `personagens_fotos/${selected.replace(/ /g, '_').replace(/\//g, '_')}.jpg`;
+                
+                document.getElementById('charPhoto').src = imgPath;
+                document.getElementById('charName').textContent = selected;
+                document.getElementById('charCommunity').textContent = commName;
+                document.getElementById('charInfluence').textContent = `${nodeData.influence_score.toFixed(4)} (#${influenceRank})`;
+                document.getElementById('charPageRank').textContent = `${nodeData.pagerank.toFixed(4)} (#${pagerankRank})`;
+                document.getElementById('charBetweenness').textContent = `${nodeData.betweenness.toFixed(4)} (#${betweennessRank})`;
+                document.getElementById('charConnections').textContent = `${nodeData.connections} (peso: ${Math.round(nodeData.weighted_degree)} #${weightedRank})`;
+                document.getElementById('charInfo').style.display = 'block';
+            }
+            
+            updateVisibility();
+        }
+        
+        function centerOnCharacter() {
+            if (!selectedCharacter) return;
+            
+            const nodeData = graphData.nodes.find(n => n.id === selectedCharacter);
+            if (nodeData) {
+                const distance = 500;
+                camera.position.set(
+                    nodeData.x,
+                    nodeData.y,
+                    nodeData.z + distance
+                );
+            }
+        }
+        
+        function clearSelection() {
+            selectedCharacter = null;
+            document.getElementById('charInfo').style.display = 'none';
+            updateVisibility();
+        }
+        
+        function toggleControls() {
+            document.getElementById('controls').classList.toggle('minimized');
+        }
+        
+        function toggleCommunity(commId) {
+            const checkbox = document.getElementById(`comm${commId}`);
+            if (checkbox.checked) {
+                hiddenCommunities.delete(commId);
+            } else {
+                hiddenCommunities.add(commId);
+            }
+            updateVisibility();
+        }
+        
+        function updateVisibility() {
+            if (!graphData) return;
+            
+            // Encontrar conexões do personagem selecionado
+            let connectedChars = new Set();
+            if (selectedCharacter) {
+                connectedChars.add(selectedCharacter);
+                graphData.edges.forEach(edge => {
+                    if (edge.source === selectedCharacter) connectedChars.add(edge.target);
+                    if (edge.target === selectedCharacter) connectedChars.add(edge.source);
+                });
+            }
+            
+            // Atualizar visibilidade dos nós
+            allNodes.forEach((node, idx) => {
+                const nodeData = graphData.nodes[idx];
+                let visible = true;
+                
+                // Filtro de comunidade
+                if (hiddenCommunities.has(nodeData.community)) {
+                    visible = false;
+                }
+                
+                // Filtro de personagem selecionado
+                if (selectedCharacter && !connectedChars.has(nodeData.id)) {
+                    visible = false;
+                }
+                
+                node.sphere.visible = visible;
+                node.label.visible = visible;
+                node.ring.visible = visible;
+            });
+            
+            // Atualizar visibilidade das arestas
+            const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0xff00ff, 0x00ffff, 0xffa500, 0x800080];
+            
+            allEdges.forEach(edge => {
+                let visible = true;
+                let edgeColor = 0x333333;
+                let edgeOpacity = Math.min(edge.weight / 100, 0.2);
+                
+                // Se personagem selecionado, mostrar APENAS suas conexões
+                if (selectedCharacter) {
+                    if (edge.source === selectedCharacter || edge.target === selectedCharacter) {
+                        const selectedNode = graphData.nodes.find(n => n.id === selectedCharacter);
+                        if (selectedNode) {
+                            edgeColor = colors[selectedNode.community % colors.length];
+                            edgeOpacity = 0.6;
+                        }
+                    } else {
+                        visible = false;
+                    }
+                } else {
+                    // Ocultar se algum nó está oculto por filtro de comunidade
+                    const sourceNode = allNodes.find((n, i) => graphData.nodes[i].id === edge.source);
+                    const targetNode = allNodes.find((n, i) => graphData.nodes[i].id === edge.target);
+                    
+                    if (sourceNode && !sourceNode.sphere.visible) visible = false;
+                    if (targetNode && !targetNode.sphere.visible) visible = false;
+                }
+                
+                edge.line.visible = visible;
+                edge.line.material.color.setHex(edgeColor);
+                edge.line.material.opacity = edgeOpacity;
+            });
+        }
+
+        function drawCircularImage(ctx, img, color, name) {
+            ctx.clearRect(0, 0, 512, 512);
+            if (img) {
+                ctx.beginPath();
+                ctx.arc(256, 256, 256, 0, Math.PI * 2);
+                ctx.clip();
+                ctx.drawImage(img, 0, 0, 512, 512);
+            } else {
+                ctx.fillStyle = `#${color.toString(16).padStart(6, '0')}`;
+                ctx.beginPath();
+                ctx.arc(256, 256, 256, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 80px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(name.substring(0, 2), 256, 280);
+            }
+        }
+        
+        function createGraph(data) {
+            const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0xff00ff, 0x00ffff, 0xffa500, 0x800080];
+            
+            allNodes = [];
+            allEdges = [];
+            
+            // Criar nós (personagens)
+            const nodePositions = {};
+            data.nodes.forEach((node, idx) => {
+                // Criar sprite com foto (sempre voltado para câmera)
+                const imgPath = `personagens_fotos/${node.id.replace(/ /g, '_').replace(/\//g, '_')}.jpg`;
+                
+                // Canvas com foto circular
+                const photoCanvas = document.createElement('canvas');
+                photoCanvas.width = 512;
+                photoCanvas.height = 512;
+                const photoCtx = photoCanvas.getContext('2d');
+                
+                // Verificar cache
+                if (imageCache[imgPath]) {
+                    drawCircularImage(photoCtx, imageCache[imgPath], colors[node.community % colors.length], node.id);
+                    const texture = new THREE.CanvasTexture(photoCanvas);
+                    sprite.material.map = texture;
+                    sprite.material.needsUpdate = true;
+                } else {
+                    const img = new Image();
+                    img.crossOrigin = 'anonymous';
+                    img.onload = () => {
+                        imageCache[imgPath] = img;
+                        drawCircularImage(photoCtx, img, colors[node.community % colors.length], node.id);
+                        sprite.material.map = new THREE.CanvasTexture(photoCanvas);
+                        sprite.material.needsUpdate = true;
+                    };
+                    img.onerror = () => {
+                        drawCircularImage(photoCtx, null, colors[node.community % colors.length], node.id);
+                        sprite.material.map = new THREE.CanvasTexture(photoCanvas);
+                        sprite.material.needsUpdate = true;
+                    };
+                    img.src = imgPath;
+                }
+                
+                const spriteMaterial = new THREE.SpriteMaterial({ 
+                    transparent: true
+                });
+                const sprite = new THREE.Sprite(spriteMaterial);
+                sprite.scale.set(node.size * 2, node.size * 2, 1);
+                sprite.position.set(node.x, node.y, node.z);
+                sprite.userData = { name: node.id, pagerank: node.pagerank };
+                
+                // Borda colorida (círculo)
+                const canvas = document.createElement('canvas');
+                canvas.width = 512;
+                canvas.height = 512;
+                const ctx = canvas.getContext('2d');
+                ctx.strokeStyle = `#${colors[node.community % colors.length].toString(16).padStart(6, '0')}`;
+                ctx.lineWidth = 20;
+                ctx.beginPath();
+                ctx.arc(256, 256, 236, 0, Math.PI * 2);
+                ctx.stroke();
+                
+                const ringTexture = new THREE.CanvasTexture(canvas);
+                const ringMaterial = new THREE.SpriteMaterial({ 
+                    map: ringTexture,
+                    transparent: true
+                });
+                const ring = new THREE.Sprite(ringMaterial);
+                ring.scale.set(node.size * 2.2, node.size * 2.2, 1);
+                ring.position.set(node.x, node.y, node.z);
+                
+                nodePositions[node.id] = sprite.position;
+                scene.add(sprite);
+                scene.add(ring);
+
+                // Label
+                const labelCanvas = document.createElement('canvas');
+                const context = labelCanvas.getContext('2d');
+                labelCanvas.width = 256;
+                labelCanvas.height = 64;
+                context.fillStyle = 'white';
+                context.font = '20px Arial';
+                context.fillText(node.id, 10, 30);
+                
+                const labelTexture = new THREE.CanvasTexture(labelCanvas);
+                const labelMaterial = new THREE.SpriteMaterial({ map: labelTexture });
+                const labelSprite = new THREE.Sprite(labelMaterial);
+                labelSprite.position.set(node.x, node.y + node.size + 50, node.z);
+                labelSprite.scale.set(300, 75, 1);
+                scene.add(labelSprite);
+                
+                allNodes.push({ sphere: sprite, label: labelSprite, ring });
+            });
+
+            // Criar arestas (conexões)
+            data.edges.forEach(edge => {
+                const start = nodePositions[edge.source];
+                const end = nodePositions[edge.target];
+                
+                if (start && end) {
+                    const geometry = new THREE.BufferGeometry().setFromPoints([start, end]);
+                    const material = new THREE.LineBasicMaterial({ 
+                        color: 0x333333, 
+                        transparent: true, 
+                        opacity: Math.min(edge.weight / 100, 0.2),
+                        linewidth: 1
+                    });
+                    const line = new THREE.Line(geometry, material);
+                    scene.add(line);
+                    
+                    allEdges.push({ line, source: edge.source, target: edge.target, weight: edge.weight });
+                }
+            });
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const time = performance.now();
+            const delta = (time - prevTime) / 1000;
+
+            if (controls.isLocked) {
+                velocity.x -= velocity.x * 10.0 * delta;
+                velocity.z -= velocity.z * 10.0 * delta;
+                velocity.y -= velocity.y * 10.0 * delta;
+
+                direction.z = Number(moveForward) - Number(moveBackward);
+                direction.x = Number(moveRight) - Number(moveLeft);
+                direction.normalize();
+
+                const speed = (sprint ? 15000.0 : 4000.0) * delta;
+
+                // Movimento livre em 3D baseado na direção da câmera
+                if (moveForward || moveBackward) {
+                    camera.getWorldDirection(direction);
+                    velocity.x += direction.x * speed * (moveForward ? 1 : -1);
+                    velocity.y += direction.y * speed * (moveForward ? 1 : -1);
+                    velocity.z += direction.z * speed * (moveForward ? 1 : -1);
+                }
+                if (moveLeft || moveRight) {
+                    camera.getWorldDirection(direction);
+                    const right = new THREE.Vector3();
+                    right.crossVectors(camera.up, direction).normalize();
+                    velocity.x -= right.x * speed * (moveRight ? 1 : -1);
+                    velocity.z -= right.z * speed * (moveRight ? 1 : -1);
+                }
+
+                controls.getObject().position.x += velocity.x * delta;
+                controls.getObject().position.y += velocity.y * delta;
+                controls.getObject().position.z += velocity.z * delta;
+            }
+
+            prevTime = time;
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        init();
+    </script>
+</body>
+</html>
