@@ -191,6 +191,9 @@
         let rotationEnabled = false;
         let legendFilter = 'all';
         
+        let fadeTargets = [];
+        let seenCharacters = new Set(); // rastreia personagens que já apareceram
+        
         const communityNames = ['Stark/Norte', 'Lannister', 'Targaryen', 'Nights Watch', 'Baratheon', 'Outros', 'Secundarios', 'Terciarios'];
 
         async function init() {
@@ -250,11 +253,12 @@
                 photoCanvas.height = 512;
                 const photoCtx = photoCanvas.getContext('2d');
                 
-                const spriteMaterial = new THREE.SpriteMaterial({ transparent: true });
+                const spriteMaterial = new THREE.SpriteMaterial({ transparent: true, opacity: 1 });
                 const sprite = new THREE.Sprite(spriteMaterial);
                 sprite.scale.set(node.size * 2, node.size * 2, 1);
                 sprite.position.set(node.x, node.y, node.z);
                 sprite.userData = { name: node.id };
+                sprite.visible = false;
                 scene.add(sprite);
                 
                 const img = new Image();
@@ -296,6 +300,7 @@
                 const ring = new THREE.Sprite(new THREE.SpriteMaterial({ map: ringTexture, transparent: true }));
                 ring.scale.set(node.size * 2.2, node.size * 2.2, 1);
                 ring.position.set(node.x, node.y, node.z);
+                ring.visible = false;
                 scene.add(ring);
                 
                 const labelCanvas = document.createElement('canvas');
@@ -310,6 +315,7 @@
                 const labelSprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: labelTexture }));
                 labelSprite.position.set(node.x, node.y + node.size + 50, node.z);
                 labelSprite.scale.set(300, 75, 1);
+                labelSprite.visible = false;
                 scene.add(labelSprite);
                 
                 allNodes.push({ sphere: sprite, label: labelSprite, ring, name: node.id });
@@ -331,6 +337,7 @@
                     });
                     const line = new THREE.Line(geometry, material);
                     line.userData = { weight: edge.weight };
+                    line.visible = false;
                     scene.add(line);
                     allEdges.push({ line, source: edge.source, target: edge.target });
                 }
@@ -346,19 +353,54 @@
             let visibleCount = 0;
             allNodes.forEach(node => {
                 const visible = personagensVisiveis.has(node.name);
-                node.sphere.visible = visible;
-                node.label.visible = visible;
-                node.ring.visible = visible;
-                if (visible) visibleCount++;
+                const mats = [node.sphere.material, node.label.material, node.ring.material];
+                
+                if (visible) {
+                    if (!node.sphere.visible) {
+                        node.sphere.visible = true;
+                        node.label.visible = true;
+                        node.ring.visible = true;
+                        mats.forEach(m => { m.opacity = 0; m.transparent = true; m.needsUpdate = true; });
+                        fadeTargets.push({ materials: mats, target: 1, speed: 1/60 });
+                    }
+                    visibleCount++;
+                } else if (node.sphere.visible) {
+                    fadeTargets.push({
+                        materials: mats,
+                        target: 0,
+                        speed: 1/60,
+                        onDone: () => {
+                            node.sphere.visible = false;
+                            node.label.visible = false;
+                            node.ring.visible = false;
+                        }
+                    });
+                }
             });
             
             allEdges.forEach(edge => {
-                edge.line.visible = personagensVisiveis.has(edge.source) && personagensVisiveis.has(edge.target);
+                const visible = personagensVisiveis.has(edge.source) && personagensVisiveis.has(edge.target);
+                const baseOpacity = Math.min(edge.line.userData.weight / 100, 0.4);
+                
+                if (visible) {
+                    if (!edge.line.visible) {
+                        edge.line.material.opacity = 0;
+                        edge.line.visible = true;
+                        fadeTargets.push({ materials: [edge.line.material], target: baseOpacity, speed: baseOpacity/60 });
+                    }
+                } else if (edge.line.visible) {
+                    fadeTargets.push({
+                        materials: [edge.line.material],
+                        target: 0,
+                        speed: baseOpacity/60,
+                        onDone: () => { edge.line.visible = false; }
+                    });
+                }
             });
             
             document.getElementById('episodeLabel').textContent = `S${episodio.temporada}E${episodio.episodio}`;
             document.getElementById('slider').value = currentEpisodeIndex;
-            document.getElementById('visibleCount').textContent = visibleCount;
+            document.getElementById('visibleCount').textContent = personagensVisiveis.size;
             
             // Calcular comunidade mais relevante
             const communityCount = {};
@@ -447,6 +489,17 @@
 
         function animate() {
             requestAnimationFrame(animate);
+            
+            // Processar fades
+            fadeTargets = fadeTargets.filter(ft => {
+                ft.materials.forEach(m => {
+                    if (ft.target > m.opacity) m.opacity = Math.min(m.opacity + ft.speed, ft.target);
+                    else m.opacity = Math.max(m.opacity - ft.speed, ft.target);
+                });
+                const done = Math.abs(ft.materials[0].opacity - ft.target) < 0.01;
+                if (done && ft.onDone) ft.onDone();
+                return !done;
+            });
             
             // Rotacionar câmera ao redor do centro apenas se estiver em play
             if (rotationEnabled) {
