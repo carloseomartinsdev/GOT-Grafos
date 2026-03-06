@@ -45,7 +45,7 @@ episodios_data.sort(key=lambda x: (x['temporada'], x['episodio']))
 output = {'episodios': episodios_data}
 
 print("Salvando timelapse_data.json...")
-with open('timelapse_data.json', 'w', encoding='utf-8') as f:
+with open('public/timelapse_data.json', 'w', encoding='utf-8') as f:
     json.dump(output, f, ensure_ascii=False, indent=2)
 
 print(f"\nArquivo gerado com sucesso!")

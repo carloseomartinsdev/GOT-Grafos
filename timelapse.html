@@ -192,7 +192,8 @@
         let legendFilter = 'all';
         
         let fadeTargets = [];
-        let seenCharacters = new Set(); // rastreia personagens que já apareceram
+        let seenCharacters = new Set();
+        let absentEpisodes = {}; // rastreia episodios ausentes por personagem
         
         const communityNames = ['Stark/Norte', 'Lannister', 'Targaryen', 'Nights Watch', 'Baratheon', 'Outros', 'Secundarios', 'Terciarios'];
 
@@ -356,6 +357,7 @@
                 const mats = [node.sphere.material, node.label.material, node.ring.material];
                 
                 if (visible) {
+                    absentEpisodes[node.name] = 0; // resetar contador
                     if (!node.sphere.visible) {
                         node.sphere.visible = true;
                         node.label.visible = true;
@@ -365,28 +367,46 @@
                     }
                     visibleCount++;
                 } else if (node.sphere.visible) {
-                    fadeTargets.push({
-                        materials: mats,
-                        target: 0,
-                        speed: 1/60,
-                        onDone: () => {
-                            node.sphere.visible = false;
-                            node.label.visible = false;
-                            node.ring.visible = false;
-                        }
-                    });
+                    absentEpisodes[node.name] = (absentEpisodes[node.name] || 0) + 1;
+                    if (absentEpisodes[node.name] >= 5) {
+                        // Sumir após 5 episódios
+                        fadeTargets.push({
+                            materials: mats,
+                            target: 0,
+                            speed: 1/60,
+                            onDone: () => {
+                                node.sphere.visible = false;
+                                node.label.visible = false;
+                                node.ring.visible = false;
+                            }
+                        });
+                    }
+                } else {
+                    if (seenCharacters.has(node.name)) {
+                        absentEpisodes[node.name] = (absentEpisodes[node.name] || 0) + 1;
+                    }
                 }
+                if (visible) seenCharacters.add(node.name);
             });
             
+            // Atualizar cor das linhas baseado em ausencia
             allEdges.forEach(edge => {
                 const visible = personagensVisiveis.has(edge.source) && personagensVisiveis.has(edge.target);
                 const baseOpacity = Math.min(edge.line.userData.weight / 100, 0.4);
+                const sourceAbsent = absentEpisodes[edge.source] || 0;
+                const targetAbsent = absentEpisodes[edge.target] || 0;
+                const maxAbsent = Math.max(sourceAbsent, targetAbsent);
                 
                 if (visible) {
                     if (!edge.line.visible) {
+                        edge.line.material.color.setHex(0xcccccc);
                         edge.line.material.opacity = 0;
                         edge.line.visible = true;
                         fadeTargets.push({ materials: [edge.line.material], target: baseOpacity, speed: baseOpacity/60 });
+                    } else if (maxAbsent >= 3) {
+                        edge.line.material.color.setHex(0xff3333);
+                    } else {
+                        edge.line.material.color.setHex(0xcccccc);
                     }
                 } else if (edge.line.visible) {
                     fadeTargets.push({

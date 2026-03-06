@@ -198,7 +198,7 @@ output = {
 }
 
 print("Salvando graph_data.json...")
-with open('graph_data.json', 'w', encoding='utf-8') as f:
+with open('public/graph_data.json', 'w', encoding='utf-8') as f:
     json.dump(output, f, ensure_ascii=False, indent=2)
 
 print(f"\nArquivo gerado com sucesso!")

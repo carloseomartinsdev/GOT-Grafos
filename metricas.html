@@ -30,44 +30,49 @@
         h1 { 
             text-align: center; 
             margin-bottom: 40px;
-            color: #4CAF50;
+            color: #c9a961;
         }
         .metric {
-            background: #2a2a2a;
+            background: rgba(20,15,10,0.9);
             padding: 25px;
             margin-bottom: 25px;
             border-radius: 8px;
-            border-left: 4px solid #4CAF50;
+            border-left: 4px solid #c9a961;
+            color: #e8dcc4;
         }
         h2 {
-            color: #4CAF50;
+            color: #c9a961;
             margin-bottom: 15px;
         }
         .formula {
-            background: #1a1a1a;
+            background: rgba(0,0,0,0.5);
             padding: 15px;
             margin: 15px 0;
             border-radius: 5px;
             font-family: 'Courier New', monospace;
             overflow-x: auto;
+            border: 1px solid #c9a961;
+            color: #d4b76a;
         }
         .example {
-            background: #333;
+            background: rgba(201,169,97,0.1);
             padding: 15px;
             margin: 15px 0;
             border-radius: 5px;
-            border-left: 3px solid #ffeb3b;
+            border-left: 3px solid #c9a961;
         }
         .back-btn {
             display: inline-block;
             padding: 12px 24px;
-            background: #4CAF50;
-            color: white;
+            background: #c9a961;
+            color: #1a1410;
             text-decoration: none;
             border-radius: 5px;
             margin-bottom: 30px;
+            font-weight: bold;
+            border: 2px solid #c9a961;
         }
-        .back-btn:hover { background: #45a049; }
+        .back-btn:hover { background: #d4b76a; }
         ul { margin-left: 20px; margin-top: 10px; }
         li { margin-bottom: 8px; }
     </style>
@@ -75,9 +80,13 @@
 <body>
     <canvas id="stars"></canvas>
     <div class="container">
-        <a href="rankings.html" class="back-btn">← Voltar aos Rankings</a>
-        
-        <h1>📊 Métricas de Análise de Rede</h1>
+        <div style="display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: nowrap; align-items: center;">
+            <a href="index.html" style="padding: 8px 16px; background: #c9a961; color: #1a1410; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">🏠 Início</a>
+            <a href="visualizador.html" style="padding: 8px 16px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">🌐 Visualizador</a>
+            <a href="rankings.html" style="padding: 8px 16px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">📊 Rankings</a>
+            <a href="eventos.html" style="padding: 8px 16px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">🎬 Eventos</a>
+            <a href="timelapse.html" style="padding: 8px 16px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">⏱️ Timelapse</a>
+        </div>
         
         <div class="metric">
             <h2>1. Influence Score (Score de Influência)</h2>
@@ -190,7 +199,7 @@ Connections = Número de vizinhos no grafo
             <p><strong>Uso:</strong> Mede diversidade social. Personagens com muitas conexões conhecem muita gente diferente.</p>
         </div>
 
-        <div class="metric" style="border-left-color: #2196F3;">
+        <div class="metric" style="border-left-color: #c9a961;">
             <h2>📌 Resumo Comparativo</h2>
             <ul>
                 <li><strong>Connections:</strong> Quantas pessoas você conhece</li>

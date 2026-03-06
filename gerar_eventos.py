@@ -11,7 +11,7 @@ df = df[~df['falante_oficial'].str.lower().str.contains('|'.join([e.lower() for 
 df = df[~df['ouvinte_oficial'].str.lower().str.contains('|'.join([e.lower() for e in excluir]), na=False)]
 
 # Carregar PageRank do graph_data.json
-with open('graph_data.json', 'r', encoding='utf-8') as f:
+with open('public/graph_data.json', 'r', encoding='utf-8') as f:
     graph_data = json.load(f)
     pagerank = {node['id']: node['influence_score'] for node in graph_data['nodes']}
 
@@ -91,7 +91,7 @@ output = {
 }
 
 print("Salvando eventos_importantes.json...")
-with open('eventos_importantes.json', 'w', encoding='utf-8') as f:
+with open('public/eventos_importantes.json', 'w', encoding='utf-8') as f:
     json.dump(output, f, ensure_ascii=False, indent=2)
 
 print(f"\nArquivo gerado com sucesso!")
