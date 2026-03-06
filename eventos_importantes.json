@@ -1,0 +1,2347 @@
+{
+  "top_cenas": [
+    {
+      "temporada": 3,
+      "episodio": 3,
+      "cena": 2,
+      "descricao": "No one answers.",
+      "num_personagens": 6,
+      "personagens": [
+        "TYRION LANNISTER",
+        "CERSEI LANNISTER",
+        "TYWIN LANNISTER",
+        "MAESTER PYCELLE",
+        "PETYR BAELISH",
+        "VARYS"
+      ],
+      "score": 204.60564360004034
+    },
+    {
+      "temporada": 8,
+      "episodio": 4,
+      "cena": 81,
+      "descricao": "JON slides of some other markers. MAESTER WOLKAN slides away some more. VARYS places additional markers in King's Landing.",
+      "num_personagens": 5,
+      "personagens": [
+        "JON SNOW",
+        "TYRION LANNISTER",
+        "MISSANDEI",
+        "DAENERYS TARGARYEN",
+        "VARYS"
+      ],
+      "score": 185.51632815585316
+    },
+    {
+      "temporada": 2,
+      "episodio": 2,
+      "cena": 24,
+      "descricao": "Pycelle hands the letter to Tyrion, who unfurls it and begins reading.",
+      "num_personagens": 5,
+      "personagens": [
+        "TYRION LANNISTER",
+        "CERSEI LANNISTER",
+        "MAESTER PYCELLE",
+        "PETYR BAELISH",
+        "VARYS"
+      ],
+      "score": 180.3481244052942
+    },
+    {
+      "temporada": 8,
+      "episodio": 2,
+      "cena": 80,
+      "descricao": "The camera pans over the map of Winterfell, to the East but still within the walls, is the Godswood.",
+      "num_personagens": 6,
+      "personagens": [
+        "THEON GREYJOY",
+        "SANSA STARK",
+        "TYRION LANNISTER",
+        "DAVOS SEAWORTH",
+        "DAENERYS TARGARYEN",
+        "ARYA STARK"
+      ],
+      "score": 177.87098784863713
+    },
+    {
+      "temporada": 7,
+      "episodio": 7,
+      "cena": 22,
+      "descricao": "JON rises and walks forward to make his case.",
+      "num_personagens": 4,
+      "personagens": [
+        "JON SNOW",
+        "TYRION LANNISTER",
+        "CERSEI LANNISTER",
+        "DAENERYS TARGARYEN"
+      ],
+      "score": 175.71077002564255
+    },
+    {
+      "temporada": 7,
+      "episodio": 5,
+      "cena": 45,
+      "descricao": "TYRION begins walking around the table closer to JON.",
+      "num_personagens": 4,
+      "personagens": [
+        "JON SNOW",
+        "TYRION LANNISTER",
+        "DAENERYS TARGARYEN",
+        "VARYS"
+      ],
+      "score": 174.0585927296528
+    },
+    {
+      "temporada": 3,
+      "episodio": 10,
+      "cena": 8,
+      "descricao": "Annoyed, TYRION reaches to the floor and snatches the scroll. He reads it. JOFFREY is manic with energy.",
+      "num_personagens": 4,
+      "personagens": [
+        "TYRION LANNISTER",
+        "CERSEI LANNISTER",
+        "VARYS",
+        "JOFFREY BARATHEON"
+      ],
+      "score": 163.47094001405983
+    },
+    {
+      "temporada": 7,
+      "episodio": 7,
+      "cena": 20,
+      "descricao": "EURON walks towards TYRION.",
+      "num_personagens": 5,
+      "personagens": [
+        "THEON GREYJOY",
+        "JAIME LANNISTER",
+        "TYRION LANNISTER",
+        "CERSEI LANNISTER",
+        "EURON GREYJOY"
+      ],
+      "score": 159.62656574845968
+    },
+    {
+      "temporada": 7,
+      "episodio": 3,
+      "cena": 111,
+      "descricao": "DAENERYS looks down at the painted table.",
+      "num_personagens": 4,
+      "personagens": [
+        "TYRION LANNISTER",
+        "MISSANDEI",
+        "DAENERYS TARGARYEN",
+        "VARYS"
+      ],
+      "score": 155.77973694595522
+    },
+    {
+      "temporada": 7,
+      "episodio": 3,
+      "cena": 18,
+      "descricao": "TYRION smirks to himself.",
+      "num_personagens": 4,
+      "personagens": [
+        "JON SNOW",
+        "TYRION LANNISTER",
+        "DAVOS SEAWORTH",
+        "DAENERYS TARGARYEN"
+      ],
+      "score": 155.41912625023923
+    },
+    {
+      "temporada": 7,
+      "episodio": 3,
+      "cena": 19,
+      "descricao": "DAENERYS smirks and looks over at TYRION. She starts speaking to JON again.",
+      "num_personagens": 4,
+      "personagens": [
+        "JON SNOW",
+        "TYRION LANNISTER",
+        "DAVOS SEAWORTH",
+        "DAENERYS TARGARYEN"
+      ],
+      "score": 155.41912625023923
+    },
+    {
+      "temporada": 7,
+      "episodio": 7,
+      "cena": 34,
+      "descricao": "Those that remain contemplate what has happened.",
+      "num_personagens": 4,
+      "personagens": [
+        "JON SNOW",
+        "TYRION LANNISTER",
+        "DAVOS SEAWORTH",
+        "DAENERYS TARGARYEN"
+      ],
+      "score": 155.41912625023923
+    },
+    {
+      "temporada": 7,
+      "episodio": 2,
+      "cena": 15,
+      "descricao": "DAENERYS turns back to MELISANDRE.",
+      "num_personagens": 4,
+      "personagens": [
+        "TYRION LANNISTER",
+        "DAENERYS TARGARYEN",
+        "MELISANDRE",
+        "VARYS"
+      ],
+      "score": 151.89370806579046
+    },
+    {
+      "temporada": 2,
+      "episodio": 1,
+      "cena": 21,
+      "descricao": "Tyrion pulls out a letter. He hands it to Varys, who opens it, and begins reading it.",
+      "num_personagens": 3,
+      "personagens": [
+        "CERSEI LANNISTER",
+        "TYRION LANNISTER",
+        "VARYS"
+      ],
+      "score": 151.01299303322816
+    },
+    {
+      "temporada": 2,
+      "episodio": 2,
+      "cena": 0,
+      "descricao": "INT. SMALL COUNCIL CHAMBER",
+      "num_personagens": 3,
+      "personagens": [
+        "CERSEI LANNISTER",
+        "TYRION LANNISTER",
+        "VARYS"
+      ],
+      "score": 151.01299303322816
+    },
+    {
+      "temporada": 2,
+      "episodio": 2,
+      "cena": 25,
+      "descricao": "Everyone but Tyrion stands up to leave.",
+      "num_personagens": 3,
+      "personagens": [
+        "CERSEI LANNISTER",
+        "TYRION LANNISTER",
+        "VARYS"
+      ],
+      "score": 151.01299303322816
+    },
+    {
+      "temporada": 4,
+      "episodio": 6,
+      "cena": 54,
+      "descricao": "CERSEI is on the stand.",
+      "num_personagens": 5,
+      "personagens": [
+        "OBERYN MARTELL",
+        "MACE TYRELL",
+        "TYRION LANNISTER",
+        "CERSEI LANNISTER",
+        "TYWIN LANNISTER"
+      ],
+      "score": 146.03388240452165
+    },
+    {
+      "temporada": 7,
+      "episodio": 2,
+      "cena": 0,
+      "descricao": "A storm rages. Rain falls on the beach and the castle, lightning flashes, and thunder crackles overhead. DAENERYS TARGARYEN, TYRION LANNISTER, GREY WORM, MISSANDEI, and VARYS are standing in the Chamber of the Painted Table, staring out at the storm.",
+      "num_personagens": 3,
+      "personagens": [
+        "DAENERYS TARGARYEN",
+        "TYRION LANNISTER",
+        "VARYS"
+      ],
+      "score": 144.32200151975485
+    },
+    {
+      "temporada": 7,
+      "episodio": 2,
+      "cena": 6,
+      "descricao": "DAENERYS looks at VARYS.",
+      "num_personagens": 3,
+      "personagens": [
+        "DAENERYS TARGARYEN",
+        "TYRION LANNISTER",
+        "VARYS"
+      ],
+      "score": 144.32200151975485
+    },
+    {
+      "temporada": 7,
+      "episodio": 2,
+      "cena": 7,
+      "descricao": "DAENERYS walks closer to VARYS.",
+      "num_personagens": 3,
+      "personagens": [
+        "DAENERYS TARGARYEN",
+        "TYRION LANNISTER",
+        "VARYS"
+      ],
+      "score": 144.32200151975485
+    },
+    {
+      "temporada": 8,
+      "episodio": 3,
+      "cena": 38,
+      "descricao": "SANSA, VARYS and MISSANDEI sit apart from the others. The residents of Winterfell wait with concern on their faces. GILLY looks at TYRION, who is facing the other way.",
+      "num_personagens": 3,
+      "personagens": [
+        "SANSA STARK",
+        "TYRION LANNISTER",
+        "VARYS"
+      ],
+      "score": 143.32692526988964
+    },
+    {
+      "temporada": 7,
+      "episodio": 7,
+      "cena": 11,
+      "descricao": "The camera shifts forward as they travel to the meeting.",
+      "num_personagens": 4,
+      "personagens": [
+        "BRONN",
+        "TYRION LANNISTER",
+        "PODRICK PAYNE",
+        "VARYS"
+      ],
+      "score": 141.25756636672043
+    },
+    {
+      "temporada": 8,
+      "episodio": 1,
+      "cena": 18,
+      "descricao": "People grumble and yell out indistinctly.",
+      "num_personagens": 3,
+      "personagens": [
+        "DAENERYS TARGARYEN",
+        "SANSA STARK",
+        "TYRION LANNISTER"
+      ],
+      "score": 138.2881110524061
+    },
+    {
+      "temporada": 3,
+      "episodio": 5,
+      "cena": 112,
+      "descricao": "TYRION sits at the table.",
+      "num_personagens": 3,
+      "personagens": [
+        "CERSEI LANNISTER",
+        "TYWIN LANNISTER",
+        "TYRION LANNISTER"
+      ],
+      "score": 137.85553156246615
+    },
+    {
+      "temporada": 3,
+      "episodio": 5,
+      "cena": 113,
+      "descricao": "TYRION realizes TYWIN's intent to marry him to SANSA.",
+      "num_personagens": 3,
+      "personagens": [
+        "CERSEI LANNISTER",
+        "TYWIN LANNISTER",
+        "TYRION LANNISTER"
+      ],
+      "score": 137.85553156246615
+    },
+    {
+      "temporada": 7,
+      "episodio": 3,
+      "cena": 20,
+      "descricao": "DAENERYS turns to TYRION.",
+      "num_personagens": 3,
+      "personagens": [
+        "DAENERYS TARGARYEN",
+        "JON SNOW",
+        "TYRION LANNISTER"
+      ],
+      "score": 136.64361206414463
+    },
+    {
+      "temporada": 7,
+      "episodio": 5,
+      "cena": 44,
+      "descricao": "JON interrupts VARYS.",
+      "num_personagens": 3,
+      "personagens": [
+        "DAENERYS TARGARYEN",
+        "JON SNOW",
+        "TYRION LANNISTER"
+      ],
+      "score": 136.64361206414463
+    },
+    {
+      "temporada": 4,
+      "episodio": 6,
+      "cena": 57,
+      "descricao": "VARYS nods and leaves the stand.",
+      "num_personagens": 3,
+      "personagens": [
+        "TYWIN LANNISTER",
+        "TYRION LANNISTER",
+        "VARYS"
+      ],
+      "score": 136.2033542664764
+    },
+    {
+      "temporada": 2,
+      "episodio": 8,
+      "cena": 43,
+      "descricao": "TYRION grabs a parchment and unrolls it.",
+      "num_personagens": 3,
+      "personagens": [
+        "BRONN",
+        "TYRION LANNISTER",
+        "VARYS"
+      ],
+      "score": 135.68016489168954
+    },
+    {
+      "temporada": 6,
+      "episodio": 2,
+      "cena": 42,
+      "descricao": "VARYS sighs.",
+      "num_personagens": 4,
+      "personagens": [
+        "TYRION LANNISTER",
+        "GREY WORM",
+        "MISSANDEI",
+        "VARYS"
+      ],
+      "score": 130.7361556279168
+    },
+    {
+      "temporada": 6,
+      "episodio": 3,
+      "cena": 38,
+      "descricao": "VARYS enters the room.",
+      "num_personagens": 4,
+      "personagens": [
+        "TYRION LANNISTER",
+        "GREY WORM",
+        "MISSANDEI",
+        "VARYS"
+      ],
+      "score": 130.7361556279168
+    },
+    {
+      "temporada": 6,
+      "episodio": 5,
+      "cena": 62,
+      "descricao": "VARYS, MISSANDEI, and GREY WORM are gathered together. TYRION pours himself a glass of wine and joins them.",
+      "num_personagens": 4,
+      "personagens": [
+        "TYRION LANNISTER",
+        "GREY WORM",
+        "MISSANDEI",
+        "VARYS"
+      ],
+      "score": 130.7361556279168
+    },
+    {
+      "temporada": 8,
+      "episodio": 1,
+      "cena": 70,
+      "descricao": "WOLKAN and ALYS exit, VARYS, DAVOS SEAWORTH and TYRION are watching on.",
+      "num_personagens": 3,
+      "personagens": [
+        "VARYS",
+        "TYRION LANNISTER",
+        "DAVOS SEAWORTH"
+      ],
+      "score": 130.72134925782487
+    },
+    {
+      "temporada": 8,
+      "episodio": 4,
+      "cena": 96,
+      "descricao": "JAIME motions to the crossbow.",
+      "num_personagens": 3,
+      "personagens": [
+        "BRONN",
+        "JAIME LANNISTER",
+        "TYRION LANNISTER"
+      ],
+      "score": 130.36861888552377
+    },
+    {
+      "temporada": 8,
+      "episodio": 4,
+      "cena": 97,
+      "descricao": "BRONN sits next to them.",
+      "num_personagens": 3,
+      "personagens": [
+        "BRONN",
+        "JAIME LANNISTER",
+        "TYRION LANNISTER"
+      ],
+      "score": 130.36861888552377
+    },
+    {
+      "temporada": 8,
+      "episodio": 4,
+      "cena": 99,
+      "descricao": "TYRION tips his head back and groans, holding his nose with both hands.",
+      "num_personagens": 3,
+      "personagens": [
+        "BRONN",
+        "JAIME LANNISTER",
+        "TYRION LANNISTER"
+      ],
+      "score": 130.36861888552377
+    },
+    {
+      "temporada": 8,
+      "episodio": 4,
+      "cena": 100,
+      "descricao": "BRONN picks up a cup of wine and drinks deeply.",
+      "num_personagens": 3,
+      "personagens": [
+        "BRONN",
+        "JAIME LANNISTER",
+        "TYRION LANNISTER"
+      ],
+      "score": 130.36861888552377
+    },
+    {
+      "temporada": 8,
+      "episodio": 6,
+      "cena": 76,
+      "descricao": "PODRICK enters, also a Kingsguard. The small council stands.",
+      "num_personagens": 4,
+      "personagens": [
+        "BRONN",
+        "TYRION LANNISTER",
+        "DAVOS SEAWORTH",
+        "BRIENNE OF TARTH"
+      ],
+      "score": 128.59865743695343
+    },
+    {
+      "temporada": 8,
+      "episodio": 6,
+      "cena": 78,
+      "descricao": "BRAN and PODRICK exit. Everyone sits back down.",
+      "num_personagens": 4,
+      "personagens": [
+        "BRONN",
+        "TYRION LANNISTER",
+        "DAVOS SEAWORTH",
+        "BRIENNE OF TARTH"
+      ],
+      "score": 128.59865743695343
+    },
+    {
+      "temporada": 7,
+      "episodio": 4,
+      "cena": 54,
+      "descricao": "The group are all walking along the beach. Daenerys is displeased.",
+      "num_personagens": 3,
+      "personagens": [
+        "DAENERYS TARGARYEN",
+        "TYRION LANNISTER",
+        "DAVOS SEAWORTH"
+      ],
+      "score": 125.6825350403413
+    },
+    {
+      "temporada": 8,
+      "episodio": 2,
+      "cena": 135,
+      "descricao": "DAVOS and PODRICK both start laughing.",
+      "num_personagens": 3,
+      "personagens": [
+        "JAIME LANNISTER",
+        "TYRION LANNISTER",
+        "DAVOS SEAWORTH"
+      ],
+      "score": 125.40980325165907
+    },
+    {
+      "temporada": 8,
+      "episodio": 2,
+      "cena": 154,
+      "descricao": "Everyone sits around the fire still but DAVOS is standing next to where the wine is.",
+      "num_personagens": 3,
+      "personagens": [
+        "JAIME LANNISTER",
+        "TYRION LANNISTER",
+        "DAVOS SEAWORTH"
+      ],
+      "score": 125.40980325165907
+    },
+    {
+      "temporada": 2,
+      "episodio": 8,
+      "cena": 74,
+      "descricao": "KING JOFFREY BARATHEON, VARYS, and TYRION walk through the streets of King's Landing",
+      "num_personagens": 3,
+      "personagens": [
+        "TYRION LANNISTER",
+        "VARYS",
+        "JOFFREY BARATHEON"
+      ],
+      "score": 124.40378205256192
+    },
+    {
+      "temporada": 6,
+      "episodio": 2,
+      "cena": 43,
+      "descricao": "TYRION finishes his glass of wine and walks over to the pitcher to pour himself another glass.",
+      "num_personagens": 3,
+      "personagens": [
+        "MISSANDEI",
+        "TYRION LANNISTER",
+        "VARYS"
+      ],
+      "score": 123.40357049793062
+    },
+    {
+      "temporada": 2,
+      "episodio": 2,
+      "cena": 18,
+      "descricao": "Tyrion walks through a room and into a hallway, whistling. As he opens the door to his room, Shae laughs, and he stops whistling. Shae and Varys are sitting at a table. Varys stands up, and Tyrion looks at Shae, and closes the door.",
+      "num_personagens": 3,
+      "personagens": [
+        "SHAE",
+        "TYRION LANNISTER",
+        "VARYS"
+      ],
+      "score": 123.22312599744384
+    },
+    {
+      "temporada": 2,
+      "episodio": 2,
+      "cena": 19,
+      "descricao": "Tyrion walks over to the window to get some wine.",
+      "num_personagens": 3,
+      "personagens": [
+        "SHAE",
+        "TYRION LANNISTER",
+        "VARYS"
+      ],
+      "score": 123.22312599744384
+    },
+    {
+      "temporada": 8,
+      "episodio": 5,
+      "cena": 28,
+      "descricao": "The camp is busy as the forces prepare for the upcoming battle. DAVOS, TYRION, and JON pause a few yards from the shore.",
+      "num_personagens": 3,
+      "personagens": [
+        "JON SNOW",
+        "TYRION LANNISTER",
+        "DAVOS SEAWORTH"
+      ],
+      "score": 123.04295980221464
+    },
+    {
+      "temporada": 2,
+      "episodio": 9,
+      "cena": 30,
+      "descricao": "TYRION does not answer.",
+      "num_personagens": 6,
+      "personagens": [
+        "LANCEL LANNISTER",
+        "MATTHOS SEAWORTH",
+        "SANDOR CLEGANE",
+        "TYRION LANNISTER",
+        "DAVOS SEAWORTH",
+        "JOFFREY BARATHEON"
+      ],
+      "score": 121.43489370014008
+    },
+    {
+      "temporada": 6,
+      "episodio": 9,
+      "cena": 32,
+      "descricao": "DAENERYS is sitting on the throne. TYRION stands beside her. They are attending to THEON and YARA, who are standing on the steps in front of them.",
+      "num_personagens": 4,
+      "personagens": [
+        "THEON GREYJOY",
+        "YARA GREYJOY",
+        "TYRION LANNISTER",
+        "DAENERYS TARGARYEN"
+      ],
+      "score": 121.36204175135398
+    },
+    {
+      "temporada": 6,
+      "episodio": 9,
+      "cena": 34,
+      "descricao": "DAENERYS turns to TYRION.",
+      "num_personagens": 4,
+      "personagens": [
+        "THEON GREYJOY",
+        "YARA GREYJOY",
+        "TYRION LANNISTER",
+        "DAENERYS TARGARYEN"
+      ],
+      "score": 121.36204175135398
+    }
+  ],
+  "top_episodios": [
+    {
+      "temporada": 7,
+      "episodio": 6,
+      "num_interacoes": 309,
+      "num_personagens": 15,
+      "densidade": 20.6
+    },
+    {
+      "temporada": 8,
+      "episodio": 4,
+      "num_interacoes": 451,
+      "num_personagens": 22,
+      "densidade": 20.5
+    },
+    {
+      "temporada": 4,
+      "episodio": 6,
+      "num_interacoes": 431,
+      "num_personagens": 23,
+      "densidade": 18.73913043478261
+    },
+    {
+      "temporada": 1,
+      "episodio": 2,
+      "num_interacoes": 355,
+      "num_personagens": 19,
+      "densidade": 18.68421052631579
+    },
+    {
+      "temporada": 2,
+      "episodio": 9,
+      "num_interacoes": 354,
+      "num_personagens": 19,
+      "densidade": 18.63157894736842
+    },
+    {
+      "temporada": 1,
+      "episodio": 4,
+      "num_interacoes": 490,
+      "num_personagens": 27,
+      "densidade": 18.14814814814815
+    },
+    {
+      "temporada": 7,
+      "episodio": 7,
+      "num_interacoes": 470,
+      "num_personagens": 26,
+      "densidade": 18.076923076923077
+    },
+    {
+      "temporada": 1,
+      "episodio": 5,
+      "num_interacoes": 371,
+      "num_personagens": 21,
+      "densidade": 17.666666666666668
+    },
+    {
+      "temporada": 8,
+      "episodio": 6,
+      "num_interacoes": 364,
+      "num_personagens": 21,
+      "densidade": 17.333333333333332
+    },
+    {
+      "temporada": 8,
+      "episodio": 2,
+      "num_interacoes": 395,
+      "num_personagens": 23,
+      "densidade": 17.17391304347826
+    },
+    {
+      "temporada": 1,
+      "episodio": 9,
+      "num_interacoes": 449,
+      "num_personagens": 27,
+      "densidade": 16.62962962962963
+    },
+    {
+      "temporada": 7,
+      "episodio": 3,
+      "num_interacoes": 359,
+      "num_personagens": 22,
+      "densidade": 16.318181818181817
+    },
+    {
+      "temporada": 6,
+      "episodio": 9,
+      "num_interacoes": 211,
+      "num_personagens": 13,
+      "densidade": 16.23076923076923
+    },
+    {
+      "temporada": 4,
+      "episodio": 8,
+      "num_interacoes": 454,
+      "num_personagens": 28,
+      "densidade": 16.214285714285715
+    },
+    {
+      "temporada": 7,
+      "episodio": 5,
+      "num_interacoes": 344,
+      "num_personagens": 22,
+      "densidade": 15.636363636363637
+    },
+    {
+      "temporada": 4,
+      "episodio": 10,
+      "num_interacoes": 351,
+      "num_personagens": 23,
+      "densidade": 15.26086956521739
+    },
+    {
+      "temporada": 4,
+      "episodio": 5,
+      "num_interacoes": 441,
+      "num_personagens": 29,
+      "densidade": 15.206896551724139
+    },
+    {
+      "temporada": 1,
+      "episodio": 1,
+      "num_interacoes": 372,
+      "num_personagens": 25,
+      "densidade": 14.88
+    },
+    {
+      "temporada": 2,
+      "episodio": 6,
+      "num_interacoes": 451,
+      "num_personagens": 31,
+      "densidade": 14.548387096774194
+    },
+    {
+      "temporada": 1,
+      "episodio": 6,
+      "num_interacoes": 331,
+      "num_personagens": 23,
+      "densidade": 14.391304347826088
+    },
+    {
+      "temporada": 2,
+      "episodio": 2,
+      "num_interacoes": 530,
+      "num_personagens": 37,
+      "densidade": 14.324324324324325
+    },
+    {
+      "temporada": 1,
+      "episodio": 3,
+      "num_interacoes": 399,
+      "num_personagens": 28,
+      "densidade": 14.25
+    },
+    {
+      "temporada": 3,
+      "episodio": 4,
+      "num_interacoes": 427,
+      "num_personagens": 30,
+      "densidade": 14.233333333333333
+    },
+    {
+      "temporada": 7,
+      "episodio": 4,
+      "num_interacoes": 280,
+      "num_personagens": 20,
+      "densidade": 14.0
+    },
+    {
+      "temporada": 3,
+      "episodio": 2,
+      "num_interacoes": 501,
+      "num_personagens": 36,
+      "densidade": 13.916666666666666
+    },
+    {
+      "temporada": 3,
+      "episodio": 3,
+      "num_interacoes": 525,
+      "num_personagens": 38,
+      "densidade": 13.81578947368421
+    },
+    {
+      "temporada": 4,
+      "episodio": 7,
+      "num_interacoes": 324,
+      "num_personagens": 24,
+      "densidade": 13.5
+    },
+    {
+      "temporada": 4,
+      "episodio": 3,
+      "num_interacoes": 520,
+      "num_personagens": 39,
+      "densidade": 13.333333333333334
+    },
+    {
+      "temporada": 6,
+      "episodio": 8,
+      "num_interacoes": 278,
+      "num_personagens": 21,
+      "densidade": 13.238095238095237
+    },
+    {
+      "temporada": 3,
+      "episodio": 7,
+      "num_interacoes": 494,
+      "num_personagens": 38,
+      "densidade": 13.0
+    }
+  ],
+  "turning_points": [
+    {
+      "temporada": 1,
+      "episodio": 1,
+      "novos": [
+        "GARED",
+        "SEPTA MORDANE",
+        "WILL",
+        "RODRIK CASSEL",
+        "JON SNOW"
+      ],
+      "saidos": [],
+      "num_novos": 25,
+      "num_saidos": 0
+    },
+    {
+      "temporada": 1,
+      "episodio": 2,
+      "novos": [
+        "ROBB STARK",
+        "IRRI",
+        "MYRCELLA BARATHEON",
+        "DOREAH",
+        "JORAH MORMONT"
+      ],
+      "saidos": [
+        "GARED",
+        "SEPTA MORDANE",
+        "WILL",
+        "RODRIK CASSEL",
+        "NED STARK"
+      ],
+      "num_novos": 6,
+      "num_saidos": 12
+    },
+    {
+      "temporada": 1,
+      "episodio": 3,
+      "novos": [
+        "GRENN",
+        "SEPTA MORDANE",
+        "LANCEL LANNISTER",
+        "RAST",
+        "BARRISTAN SELMY"
+      ],
+      "saidos": [
+        "THEON GREYJOY",
+        "SANDOR CLEGANE",
+        "MYRCELLA BARATHEON",
+        "DOREAH",
+        "MAESTER LUWIN"
+      ],
+      "num_novos": 15,
+      "num_saidos": 6
+    },
+    {
+      "temporada": 1,
+      "episodio": 4,
+      "novos": [
+        "BRONN",
+        "THEON GREYJOY",
+        "JANOS SLYNT",
+        "SAMWELL TARLY",
+        "DOREAH"
+      ],
+      "saidos": [
+        "LANCEL LANNISTER",
+        "BARRISTAN SELMY",
+        "KHAL DROGO",
+        "RAKHARO",
+        "MAESTER AEMON"
+      ],
+      "num_novos": 6,
+      "num_saidos": 7
+    },
+    {
+      "temporada": 1,
+      "episodio": 5,
+      "novos": [
+        "ROBIN ARRYN",
+        "LANCEL LANNISTER",
+        "LYSA ARRYN",
+        "RODRIK CASSEL",
+        "SANDOR CLEGANE"
+      ],
+      "saidos": [
+        "GRENN",
+        "ROBB STARK",
+        "SEPTA MORDANE",
+        "RAST",
+        "JANOS SLYNT"
+      ],
+      "num_novos": 7,
+      "num_saidos": 13
+    },
+    {
+      "temporada": 1,
+      "episodio": 6,
+      "novos": [
+        "ROBB STARK",
+        "WILDLING",
+        "SEPTA MORDANE",
+        "BARRISTAN SELMY",
+        "OSHA"
+      ],
+      "saidos": [
+        "RODRIK CASSEL",
+        "JAIME LANNISTER",
+        "YOREN",
+        "SANDOR CLEGANE",
+        "MAESTER LUWIN"
+      ],
+      "num_novos": 10,
+      "num_saidos": 8
+    },
+    {
+      "temporada": 1,
+      "episodio": 7,
+      "novos": [
+        "NED STARK",
+        "MAESTER LUWIN",
+        "JANOS SLYNT",
+        "JON SNOW",
+        "SAMWELL TARLY"
+      ],
+      "saidos": [
+        "CATELYN STARK",
+        "BRONN",
+        "ROBIN ARRYN",
+        "ROBB STARK",
+        "WILDLING"
+      ],
+      "num_novos": 13,
+      "num_saidos": 16
+    },
+    {
+      "temporada": 1,
+      "episodio": 8,
+      "novos": [
+        "CATELYN STARK",
+        "BRONN",
+        "ROBB STARK",
+        "ROBIN ARRYN",
+        "SEPTA MORDANE"
+      ],
+      "saidos": [
+        "NED STARK",
+        "JANOS SLYNT",
+        "JAIME LANNISTER",
+        "ROBERT BARATHEON",
+        "OSHA"
+      ],
+      "num_novos": 12,
+      "num_saidos": 10
+    },
+    {
+      "temporada": 1,
+      "episodio": 9,
+      "novos": [
+        "GRENN",
+        "EVERYONE",
+        "JAIME LANNISTER",
+        "YOREN",
+        "IRRI"
+      ],
+      "saidos": [
+        "ROBIN ARRYN",
+        "SEPTA MORDANE",
+        "LYSA ARRYN",
+        "BARRISTAN SELMY",
+        "MESSENGER"
+      ],
+      "num_novos": 14,
+      "num_saidos": 9
+    },
+    {
+      "temporada": 1,
+      "episodio": 10,
+      "novos": [
+        "LANCEL LANNISTER",
+        "BRAN STARK",
+        "LOMMY GREENHANDS",
+        "SANDOR CLEGANE",
+        "HOT PIE"
+      ],
+      "saidos": [
+        "BRONN",
+        "EVERYONE",
+        "RODRIK CASSEL",
+        "IRRI",
+        "WALDER FREY"
+      ],
+      "num_novos": 14,
+      "num_saidos": 8
+    },
+    {
+      "temporada": 2,
+      "episodio": 1,
+      "novos": [
+        "GILLY",
+        "ALTON LANNISTER",
+        "THE OTHERS AT THE TABLE",
+        "PORTAN",
+        "MYRCELLA BARATHEON"
+      ],
+      "saidos": [
+        "CATELYN STARK",
+        "ROBB STARK",
+        "THEON GREYJOY",
+        "LANCEL LANNISTER",
+        "SAMWELL TARLY"
+      ],
+      "num_novos": 24,
+      "num_saidos": 17
+    },
+    {
+      "temporada": 2,
+      "episodio": 2,
+      "novos": [
+        "CATELYN STARK",
+        "THEON GREYJOY",
+        "BALON GREYJOY",
+        "RORGE",
+        "JAIME LANNISTER"
+      ],
+      "saidos": [
+        "MHAEGAN",
+        "RODRIK CASSEL",
+        "BRAN STARK",
+        "SANSA STARK",
+        "THE OTHERS AT THE TABLE"
+      ],
+      "num_novos": 15,
+      "num_saidos": 18
+    },
+    {
+      "temporada": 2,
+      "episodio": 3,
+      "novos": [
+        "MARGAERY TYRELL",
+        "COLEN",
+        "AMORY LORCH",
+        "BRAN STARK",
+        "DROWNED PRIEST"
+      ],
+      "saidos": [
+        "GRENN",
+        "GILLY",
+        "ALTON LANNISTER",
+        "JON SNOW",
+        "MELISANDRE"
+      ],
+      "num_novos": 16,
+      "num_saidos": 21
+    },
+    {
+      "temporada": 2,
+      "episodio": 4,
+      "novos": [
+        "LANCEL LANNISTER",
+        "SANDOR CLEGANE",
+        "PRISONER",
+        "MELISANDRE",
+        "TALISA MAEGYR"
+      ],
+      "saidos": [
+        "BALON GREYJOY",
+        "BRAN STARK",
+        "MYRCELLA BARATHEON",
+        "TIMETT",
+        "CERSEI LANNISTER"
+      ],
+      "num_novos": 19,
+      "num_saidos": 21
+    },
+    {
+      "temporada": 2,
+      "episodio": 5,
+      "novos": [
+        "REGINALD",
+        "GRENN",
+        "JON SNOW",
+        "BRAN STARK",
+        "HAYLENE"
+      ],
+      "saidos": [
+        "THE TICKLER",
+        "TALISA MAEGYR",
+        "SANSA STARK",
+        "ROOSE BOLTON",
+        "SANDOR CLEGANE"
+      ],
+      "num_novos": 24,
+      "num_saidos": 15
+    },
+    {
+      "temporada": 2,
+      "episodio": 6,
+      "novos": [
+        "FARLEN",
+        "TALISA MAEGYR",
+        "SANSA STARK",
+        "SANDOR CLEGANE",
+        "SPICE KING"
+      ],
+      "saidos": [
+        "REGINALD",
+        "GRENN",
+        "LANCEL LANNISTER",
+        "HAYLENE",
+        "HODOR"
+      ],
+      "num_novos": 13,
+      "num_saidos": 21
+    },
+    {
+      "temporada": 2,
+      "episodio": 7,
+      "novos": [
+        "ALTON LANNISTER",
+        "JAIME LANNISTER",
+        "SILK KING",
+        "HODOR",
+        "JACKS"
+      ],
+      "saidos": [
+        "FARLEN",
+        "TALISA MAEGYR",
+        "RODRIK CASSEL",
+        "AMORY LORCH",
+        "AHSA"
+      ],
+      "num_novos": 12,
+      "num_saidos": 12
+    },
+    {
+      "temporada": 2,
+      "episodio": 8,
+      "novos": [
+        "GRENN",
+        "BRONN",
+        "TALISA MAEGYR",
+        "RORGE",
+        "ROOSE BOLTON"
+      ],
+      "saidos": [
+        "ALTON LANNISTER",
+        "XARO XHOAN DAXOS",
+        "BRAN STARK",
+        "GREGOR CLEGANE",
+        "SANSA STARK"
+      ],
+      "num_novos": 18,
+      "num_saidos": 15
+    },
+    {
+      "temporada": 2,
+      "episodio": 9,
+      "novos": [
+        "LANCEL LANNISTER",
+        "MATTHOS SEAWORTH",
+        "SANSA STARK",
+        "SANDOR CLEGANE",
+        "TOMMEN BARATHEON"
+      ],
+      "saidos": [
+        "GRENN",
+        "JON SNOW",
+        "MAESTER LUWIN",
+        "RICKARD KARSTARK",
+        "TALISA MAEGYR"
+      ],
+      "num_novos": 10,
+      "num_saidos": 25
+    },
+    {
+      "temporada": 2,
+      "episodio": 10,
+      "novos": [
+        "GRENN",
+        "WILDLING",
+        "BRAN STARK",
+        "JON SNOW",
+        "SEPTON"
+      ],
+      "saidos": [
+        "BRONN",
+        "LANCEL LANNISTER",
+        "MATTHOS SEAWORTH",
+        "SANDOR CLEGANE",
+        "DAVOS SEAWORTH"
+      ],
+      "num_novos": 31,
+      "num_saidos": 9
+    },
+    {
+      "temporada": 3,
+      "episodio": 1,
+      "novos": [
+        "BRONN",
+        "TORMUND GIANTSBANE",
+        "BARRISTAN SELMY",
+        "ROOSE BOLTON",
+        "MAID"
+      ],
+      "saidos": [
+        "GRENN",
+        "WILDLING",
+        "BRAN STARK",
+        "MEN",
+        "SEPTON"
+      ],
+      "num_novos": 14,
+      "num_saidos": 24
+    },
+    {
+      "temporada": 3,
+      "episodio": 2,
+      "novos": [
+        "GRENN",
+        "BRAN STARK",
+        "SANDOR CLEGANE",
+        "MEERA REED",
+        "HODOR"
+      ],
+      "saidos": [
+        "BRONN",
+        "BARRISTAN SELMY",
+        "LORD OF BONES",
+        "ROS",
+        "WHORE"
+      ],
+      "num_novos": 23,
+      "num_saidos": 18
+    },
+    {
+      "temporada": 3,
+      "episodio": 3,
+      "novos": [
+        "BARRISTAN SELMY",
+        "MELISANDRE",
+        "EDMURE TULLY",
+        "PETYR BAELISH",
+        "VARYS"
+      ],
+      "saidos": [
+        "GRENN",
+        "BRAN STARK",
+        "MEERA REED",
+        "HODOR",
+        "MEN"
+      ],
+      "num_novos": 21,
+      "num_saidos": 19
+    },
+    {
+      "temporada": 3,
+      "episodio": 4,
+      "novos": [
+        "GRENN",
+        "MARGAERY TYRELL",
+        "RAST",
+        "BRAN STARK",
+        "SANSA STARK"
+      ],
+      "saidos": [
+        "BARRISTAN SELMY",
+        "JON SNOW",
+        "MELISANDRE",
+        "EDMURE TULLY",
+        "PETYR BAELISH"
+      ],
+      "num_novos": 11,
+      "num_saidos": 19
+    },
+    {
+      "temporada": 3,
+      "episodio": 5,
+      "novos": [
+        "JON SNOW",
+        "MEN",
+        "PETYR BAELISH",
+        "LORAS TYRELL",
+        "EDMURE TULLY"
+      ],
+      "saidos": [
+        "GRENN",
+        "KARL TANNER",
+        "RAST",
+        "BRAN STARK",
+        "JOJEN REED"
+      ],
+      "num_novos": 20,
+      "num_saidos": 12
+    },
+    {
+      "temporada": 3,
+      "episodio": 6,
+      "novos": [
+        "BRAN STARK",
+        "JOJEN REED",
+        "OSHA",
+        "MEERA REED",
+        "HODOR"
+      ],
+      "saidos": [
+        "MARGAERY TYRELL",
+        "LOCKE",
+        "TALISA MAEGYR",
+        "SANDOR CLEGANE",
+        "DAVOS SEAWORTH"
+      ],
+      "num_novos": 12,
+      "num_saidos": 17
+    },
+    {
+      "temporada": 3,
+      "episodio": 7,
+      "novos": [
+        "BRONN",
+        "MARGAERY TYRELL",
+        "LOCKE",
+        "THEON GREYJOY",
+        "TALISA MAEGYR"
+      ],
+      "saidos": [
+        "TORMUND GIANTSBANE",
+        "OLENNA TYRELL",
+        "RICKON STARK",
+        "LOTHAR FREY",
+        "CERSEI LANNISTER"
+      ],
+      "num_novos": 14,
+      "num_saidos": 9
+    },
+    {
+      "temporada": 3,
+      "episodio": 8,
+      "novos": [
+        "MERO",
+        "GILLY",
+        "HIGH SPARROW",
+        "DAARIO NAHARIS",
+        "SANDOR CLEGANE"
+      ],
+      "saidos": [
+        "JON SNOW",
+        "BRAN STARK",
+        "VIOLET",
+        "MYRANDA",
+        "MEERA REED"
+      ],
+      "num_novos": 12,
+      "num_saidos": 26
+    },
+    {
+      "temporada": 3,
+      "episodio": 9,
+      "novos": [
+        "CATELYN STARK",
+        "TORMUND GIANTSBANE",
+        "TALISA MAEGYR",
+        "SAMWELL TARLY",
+        "JON SNOW"
+      ],
+      "saidos": [
+        "MERO",
+        "MARGAERY TYRELL",
+        "HIGH SPARROW",
+        "SANSA STARK",
+        "TYRION LANNISTER"
+      ],
+      "num_novos": 16,
+      "num_saidos": 17
+    },
+    {
+      "temporada": 3,
+      "episodio": 10,
+      "novos": [
+        "BALON GREYJOY",
+        "TYRION LANNISTER",
+        "CERSEI LANNISTER",
+        "MELISANDRE",
+        "MAESTER AEMON"
+      ],
+      "saidos": [
+        "CATELYN STARK",
+        "TORMUND GIANTSBANE",
+        "TALISA MAEGYR",
+        "SAMWELL TARLY",
+        "ORELL"
+      ],
+      "num_novos": 21,
+      "num_saidos": 12
+    },
+    {
+      "temporada": 4,
+      "episodio": 1,
+      "novos": [
+        "DAARIO NAHARIS",
+        "BRONN",
+        "MARGAERY TYRELL",
+        "JAIME LANNISTER",
+        "OBERYN MARTELL"
+      ],
+      "saidos": [
+        "GILLY",
+        "BALON GREYJOY",
+        "BRAN STARK",
+        "ROOSE BOLTON",
+        "JOJEN REED"
+      ],
+      "num_novos": 21,
+      "num_saidos": 17
+    },
+    {
+      "temporada": 4,
+      "episodio": 2,
+      "novos": [
+        "TANSAY",
+        "BRAN STARK",
+        "MYRANDA",
+        "MEERA REED",
+        "MELISANDRE"
+      ],
+      "saidos": [
+        "BARRISTAN SELMY",
+        "JON SNOW",
+        "DAARIO NAHARIS",
+        "SANDOR CLEGANE",
+        "MAESTER AEMON"
+      ],
+      "num_novos": 27,
+      "num_saidos": 21
+    },
+    {
+      "temporada": 4,
+      "episodio": 3,
+      "novos": [
+        "GRENN",
+        "MOLE'S TOWN WHORE",
+        "GILLY",
+        "BARRISTAN SELMY",
+        "JON SNOW"
+      ],
+      "saidos": [
+        "TANSAY",
+        "BRAN STARK",
+        "MYRANDA",
+        "MEERA REED",
+        "MELISANDRE"
+      ],
+      "num_novos": 25,
+      "num_saidos": 28
+    },
+    {
+      "temporada": 4,
+      "episodio": 4,
+      "novos": [
+        "BRONN",
+        "LOCKE",
+        "KARL TANNER",
+        "RAST",
+        "ELDER MEEREEN SLAVE"
+      ],
+      "saidos": [
+        "MOLE'S TOWN WHORE",
+        "GILLY",
+        "DAARIO NAHARIS",
+        "SANDOR CLEGANE",
+        "MEN"
+      ],
+      "num_novos": 15,
+      "num_saidos": 23
+    },
+    {
+      "temporada": 4,
+      "episodio": 5,
+      "novos": [
+        "ROBIN ARRYN",
+        "LYSA ARRYN",
+        "OBERYN MARTELL",
+        "DAARIO NAHARIS",
+        "SANDOR CLEGANE"
+      ],
+      "saidos": [
+        "RAST",
+        "ELDER MEEREEN SLAVE",
+        "JAIME LANNISTER",
+        "TYRION LANNISTER",
+        "OLENNA TYRELL"
+      ],
+      "num_novos": 12,
+      "num_saidos": 14
+    },
+    {
+      "temporada": 4,
+      "episodio": 6,
+      "novos": [
+        "GOATHERD",
+        "TYCHO",
+        "THEON GREYJOY",
+        "JAIME LANNISTER",
+        "MYRANDA"
+      ],
+      "saidos": [
+        "GRENN",
+        "ROBIN ARRYN",
+        "BARRISTAN SELMY",
+        "JON SNOW",
+        "BRAN STARK"
+      ],
+      "num_novos": 17,
+      "num_saidos": 23
+    },
+    {
+      "temporada": 4,
+      "episodio": 7,
+      "novos": [
+        "GRENN",
+        "ROBIN ARRYN",
+        "JON SNOW",
+        "DAARIO NAHARIS",
+        "SANDOR CLEGANE"
+      ],
+      "saidos": [
+        "GOATHERD",
+        "TYCHO",
+        "THEON GREYJOY",
+        "MYRANDA",
+        "MACE TYRELL"
+      ],
+      "num_novos": 19,
+      "num_saidos": 18
+    },
+    {
+      "temporada": 4,
+      "episodio": 8,
+      "novos": [
+        "MOLE'S TOWN WHORE",
+        "RALF",
+        "GILLY",
+        "EVERYONE",
+        "THEON GREYJOY"
+      ],
+      "saidos": [
+        "BRONN",
+        "YARWICK",
+        "LYSA ARRYN",
+        "RORGE",
+        "JANOS SLYNT"
+      ],
+      "num_novos": 17,
+      "num_saidos": 13
+    },
+    {
+      "temporada": 4,
+      "episodio": 9,
+      "novos": [
+        "TORMUND GIANTSBANE",
+        "JANOS SLYNT",
+        "STYR",
+        "YGRITTE",
+        "DONNEL"
+      ],
+      "saidos": [
+        "MOLE'S TOWN WHORE",
+        "ROBIN ARRYN",
+        "BARRISTAN SELMY",
+        "TOGETHER",
+        "SANDOR CLEGANE"
+      ],
+      "num_novos": 6,
+      "num_saidos": 23
+    },
+    {
+      "temporada": 4,
+      "episodio": 10,
+      "novos": [
+        "BRAN STARK",
+        "SANDOR CLEGANE",
+        "TYRION LANNISTER",
+        "MEERA REED",
+        "HODOR"
+      ],
+      "saidos": [
+        "GRENN",
+        "GILLY",
+        "JANOS SLYNT",
+        "ED",
+        "STYR"
+      ],
+      "num_novos": 21,
+      "num_saidos": 9
+    },
+    {
+      "temporada": 5,
+      "episodio": 1,
+      "novos": [
+        "LANCEL LANNISTER",
+        "BARRISTAN SELMY",
+        "DAARIO NAHARIS",
+        "MELARA",
+        "MELISANDRE"
+      ],
+      "saidos": [
+        "TORMUND GIANTSBANE",
+        "BRAN STARK",
+        "SANDOR CLEGANE",
+        "JOJEN REED",
+        "MEERA REED"
+      ],
+      "num_novos": 22,
+      "num_saidos": 12
+    },
+    {
+      "temporada": 5,
+      "episodio": 2,
+      "novos": [
+        "GILLY",
+        "DORAN MARTELL",
+        "WAITRESS",
+        "MEN",
+        "SHADOW TOWER BROTHER"
+      ],
+      "saidos": [
+        "OLYVAR",
+        "MARGAERY TYRELL",
+        "YOHN ROYCE",
+        "LANCEL LANNISTER",
+        "PRIEST"
+      ],
+      "num_novos": 20,
+      "num_saidos": 15
+    },
+    {
+      "temporada": 5,
+      "episodio": 3,
+      "novos": [
+        "BLONDE PROSTITUTE",
+        "MARGAERY TYRELL",
+        "PRIESTESS",
+        "LANCEL LANNISTER",
+        "HIGH SPARROW"
+      ],
+      "saidos": [
+        "GILLY",
+        "BARRISTAN SELMY",
+        "DAARIO NAHARIS",
+        "DORAN MARTELL",
+        "WAITRESS"
+      ],
+      "num_novos": 10,
+      "num_saidos": 21
+    },
+    {
+      "temporada": 5,
+      "episodio": 4,
+      "novos": [
+        "BARRISTAN SELMY",
+        "DAARIO NAHARIS",
+        "CAPTAIN",
+        "TYENE SAND",
+        "MELISANDRE"
+      ],
+      "saidos": [
+        "BLONDE PROSTITUTE",
+        "PRIESTESS",
+        "JANOS SLYNT",
+        "TYRION LANNISTER",
+        "JAQEN H'GHAR"
+      ],
+      "num_novos": 19,
+      "num_saidos": 16
+    },
+    {
+      "temporada": 5,
+      "episodio": 5,
+      "novos": [
+        "TORMUND GIANTSBANE",
+        "LADY WALDA FREY",
+        "THEON GREYJOY",
+        "MYRANDA",
+        "DAVOS SEAWORTH"
+      ],
+      "saidos": [
+        "LANCEL LANNISTER",
+        "BARRISTAN SELMY",
+        "CERSEI LANNISTER",
+        "CAPTAIN",
+        "TYENE SAND"
+      ],
+      "num_novos": 11,
+      "num_saidos": 21
+    },
+    {
+      "temporada": 5,
+      "episodio": 6,
+      "novos": [
+        "LANCEL LANNISTER",
+        "TYRION LANNISTER",
+        "DORAN MARTELL",
+        "MYRCELLA BARATHEON",
+        "CERSEI LANNISTER"
+      ],
+      "saidos": [
+        "TORMUND GIANTSBANE",
+        "LADY WALDA FREY",
+        "JON SNOW",
+        "DAARIO NAHARIS",
+        "DAVOS SEAWORTH"
+      ],
+      "num_novos": 23,
+      "num_saidos": 17
+    },
+    {
+      "temporada": 5,
+      "episodio": 7,
+      "novos": [
+        "HIZDAHR ZO LORAQ",
+        "OWNER",
+        "GILLY",
+        "DERRYK",
+        "BRAN STARK"
+      ],
+      "saidos": [
+        "LANCEL LANNISTER",
+        "SAND SNAKES",
+        "MYRANDA",
+        "DORAN MARTELL",
+        "JAQEN H'GHAR"
+      ],
+      "num_novos": 17,
+      "num_saidos": 13
+    },
+    {
+      "temporada": 5,
+      "episodio": 8,
+      "novos": [
+        "TORMUND GIANTSBANE",
+        "KARSI",
+        "WILDLING ELDER",
+        "BROTHER",
+        "SEPTA UNELLA"
+      ],
+      "saidos": [
+        "BRAN STARK",
+        "SAMWELL TARLY",
+        "DAARIO NAHARIS",
+        "MYRCELLA BARATHEON",
+        "MEN"
+      ],
+      "num_novos": 16,
+      "num_saidos": 24
+    },
+    {
+      "temporada": 5,
+      "episodio": 9,
+      "novos": [
+        "DAARIO NAHARIS",
+        "DORAN MARTELL",
+        "MYRCELLA BARATHEON",
+        "TYENE SAND",
+        "MELISANDRE"
+      ],
+      "saidos": [
+        "TORMUND GIANTSBANE",
+        "KARSI",
+        "WILDLING ELDER",
+        "GILLY",
+        "BROTHER"
+      ],
+      "num_novos": 26,
+      "num_saidos": 18
+    },
+    {
+      "temporada": 5,
+      "episodio": 10,
+      "novos": [
+        "THEON GREYJOY",
+        "JON SNOW",
+        "HIGH SPARROW",
+        "SANSA STARK",
+        "MYRANDA"
+      ],
+      "saidos": [
+        "DORAN MARTELL",
+        "BANKER",
+        "MACE TYRELL",
+        "PROSTITUTE",
+        "MERYN TRANT"
+      ],
+      "num_novos": 12,
+      "num_saidos": 19
+    },
+    {
+      "temporada": 6,
+      "episodio": 1,
+      "novos": [
+        "MARGAERY TYRELL",
+        "SEPTA UNELLA",
+        "NYMERIA SAND",
+        "RED PRIEST",
+        "BOLTON OFFICER"
+      ],
+      "saidos": [
+        "BRONN",
+        "JON SNOW",
+        "DAARIO NAHARIS",
+        "MYRANDA",
+        "JAQEN H'GHAR"
+      ],
+      "num_novos": 12,
+      "num_saidos": 11
+    },
+    {
+      "temporada": 6,
+      "episodio": 2,
+      "novos": [
+        "BALON GREYJOY",
+        "BRAN STARK",
+        "HOODED FIGURE",
+        "MEERA REED",
+        "HODOR"
+      ],
+      "saidos": [
+        "MARGAERY TYRELL",
+        "SEPTA UNELLA",
+        "NYMERIA SAND",
+        "RED PRIEST",
+        "BOLTON OFFICER"
+      ],
+      "num_novos": 24,
+      "num_saidos": 12
+    },
+    {
+      "temporada": 6,
+      "episodio": 3,
+      "novos": [
+        "VALA",
+        "GILLY",
+        "LITTLE BIRD",
+        "OTHELL YARWICK",
+        "JON SNOW"
+      ],
+      "saidos": [
+        "MAESTER WOLKAN",
+        "LYANNA STARK",
+        "LADY WALDA FREY",
+        "BALON GREYJOY",
+        "THEON GREYJOY"
+      ],
+      "num_novos": 15,
+      "num_saidos": 18
+    },
+    {
+      "temporada": 6,
+      "episodio": 4,
+      "novos": [
+        "YEZZAN ZO QAGGAZ",
+        "BELICHO",
+        "ROBIN ARRYN",
+        "MARGAERY TYRELL",
+        "YOHN ROYCE"
+      ],
+      "saidos": [
+        "VALA",
+        "THREE-EYED RAVEN",
+        "GILLY",
+        "NED STARK",
+        "LITTLE BIRD"
+      ],
+      "num_novos": 15,
+      "num_saidos": 17
+    },
+    {
+      "temporada": 6,
+      "episodio": 5,
+      "novos": [
+        "LEAF",
+        "THREE-EYED RAVEN",
+        "BOBONO",
+        "BRAN STARK",
+        "CAMELLO"
+      ],
+      "saidos": [
+        "ROBIN ARRYN",
+        "DAARIO NAHARIS",
+        "CERSEI LANNISTER",
+        "MELISANDRE",
+        "LORAS TYRELL"
+      ],
+      "num_novos": 18,
+      "num_saidos": 20
+    },
+    {
+      "temporada": 6,
+      "episodio": 6,
+      "novos": [
+        "MELESSA",
+        "MARGAERY TYRELL",
+        "GILLY",
+        "JAIME LANNISTER",
+        "HIGH SPARROW"
+      ],
+      "saidos": [
+        "JON SNOW",
+        "TYRION LANNISTER",
+        "HODOR",
+        "CLARENZO",
+        "PETYR BAELISH"
+      ],
+      "num_novos": 17,
+      "num_saidos": 22
+    },
+    {
+      "temporada": 6,
+      "episodio": 7,
+      "novos": [
+        "BRONN",
+        "TORMUND GIANTSBANE",
+        "LYANNA STARK",
+        "THEON GREYJOY",
+        "ROBETT GLOVER"
+      ],
+      "saidos": [
+        "MELESSA",
+        "GILLY",
+        "BRAN STARK",
+        "DAARIO NAHARIS",
+        "CAMELLO"
+      ],
+      "num_novos": 15,
+      "num_saidos": 18
+    },
+    {
+      "temporada": 6,
+      "episodio": 8,
+      "novos": [
+        "LANCEL LANNISTER",
+        "THOROS OF MYR",
+        "TYRION LANNISTER",
+        "JAQEN H'GHAR",
+        "LADY CRANE"
+      ],
+      "saidos": [
+        "MARGAERY TYRELL",
+        "TORMUND GIANTSBANE",
+        "LYANNA STARK",
+        "ROBETT GLOVER",
+        "THEON GREYJOY"
+      ],
+      "num_novos": 16,
+      "num_saidos": 16
+    },
+    {
+      "temporada": 6,
+      "episodio": 9,
+      "novos": [
+        "YEZZAN ZO QAGGAZ",
+        "BELICHO",
+        "TORMUND GIANTSBANE",
+        "THEON GREYJOY",
+        "JON SNOW"
+      ],
+      "saidos": [
+        "LANCEL LANNISTER",
+        "SANDOR CLEGANE",
+        "CERSEI LANNISTER",
+        "EDMURE TULLY",
+        "VARYS"
+      ],
+      "num_novos": 11,
+      "num_saidos": 19
+    },
+    {
+      "temporada": 6,
+      "episodio": 10,
+      "novos": [
+        "ROBETT GLOVER",
+        "LANCEL LANNISTER",
+        "BRAN STARK",
+        "DAARIO NAHARIS",
+        "MEERA REED"
+      ],
+      "saidos": [
+        "YEZZAN ZO QAGGAZ",
+        "BELICHO",
+        "THEON GREYJOY",
+        "RAZDAL MO ERAZ",
+        "YARA GREYJOY"
+      ],
+      "num_novos": 24,
+      "num_saidos": 6
+    },
+    {
+      "temporada": 7,
+      "episodio": 1,
+      "novos": [
+        "THOROS OF MYR",
+        "SANDOR CLEGANE",
+        "BRIENNE OF TARTH",
+        "EDDISON TOLLETT",
+        "BERIC DONDARRION"
+      ],
+      "saidos": [
+        "LANCEL LANNISTER",
+        "BRAN STARK",
+        "DAARIO NAHARIS",
+        "TYRION LANNISTER",
+        "MELISANDRE"
+      ],
+      "num_novos": 6,
+      "num_saidos": 22
+    },
+    {
+      "temporada": 7,
+      "episodio": 2,
+      "novos": [
+        "SAMWELL TARLY",
+        "LYANNA MORMONT",
+        "TYRION LANNISTER",
+        "TYENE SAND",
+        "ELLIA"
+      ],
+      "saidos": [
+        "TORMUND GIANTSBANE",
+        "LYANNA STARK",
+        "THOROS OF MYR",
+        "SANDOR CLEGANE",
+        "MEERA REED"
+      ],
+      "num_novos": 24,
+      "num_saidos": 9
+    },
+    {
+      "temporada": 7,
+      "episodio": 3,
+      "novos": [
+        "TYCHO",
+        "BRAN STARK",
+        "MESSENGER",
+        "CAPTAIN",
+        "EURON GREYJOY"
+      ],
+      "saidos": [
+        "ROBETT GLOVER",
+        "NYMERIA SAND",
+        "LYANNA MORMONT",
+        "HOT PIE",
+        "TYENE SAND"
+      ],
+      "num_novos": 5,
+      "num_saidos": 13
+    },
+    {
+      "temporada": 7,
+      "episodio": 4,
+      "novos": [
+        "BRONN",
+        "ARCHERS",
+        "MEERA REED",
+        "RANDYLL TARLY",
+        "BRIENNE OF TARTH"
+      ],
+      "saidos": [
+        "MAESTER WOLKAN",
+        "SAMWELL TARLY",
+        "MESSENGER",
+        "OLENNA TYRELL",
+        "QYBURN"
+      ],
+      "num_novos": 8,
+      "num_saidos": 10
+    },
+    {
+      "temporada": 7,
+      "episodio": 5,
+      "novos": [
+        "MAESTER WOLKAN",
+        "TORMUND GIANTSBANE",
+        "GILLY",
+        "THOROS OF MYR",
+        "SAMWELL TARLY"
+      ],
+      "saidos": [
+        "TYCHO",
+        "THEON GREYJOY",
+        "BRAN STARK",
+        "ARCHERS",
+        "MEERA REED"
+      ],
+      "num_novos": 10,
+      "num_saidos": 8
+    },
+    {
+      "temporada": 7,
+      "episodio": 6,
+      "novos": [
+        "BENJEN STARK",
+        "BRIENNE OF TARTH"
+      ],
+      "saidos": [
+        "BRONN",
+        "GILLY",
+        "SAMWELL TARLY",
+        "JAIME LANNISTER",
+        "RANDYLL TARLY"
+      ],
+      "num_novos": 2,
+      "num_saidos": 9
+    },
+    {
+      "temporada": 7,
+      "episodio": 7,
+      "novos": [
+        "HARRAG",
+        "BRONN",
+        "LYANNA STARK",
+        "THEON GREYJOY",
+        "YOHN ROYCE"
+      ],
+      "saidos": [
+        "MAESTER WOLKAN",
+        "BENJEN STARK",
+        "THOROS OF MYR",
+        "GENDRY"
+      ],
+      "num_novos": 15,
+      "num_saidos": 4
+    },
+    {
+      "temporada": 8,
+      "episodio": 1,
+      "novos": [
+        "UMBER",
+        "MAESTER WOLKAN",
+        "MAREI",
+        "SAMWELL TARLY",
+        "CRAYAH"
+      ],
+      "saidos": [
+        "HARRAG",
+        "YOHN ROYCE",
+        "JAIME LANNISTER",
+        "RHAEGAR TARGARYEN",
+        "MEN"
+      ],
+      "num_novos": 10,
+      "num_saidos": 9
+    },
+    {
+      "temporada": 8,
+      "episodio": 2,
+      "novos": [
+        "GILLY",
+        "TEELA",
+        "JAIME LANNISTER",
+        "GREY WORM",
+        "BOTH"
+      ],
+      "saidos": [
+        "UMBER",
+        "BRONN",
+        "MAESTER WOLKAN",
+        "MAREI",
+        "CRAYAH"
+      ],
+      "num_novos": 8,
+      "num_saidos": 12
+    },
+    {
+      "temporada": 8,
+      "episodio": 3,
+      "novos": [
+        "MELISANDRE",
+        "VARYS"
+      ],
+      "saidos": [
+        "TORMUND GIANTSBANE",
+        "GILLY",
+        "TEELA",
+        "SAMWELL TARLY",
+        "DAVOS SEAWORTH"
+      ],
+      "num_novos": 2,
+      "num_saidos": 9
+    },
+    {
+      "temporada": 8,
+      "episodio": 4,
+      "novos": [
+        "BRONN",
+        "TORMUND GIANTSBANE",
+        "GILLY",
+        "WILLA",
+        "DAVOS SEAWORTH"
+      ],
+      "saidos": [
+        "MELISANDRE",
+        "LYANNA STARK",
+        "BERIC DONDARRION",
+        "THEON GREYJOY"
+      ],
+      "num_novos": 10,
+      "num_saidos": 4
+    },
+    {
+      "temporada": 8,
+      "episodio": 5,
+      "novos": [
+        "OWEN",
+        "NORA",
+        "VICKY",
+        "MARTHA",
+        "UNSULLIED"
+      ],
+      "saidos": [
+        "BRONN",
+        "TORMUND GIANTSBANE",
+        "GILLY",
+        "WILLA",
+        "BRAN STARK"
+      ],
+      "num_novos": 5,
+      "num_saidos": 11
+    },
+    {
+      "temporada": 8,
+      "episodio": 6,
+      "novos": [
+        "MAESTER WOLKAN",
+        "BRONN",
+        "ROBIN ARRYN",
+        "YOHN ROYCE",
+        "BRAN STARK"
+      ],
+      "saidos": [
+        "JAIME LANNISTER",
+        "NORA",
+        "OWEN",
+        "SANDOR CLEGANE",
+        "CERSEI LANNISTER"
+      ],
+      "num_novos": 16,
+      "num_saidos": 11
+    }
+  ]
+}

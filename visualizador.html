@@ -11,26 +11,63 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            color: white;
-            background: rgba(0,0,0,0.7);
+            color: #c9a961;
+            background: transparent;
             padding: 15px;
-            border-radius: 5px;
+            border: none;
             z-index: 100;
+        }
+        #info h3 {
+            color: #c9a961;
+            margin-bottom: 10px;
+        }
+        #info button {
+            margin-top: 5px;
+            margin-right: 5px;
+            padding: 8px 16px;
+            background: #c9a961;
+            color: #1a1410;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            display: inline-block;
+        }
+        #info button:hover {
+            background: #d4b76a;
         }
         #controls {
             position: absolute;
             top: 10px;
             right: 10px;
             width: 300px;
-            color: white;
-            background: rgba(0,0,0,0.8);
+            color: #e8dcc4;
+            background: rgba(20,15,10,0.9);
             padding: 15px;
+            border: 2px solid #c9a961;
             border-radius: 5px;
             z-index: 100;
             max-height: 90vh;
             overflow-y: auto;
             overflow-x: hidden;
             transition: transform 0.3s;
+        }
+        #controls::-webkit-scrollbar {
+            width: 10px;
+        }
+        #controls::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.3);
+            border-radius: 5px;
+        }
+        #controls::-webkit-scrollbar-thumb {
+            background: #c9a961;
+            border-radius: 5px;
+        }
+        #controls::-webkit-scrollbar-thumb:hover {
+            background: #d4b76a;
+        }
+        #controls h3, #controls h4 {
+            color: #c9a961;
         }
         #controls.minimized {
             transform: translateX(340px);
@@ -61,7 +98,7 @@
         }
         #charInfo h3 {
             margin-bottom: 10px;
-            color: #4CAF50;
+            color: #c9a961;
         }
         #charInfo img {
             width: 100px;
@@ -69,7 +106,7 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 10px;
-            border: 3px solid #4CAF50;
+            border: 3px solid #c9a961;
         }
         #charInfo p {
             margin: 5px 0;
@@ -79,7 +116,26 @@
             padding: 8px;
             margin: 5px 0;
             border-radius: 3px;
-            border: none;
+            border: 1px solid #c9a961;
+            background: rgba(20,15,10,0.8);
+            color: #e8dcc4;
+        }
+        #charList, #searchFrom, #searchTo {
+            height: 200px !important;
+        }
+        #controls select::-webkit-scrollbar {
+            width: 8px;
+        }
+        #controls select::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.3);
+            border-radius: 4px;
+        }
+        #controls select::-webkit-scrollbar-thumb {
+            background: #c9a961;
+            border-radius: 4px;
+        }
+        #controls select::-webkit-scrollbar-thumb:hover {
+            background: #d4b76a;
         }
         #controls button {
             width: 100%;
@@ -87,21 +143,31 @@
             margin: 5px 0;
             border-radius: 3px;
             border: none;
-            background: #4CAF50;
-            color: white;
+            background: #c9a961;
+            color: #1a1410;
             cursor: pointer;
+            font-weight: bold;
         }
         #controls button:hover {
-            background: #45a049;
+            background: #d4b76a;
         }
         .community-filter {
             display: flex;
             align-items: center;
-            margin: 5px 0;
+            margin: 0px 0;
+            padding: 8px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 5px;
         }
         .community-filter input {
-            width: 20px;
+            width: 30%;
+            height: 20px;
             margin-right: 10px;
+            cursor: pointer;
+        }
+        .community-filter label {
+            cursor: pointer;
+            width: 70%;
         }
         #loading {
             position: absolute;
@@ -114,18 +180,60 @@
             padding: 30px;
             border-radius: 10px;
         }
+        #pathVisual {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            background: rgba(0,0,0,0.9);
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #c9a961;
+        }
+        #pathVisual .path-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #pathVisual .char-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        #pathVisual img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #c9a961;
+            object-fit: cover;
+        }
+        #pathVisual .char-name {
+            color: #e8dcc4;
+            font-size: 11px;
+            text-align: center;
+            max-width: 80px;
+        }
+        #pathVisual .arrow {
+            color: #c9a961;
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
     <div id="info">
-        <h3>Game of Thrones - Rede 3D</h3>
+        <button onclick="window.location.href='index.html'">🏠 Início</button>
+        <button onclick="window.location.href='rankings.html'">📊 Rankings</button>
+        <button onclick="window.location.href='eventos.html'">🎬 Eventos</button>
+        <button onclick="window.location.href='timelapse.html'">⏱️ Timelapse</button>
+        <h3 style="margin-top: 15px;">Game of Thrones - Rede 3D</h3>
         <p>🖱️ Tab para ativar/desativar modo voo</p>
         <p>🎮 WASD para mover</p>
         <p>⚡ Shift para acelerar</p>
         <p>👁️ Mouse para olhar</p>
         <p>Personagens: <span id="nodeCount">0</span></p>
         <p>Conexões: <span id="edgeCount">0</span></p>
-        <button onclick="window.location.href='rankings.html'" style="margin-top: 10px; padding: 8px 16px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">📊 Ver Rankings</button>
     </div>
     <div id="charInfo">
         <img id="charPhoto" src="" alt="" />
@@ -139,18 +247,39 @@
     <button id="toggleControls" onclick="toggleControls()">☰</button>
     <div id="controls">
         <h3>Controles</h3>
+        <div style="display: flex; gap: 5px; margin: 10px 0;">
+            <button onclick="showTab('personagem')" id="tabPersonagem" style="flex: 1; padding: 5px; font-size: 11px;">Personagem</button>
+            <button onclick="showTab('caminho')" id="tabCaminho" style="flex: 1; padding: 5px; font-size: 11px;">Caminho</button>
+            <button onclick="showTab('comunidades')" id="tabComunidades" style="flex: 1; padding: 5px; font-size: 11px;">Comunidades</button>
+        </div>
         
-        <h4 style="margin-top: 15px;">Pesquisar Personagem</h4>
-        <input type="text" id="searchChar" placeholder="Digite o nome..." />
-        <select id="charList" size="5"></select>
-        <button onclick="selectCharacter()">Selecionar</button>
-        <button onclick="centerOnCharacter()">Centralizar</button>
-        <button onclick="clearSelection()">Limpar Seleção</button>
+        <div id="contentPersonagem">
+            <h4 style="margin-top: 15px;">Pesquisar Personagem</h4>
+            <input type="text" id="searchChar" placeholder="Digite o nome..." />
+            <select id="charList" size="5"></select>
+            <button onclick="selectCharacter()">Selecionar</button>
+            <button onclick="centerOnCharacter()">Centralizar</button>
+            <button onclick="clearSelection()">Limpar Seleção</button>
+        </div>
         
-        <h4 style="margin-top: 15px;">Filtrar Comunidades</h4>
-        <div id="communityFilters"></div>
+        <div id="contentCaminho" style="display: none;">
+            <h4 style="margin-top: 15px;">Busca Avançada</h4>
+            <select id="searchFrom" size="3"></select>
+            <select id="searchTo" size="3"></select>
+            <button onclick="findPath()">Encontrar Caminho</button>
+            <button onclick="clearSelection()">Resetar</button>
+            <div id="pathResult" style="margin-top: 10px; font-size: 12px; display: none;"></div>
+        </div>
+        
+        <div id="contentComunidades" style="display: none;">
+            <h4 style="margin-top: 15px;">Filtrar Comunidades</h4>
+            <div id="communityFilters"></div>
+        </div>
     </div>
     <div id="loading">Carregando dados...</div>
+    <div id="pathVisual">
+        <div class="path-container"></div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/PointerLockControls.js"></script>
@@ -169,6 +298,8 @@
         let raycaster = new THREE.Raycaster();
         let mouse = new THREE.Vector2();
         let imageCache = {};
+        let pathCharacters = new Set();
+        let pathLines = [];
         
         const communityNames = [
             'Stark/Norte',
@@ -306,6 +437,8 @@
             // Lista de personagens
             const charList = document.getElementById('charList');
             const searchInput = document.getElementById('searchChar');
+            const searchFrom = document.getElementById('searchFrom');
+            const searchTo = document.getElementById('searchTo');
             
             const sortedChars = data.nodes.map(n => n.id).sort();
             sortedChars.forEach(char => {
@@ -313,6 +446,16 @@
                 option.value = char;
                 option.textContent = char;
                 charList.appendChild(option);
+                
+                const optionFrom = document.createElement('option');
+                optionFrom.value = char;
+                optionFrom.textContent = char;
+                searchFrom.appendChild(optionFrom);
+                
+                const optionTo = document.createElement('option');
+                optionTo.value = char;
+                optionTo.textContent = char;
+                searchTo.appendChild(optionTo);
             });
             
             searchInput.addEventListener('input', (e) => {
@@ -388,11 +531,151 @@
         function clearSelection() {
             selectedCharacter = null;
             document.getElementById('charInfo').style.display = 'none';
+            clearPath();
             updateVisibility();
+        }
+        
+        function findPath() {
+            const from = document.getElementById('searchFrom').value;
+            const to = document.getElementById('searchTo').value;
+            
+            if (!from || !to) {
+                alert('Selecione ambos os personagens');
+                return;
+            }
+            
+            // Construir grafo para busca
+            const G = {};
+            graphData.edges.forEach(edge => {
+                if (!G[edge.source]) G[edge.source] = [];
+                if (!G[edge.target]) G[edge.target] = [];
+                G[edge.source].push(edge.target);
+                G[edge.target].push(edge.source);
+            });
+            
+            // BFS para encontrar caminho mais curto
+            const path = bfs(G, from, to);
+            
+            if (!path) {
+                document.getElementById('pathResult').innerHTML = '<p style="color: #ff5555;">Sem caminho entre esses personagens</p>';
+                document.getElementById('pathResult').style.display = 'block';
+                return;
+            }
+            
+            // Mostrar resultado
+            const pathText = path.join(' → ');
+            document.getElementById('pathResult').innerHTML = `
+                <p style="color: #4CAF50;"><strong>Caminho encontrado (${path.length - 1} conexões):</strong></p>
+                <p>${pathText}</p>
+            `;
+            document.getElementById('pathResult').style.display = 'block';
+            
+            // Destacar caminho no visualizador
+            highlightPath(path);
+        }
+        
+        function bfs(graph, start, end) {
+            const queue = [[start]];
+            const visited = new Set([start]);
+            
+            while (queue.length > 0) {
+                const path = queue.shift();
+                const node = path[path.length - 1];
+                
+                if (node === end) return path;
+                
+                const neighbors = graph[node] || [];
+                for (const neighbor of neighbors) {
+                    if (!visited.has(neighbor)) {
+                        visited.add(neighbor);
+                        queue.push([...path, neighbor]);
+                    }
+                }
+            }
+            return null;
+        }
+        
+        function highlightPath(path) {
+            clearPath();
+            
+            // Armazenar personagens do caminho
+            pathCharacters = new Set(path);
+            
+            // Criar linhas amarelas para o caminho
+            for (let i = 0; i < path.length - 1; i++) {
+                const fromNode = graphData.nodes.find(n => n.id === path[i]);
+                const toNode = graphData.nodes.find(n => n.id === path[i + 1]);
+                
+                if (fromNode && toNode) {
+                    const start = new THREE.Vector3(fromNode.x, fromNode.y, fromNode.z);
+                    const end = new THREE.Vector3(toNode.x, toNode.y, toNode.z);
+                    
+                    const geometry = new THREE.BufferGeometry().setFromPoints([start, end]);
+                    const material = new THREE.LineBasicMaterial({ 
+                        color: 0xffff00, 
+                        transparent: true, 
+                        opacity: 0.9,
+                        linewidth: 3
+                    });
+                    const line = new THREE.Line(geometry, material);
+                    scene.add(line);
+                    pathLines.push(line);
+                }
+            }
+            
+            // Criar visualização do caminho
+            const pathVisual = document.getElementById('pathVisual');
+            const container = pathVisual.querySelector('.path-container');
+            container.innerHTML = '';
+            
+            path.forEach((char, idx) => {
+                const charItem = document.createElement('div');
+                charItem.className = 'char-item';
+                
+                const img = document.createElement('img');
+                img.src = `personagens_fotos/${char.replace(/ /g, '_').replace(/\//g, '_')}.jpg`;
+                img.title = char;
+                
+                const name = document.createElement('div');
+                name.className = 'char-name';
+                name.textContent = char;
+                
+                charItem.appendChild(img);
+                charItem.appendChild(name);
+                container.appendChild(charItem);
+                
+                if (idx < path.length - 1) {
+                    const arrow = document.createElement('span');
+                    arrow.className = 'arrow';
+                    arrow.textContent = '→';
+                    container.appendChild(arrow);
+                }
+            });
+            
+            pathVisual.style.display = 'block';
+            updateVisibility();
+        }
+        
+        function clearPath() {
+            pathLines.forEach(line => scene.remove(line));
+            pathLines = [];
+            pathCharacters.clear();
+            document.getElementById('pathResult').style.display = 'none';
+            document.getElementById('pathVisual').style.display = 'none';
         }
         
         function toggleControls() {
             document.getElementById('controls').classList.toggle('minimized');
+        }
+        
+        function showTab(tab) {
+            document.getElementById('contentPersonagem').style.display = tab === 'personagem' ? 'block' : 'none';
+            document.getElementById('contentCaminho').style.display = tab === 'caminho' ? 'block' : 'none';
+            document.getElementById('contentComunidades').style.display = tab === 'comunidades' ? 'block' : 'none';
+            
+            document.getElementById('tabPersonagem').style.background = tab === 'personagem' ? '#d4b76a' : '#c9a961';
+            document.getElementById('tabCaminho').style.background = tab === 'caminho' ? '#d4b76a' : '#c9a961';
+            document.getElementById('tabComunidades').style.background = tab === 'comunidades' ? '#d4b76a' : '#c9a961';
         }
         
         function toggleCommunity(commId) {
@@ -419,18 +702,16 @@
             }
             
             // Atualizar visibilidade dos nós
-            allNodes.forEach((node, idx) => {
-                const nodeData = graphData.nodes[idx];
-                let visible = true;
+            allNodes.forEach(node => {
+                const nodeData = graphData.nodes.find(n => n.id === node.id);
+                if (!nodeData) return;
                 
-                // Filtro de comunidade
-                if (hiddenCommunities.has(nodeData.community)) {
-                    visible = false;
-                }
+                let visible = !hiddenCommunities.has(nodeData.community);
                 
-                // Filtro de personagem selecionado
-                if (selectedCharacter && !connectedChars.has(nodeData.id)) {
-                    visible = false;
+                if (pathCharacters.size > 0) {
+                    visible = pathCharacters.has(nodeData.id);
+                } else if (selectedCharacter) {
+                    visible = connectedChars.has(nodeData.id) && !hiddenCommunities.has(nodeData.community);
                 }
                 
                 node.sphere.visible = visible;
@@ -442,28 +723,28 @@
             const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0xff00ff, 0x00ffff, 0xffa500, 0x800080];
             
             allEdges.forEach(edge => {
-                let visible = true;
-                let edgeColor = 0x333333;
-                let edgeOpacity = Math.min(edge.weight / 100, 0.2);
+                let visible = false;
+                let edgeColor = 0xcccccc;
+                let edgeOpacity = 0.5;
                 
-                // Se personagem selecionado, mostrar APENAS suas conexões
-                if (selectedCharacter) {
+                if (pathCharacters.size > 0) {
+                    visible = false;
+                } else if (selectedCharacter) {
                     if (edge.source === selectedCharacter || edge.target === selectedCharacter) {
+                        visible = true;
                         const selectedNode = graphData.nodes.find(n => n.id === selectedCharacter);
                         if (selectedNode) {
                             edgeColor = colors[selectedNode.community % colors.length];
-                            edgeOpacity = 0.6;
+                            edgeOpacity = 0.8;
                         }
-                    } else {
-                        visible = false;
                     }
                 } else {
-                    // Ocultar se algum nó está oculto por filtro de comunidade
-                    const sourceNode = allNodes.find((n, i) => graphData.nodes[i].id === edge.source);
-                    const targetNode = allNodes.find((n, i) => graphData.nodes[i].id === edge.target);
+                    const sourceNode = graphData.nodes.find(n => n.id === edge.source);
+                    const targetNode = graphData.nodes.find(n => n.id === edge.target);
                     
-                    if (sourceNode && !sourceNode.sphere.visible) visible = false;
-                    if (targetNode && !targetNode.sphere.visible) visible = false;
+                    if (sourceNode && targetNode) {
+                        visible = !hiddenCommunities.has(sourceNode.community) && !hiddenCommunities.has(targetNode.community);
+                    }
                 }
                 
                 edge.line.visible = visible;
@@ -503,6 +784,11 @@
                 // Criar sprite com foto (sempre voltado para câmera)
                 const imgPath = `personagens_fotos/${node.id.replace(/ /g, '_').replace(/\//g, '_')}.jpg`;
                 
+                const spriteMaterial = new THREE.SpriteMaterial({ 
+                    transparent: true
+                });
+                const sprite = new THREE.Sprite(spriteMaterial);
+                
                 // Canvas com foto circular
                 const photoCanvas = document.createElement('canvas');
                 photoCanvas.width = 512;
@@ -531,11 +817,6 @@
                     };
                     img.src = imgPath;
                 }
-                
-                const spriteMaterial = new THREE.SpriteMaterial({ 
-                    transparent: true
-                });
-                const sprite = new THREE.Sprite(spriteMaterial);
                 sprite.scale.set(node.size * 2, node.size * 2, 1);
                 sprite.position.set(node.x, node.y, node.z);
                 sprite.userData = { name: node.id, pagerank: node.pagerank };
@@ -580,20 +861,23 @@
                 labelSprite.scale.set(300, 75, 1);
                 scene.add(labelSprite);
                 
-                allNodes.push({ sphere: sprite, label: labelSprite, ring });
+                allNodes.push({ sphere: sprite, label: labelSprite, ring, id: node.id });
             });
 
             // Criar arestas (conexões)
             data.edges.forEach(edge => {
-                const start = nodePositions[edge.source];
-                const end = nodePositions[edge.target];
+                const sourceNode = data.nodes.find(n => n.id === edge.source);
+                const targetNode = data.nodes.find(n => n.id === edge.target);
                 
-                if (start && end) {
+                if (sourceNode && targetNode) {
+                    const start = new THREE.Vector3(sourceNode.x, sourceNode.y, sourceNode.z);
+                    const end = new THREE.Vector3(targetNode.x, targetNode.y, targetNode.z);
+                    
                     const geometry = new THREE.BufferGeometry().setFromPoints([start, end]);
                     const material = new THREE.LineBasicMaterial({ 
-                        color: 0x333333, 
+                        color: 0xcccccc, 
                         transparent: true, 
-                        opacity: Math.min(edge.weight / 100, 0.2),
+                        opacity: 0.5,
                         linewidth: 1
                     });
                     const line = new THREE.Line(geometry, material);
@@ -652,6 +936,10 @@
         }
 
         init();
+        
+        window.addEventListener('load', () => {
+            showTab('personagem');
+        });
     </script>
 </body>
 </html>

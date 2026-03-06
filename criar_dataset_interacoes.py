@@ -3,11 +3,11 @@ import re
 import csv
 
 def extrair_personagem(linha):
-    match = re.match(r'^([A-Z][A-Z\s\'\-]+):', linha)
+    match = re.match(r'^([A-Z][A-Za-z\s\'\-]+):', linha)
     if not match:
         return None
     
-    personagem = match.group(1).strip()
+    personagem = match.group(1).strip().upper()
     
     # Lista de termos que não são personagens
     bloqueados = [
@@ -34,34 +34,28 @@ def extrair_cena_personagens(texto):
     descricao_cena = ''
     
     for linha in linhas:
-        linha_original = linha
-        linha = linha.strip()
-        if not linha:
+        linha_stripped = linha.strip()
+        if not linha_stripped:
             continue
         
-        # Detecta separadores de cena (linhas com vários hífens)
-        if re.match(r'^-{3,}', linha):
-            if cena_atual:
+        # Ignora título do episódio
+        if linha_stripped.startswith('EPISODE'):
+            continue
+        
+        # Detecta fala (tem ':')
+        if ':' in linha_stripped:
+            personagem = extrair_personagem(linha_stripped)
+            if personagem:
+                personagens_cena.add(personagem)
+                cena_atual.append((personagem, linha_stripped))
+        else:
+            # Texto sem ':' = nova cena
+            if cena_atual:  # Só salva se teve falas
                 cenas.append((num_cena, list(personagens_cena), cena_atual, descricao_cena))
                 num_cena += 1
             cena_atual = []
             personagens_cena = set()
-            descricao_cena = ''
-            continue
-            
-        if linha.startswith('['):
-            if cena_atual:
-                cenas.append((num_cena, list(personagens_cena), cena_atual, descricao_cena))
-                num_cena += 1
-            cena_atual = []
-            personagens_cena = set()
-            descricao_cena = linha
-            continue
-        
-        personagem = extrair_personagem(linha)
-        if personagem:
-            personagens_cena.add(personagem)
-            cena_atual.append((personagem, linha))
+            descricao_cena = linha_stripped
     
     if cena_atual:
         cenas.append((num_cena, list(personagens_cena), cena_atual, descricao_cena))
@@ -71,6 +65,9 @@ def extrair_cena_personagens(texto):
 def processar_episodio(caminho_arquivo, mapa_nomes, personagens_validos):
     with open(caminho_arquivo, 'r', encoding='utf-8') as f:
         texto = f.read()
+    
+    # Remove separadores visuais
+    texto = re.sub(r'^[\s-]+$', '', texto, flags=re.MULTILINE)
     
     nome_arquivo = os.path.basename(caminho_arquivo)
     match = re.match(r'got_s(\d+)e(\d+)', nome_arquivo)
@@ -120,7 +117,7 @@ def processar_episodio(caminho_arquivo, mapa_nomes, personagens_validos):
                     'tipo_interacao': tipo_interacao
                 })
     
-    return interacoes
+    return interacoes, len(cenas)
 
 def main():
     mapa_nomes = {}
@@ -149,6 +146,8 @@ def main():
     
     pasta_genius = 'genius'
     todas_interacoes = []
+    total_cenas = 0
+    total_episodios = 0
     
     for temporada in sorted(os.listdir(pasta_genius)):
         caminho_temp = os.path.join(pasta_genius, temporada)
@@ -159,8 +158,11 @@ def main():
             if arquivo.endswith('.txt') and arquivo.startswith('got_'):
                 caminho_completo = os.path.join(caminho_temp, arquivo)
                 print(f'Processando {arquivo}...')
-                interacoes = processar_episodio(caminho_completo, mapa_nomes, personagens_validos)
+                interacoes, num_cenas = processar_episodio(caminho_completo, mapa_nomes, personagens_validos)
                 todas_interacoes.extend(interacoes)
+                total_cenas += num_cenas
+                total_episodios += 1
+                print(f'  -> {num_cenas} cenas, {len(interacoes)} interações')
     
     with open('dataset_interacoes_personagens.csv', 'w', newline='', encoding='utf-8') as f:
         campos = ['temporada', 'episodio', 'cena', 'descricao_cena', 'falante_oficial', 'ouvinte_oficial', 'fala', 'tamanho_fala', 'num_personagens_cena', 'tipo_interacao']
@@ -168,7 +170,12 @@ def main():
         writer.writeheader()
         writer.writerows(todas_interacoes)
     
-    print(f'\nDataset criado com {len(todas_interacoes)} interações!')
+    print(f'\n=== RESUMO ===')
+    print(f'Episódios processados: {total_episodios}')
+    print(f'Total de cenas: {total_cenas}')
+    print(f'Total de interações: {len(todas_interacoes)}')
+    print(f'\nDataset salvo em: dataset_interacoes_personagens.csv')
+    input('\nPressione ENTER para fechar...')
 
 if __name__ == '__main__':
     main()

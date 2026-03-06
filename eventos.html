@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Thrones - Eventos Importantes</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #000000;
+            color: white;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        #stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        h1 { 
+            text-align: center; 
+            margin-bottom: 30px;
+            color: #c9a961;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #c9a961;
+            color: #1a1410;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            border: 2px solid #c9a961;
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        .tab {
+            padding: 12px 24px;
+            background: rgba(20,15,10,0.8);
+            border: 2px solid #c9a961;
+            color: #e8dcc4;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .tab:hover {
+            background: rgba(30,25,20,0.9);
+        }
+        .tab.active {
+            background: #c9a961;
+            color: #1a1410;
+            font-weight: bold;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .card {
+            background: rgba(20,15,10,0.9);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #c9a961;
+            color: #e8dcc4;
+        }
+        .card h3 {
+            color: #c9a961;
+            margin-bottom: 10px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: rgba(201,169,97,0.2);
+            border: 1px solid #c9a961;
+            color: #e8dcc4;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .score {
+            color: #c9a961;
+            font-weight: bold;
+        }
+        .personagens {
+            margin-top: 10px;
+        }
+        .turning {
+            border-left-color: #8b0000;
+        }
+        .novo {
+            background: rgba(0,100,0,0.4);
+            border-color: #4CAF50;
+        }
+        .saiu {
+            background: rgba(139,0,0,0.4);
+            border-color: #ff5555;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="stars"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-btn">🏠 Início</a>
+        
+        <h1>🎬 Eventos Importantes de Game of Thrones</h1>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('cenas')">Cenas Importantes</button>
+            <button class="tab" onclick="showTab('episodios')">Episódios Densos</button>
+            <button class="tab" onclick="showTab('turning')">Turning Points</button>
+        </div>
+        
+        <div id="cenas" class="section active">
+            <h2 style="margin-bottom: 20px;">Top 50 Cenas com Personagens Mais Importantes</h2>
+            <div id="cenasContent">Carregando...</div>
+        </div>
+        
+        <div id="episodios" class="section">
+            <h2 style="margin-bottom: 20px;">Top 30 Episódios Mais Densos</h2>
+            <p style="margin-bottom: 20px; color: #aaa;">Densidade = Número de interações / Número de personagens</p>
+            <div id="episodiosContent">Carregando...</div>
+        </div>
+        
+        <div id="turning" class="section">
+            <h2 style="margin-bottom: 20px;">Turning Points - Mudanças Bruscas na Rede</h2>
+            <p style="margin-bottom: 20px; color: #aaa;">Episódios onde muitos personagens entram ou saem da narrativa</p>
+            <div id="turningContent">Carregando...</div>
+        </div>
+    </div>
+
+    <script>
+        let eventosData = null;
+
+        async function loadData() {
+            try {
+                const response = await fetch('eventos_importantes.json');
+                eventosData = await response.json();
+                renderCenas();
+                renderEpisodios();
+                renderTurning();
+            } catch (error) {
+                console.error('Erro ao carregar dados:', error);
+                document.getElementById('cenasContent').innerHTML = 
+                    '<p style="color: #ff5555;">Erro ao carregar dados. Execute gerar_eventos.py primeiro.</p>';
+            }
+        }
+
+        function showTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tab).classList.add('active');
+        }
+
+        function renderCenas() {
+            const html = eventosData.top_cenas.map((cena, index) => `
+                <div class="card">
+                    <h3>#${index + 1} - S${cena.temporada}E${cena.episodio}</h3>
+                    <p><span class="score">Score: ${cena.score.toFixed(2)}</span> | ${cena.num_personagens} personagens</p>
+                    ${cena.descricao ? `<p style="margin-top: 10px; color: #aaa;">${cena.descricao}</p>` : ''}
+                    <div class="personagens">
+                        ${cena.personagens.map(p => `<span class="badge">${p}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('cenasContent').innerHTML = html;
+        }
+
+        function renderEpisodios() {
+            const html = eventosData.top_episodios.map((ep, index) => `
+                <div class="card">
+                    <h3>#${index + 1} - S${ep.temporada}E${ep.episodio}</h3>
+                    <p>
+                        <span class="score">Densidade: ${ep.densidade.toFixed(2)}</span> | 
+                        ${ep.num_interacoes} interações | 
+                        ${ep.num_personagens} personagens
+                    </p>
+                </div>
+            `).join('');
+            document.getElementById('episodiosContent').innerHTML = html;
+        }
+
+        function renderTurning() {
+            const html = eventosData.turning_points.map((tp, index) => `
+                <div class="card turning">
+                    <h3>S${tp.temporada}E${tp.episodio}</h3>
+                    ${tp.num_novos > 0 ? `
+                        <p style="margin-top: 10px;"><strong>Novos personagens (${tp.num_novos}):</strong></p>
+                        <div>${tp.novos.map(p => `<span class="badge novo">${p}</span>`).join('')}</div>
+                    ` : ''}
+                    ${tp.num_saidos > 0 ? `
+                        <p style="margin-top: 10px;"><strong>Personagens que saíram (${tp.num_saidos}):</strong></p>
+                        <div>${tp.saidos.map(p => `<span class="badge saiu">${p}</span>`).join('')}</div>
+                    ` : ''}
+                </div>
+            `).join('');
+            document.getElementById('turningContent').innerHTML = html;
+        }
+
+        // Criar estrelas de fundo
+        const canvas = document.getElementById('stars');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        for (let i = 0; i < 200; i++) {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const radius = Math.random() * 1.5;
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        loadData();
+    </script>
+</body>
+</html>
