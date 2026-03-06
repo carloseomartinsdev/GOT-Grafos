@@ -14,7 +14,11 @@ Este projeto processa os scripts completos de Game of Thrones para:
 
 ### Pré-requisitos
 ```bash
+# Bibliotecas básicas
 pip install pandas requests
+
+# Para visualização de grafos
+pip install networkx matplotlib
 ```
 
 ### Execução
@@ -27,6 +31,9 @@ python identificar_duplicados.py
 
 # 3. Gerar interações
 python criar_dataset_interacoes.py
+
+# 4. Criar e visualizar grafo de interações
+python criar_grafo.py
 ```
 
 ## 📊 Datasets Gerados
@@ -69,6 +76,7 @@ Disciplina_08/
 ├── criar_dataset_personagens.py     # Extrai personagens
 ├── identificar_duplicados.py        # Identifica variações (IA)
 ├── criar_dataset_interacoes.py      # Gera interações
+├── criar_grafo.py                   # Cria e visualiza grafo
 ├── converter_dicionario.py          # Utilitário de conversão
 ├── dataset_personagens.csv          # Output 1
 ├── personagens_dicionario.csv       # Output 2
@@ -121,6 +129,20 @@ O projeto usa a API do DeepSeek para:
 - Análise de sentimento
 - Estudo de protagonismo
 - Machine Learning em narrativas
+
+## 📊 Visualização do Grafo
+
+O script `criar_grafo.py` gera uma visualização interativa mostrando:
+- **Nós**: Personagens (tamanho = importância por peso de interações)
+- **Arestas**: Interações diretas (espessura = frequência)
+- **Cores**: Gradiente de importância (amarelo → vermelho)
+- **Top 20 personagens** com interações mais significativas
+
+Personalize a visualização editando os parâmetros:
+```python
+G_top = subgrafo_top_personagens(G, 30)  # Top 30 ao invés de 20
+visualizar_grafo(G_top, peso_minimo_label=50)  # Mostrar apenas pesos ≥ 50
+```
 
 ## 📝 Licença
 
