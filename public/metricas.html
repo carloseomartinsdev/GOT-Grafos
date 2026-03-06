@@ -219,6 +219,32 @@ Connections = Número de vizinhos no grafo
             <p><strong>Uso:</strong> Mede diversidade social. Personagens com muitas conexões conhecem muita gente diferente.</p>
         </div>
 
+        <div class="metric">
+            <h2>6. Comunidades (Detecção de Grupos)</h2>
+            <p><strong>O que mede:</strong> Agrupa personagens que interagem mais entre si do que com o resto da rede — revelando alianças, facções e grupos sociais emergentes.</p>
+
+            <div class="formula">
+Algoritmo: Greedy Modularity Communities (Clauset-Newman-Moore)
+Otimiza: Q = Σ[ (Aij / 2m) - (ki × kj / (2m)²) ] × δ(ci, cj)
+Onde: Aij = peso da aresta, m = total de arestas, ki/kj = grau dos nós
+            </div>
+
+            <p><strong>Como funciona:</strong></p>
+            <ul>
+                <li>Começa com cada personagem em sua própria comunidade</li>
+                <li>A cada passo, mescla os dois grupos cuja união mais aumenta a <strong>modularidade</strong> da rede</li>
+                <li>Modularidade mede se há mais conexões dentro do grupo do que o esperado ao acaso</li>
+                <li>Para quando nenhuma mesclagem melhora mais a modularidade</li>
+            </ul>
+
+            <div class="example">
+                <strong>Por que Tyrion Lannister aparece na comunidade Stark/Norte?</strong><br>
+                O algoritmo <strong>ignora família e lealdade</strong> — ele agrupa apenas por volume de interações. Tyrion, sendo o personagem com mais falas (1644), interage intensamente com personagens do Norte nas temporadas finais (Jon Snow, Sansa, Daenerys em Winterfell). Matematicamente, o peso acumulado dessas conexões o ancora nessa comunidade.
+            </div>
+
+            <p><strong>Importante:</strong> Comunidade ≠ Família. Um personagem que transita entre grupos (como Tyrion ou Varys) será colocado onde teve <em>mais interações ao longo de toda a série</em>.</p>
+        </div>
+
         <div class="metric" style="border-left-color: #c9a961;">
             <h2>📌 Resumo Comparativo</h2>
             <ul>
@@ -227,6 +253,7 @@ Connections = Número de vizinhos no grafo
                 <li><strong>PageRank:</strong> Quão importantes são as pessoas que você conhece</li>
                 <li><strong>Betweenness:</strong> O quanto você conecta grupos diferentes</li>
                 <li><strong>Influence Score:</strong> Combinação de tudo acima + qualidade das falas</li>
+                <li><strong>Comunidades:</strong> Com quem você mais interage (independente de família)</li>
             </ul>
         </div>
     </div>

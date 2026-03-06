@@ -302,6 +302,7 @@
         <img id="charPhoto" src="" alt="" />
         <h3 id="charName"></h3>
         <p><strong>Comunidade:</strong> <span id="charCommunity"></span></p>
+        <p><strong>Família:</strong> <span id="charFamilia"></span></p>
         <p><strong>Influence Score:</strong> <span id="charInfluence"></span></p>
         <p><strong>PageRank:</strong> <span id="charPageRank"></span></p>
         <p><strong>Betweenness:</strong> <span id="charBetweenness"></span></p>
@@ -575,6 +576,7 @@
                 document.getElementById('charPhoto').src = imgPath;
                 document.getElementById('charName').textContent = selected;
                 document.getElementById('charCommunity').textContent = commName;
+                document.getElementById('charFamilia').textContent = nodeData.familia || '—';
                 document.getElementById('charInfluence').textContent = `${nodeData.influence_score.toFixed(4)} (#${influenceRank})`;
                 document.getElementById('charPageRank').textContent = `${nodeData.pagerank.toFixed(4)} (#${pagerankRank})`;
                 document.getElementById('charBetweenness').textContent = `${nodeData.betweenness.toFixed(4)} (#${betweennessRank})`;
