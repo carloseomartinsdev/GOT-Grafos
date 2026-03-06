@@ -7,6 +7,12 @@ import math
 # Carregar dados
 print("Carregando dados...")
 df_interacoes = pd.read_csv('dataset_interacoes_personagens.csv', low_memory=False)
+df_dicionario = pd.read_csv('personagens_dicionario.csv')
+familia_map = {}
+for _, row in df_dicionario.iterrows():
+    familia_map[row['Nome'].upper()] = row['Familia']
+    for var in str(row['Variações']).split(','):
+        familia_map[var.strip().upper()] = row['Familia']
 
 # Construir grafo
 print("Construindo grafo...")
@@ -173,6 +179,7 @@ for comm_id, comm_nodes in enumerate(communities):
                 'y': y,
                 'z': z,
                 'community': comm_id,
+                'familia': familia_map.get(node, ''),
                 'pagerank': pagerank[node],
                 'betweenness': betweenness[node],
                 'weighted_degree': weighted_degree[node],

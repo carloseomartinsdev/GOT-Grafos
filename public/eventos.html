@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif; 
             background: #000000;
             color: white;
-            padding: 20px;
+            padding: 15px;
             position: relative;
             overflow-x: hidden;
         }
@@ -30,8 +30,25 @@
         }
         h1 { 
             text-align: center; 
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             color: #c9a961;
+            font-size: clamp(16px, 5vw, 28px);
+        }
+        .nav-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .nav-links a {
+            display: block;
+            padding: 10px 8px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px solid #c9a961;
+            font-weight: bold;
+            font-size: 13px;
         }
         .back-btn {
             display: inline-block;
@@ -45,18 +62,20 @@
             border: 2px solid #c9a961;
         }
         .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
         }
         .tab {
-            padding: 12px 24px;
+            padding: 10px 8px;
             background: rgba(20,15,10,0.8);
             border: 2px solid #c9a961;
             color: #e8dcc4;
             cursor: pointer;
             border-radius: 5px;
+            font-size: 13px;
+            text-align: center;
         }
         .tab:hover {
             background: rgba(30,25,20,0.9);
@@ -118,12 +137,12 @@
 <body>
     <canvas id="stars"></canvas>
     <div class="container">
-        <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: nowrap; align-items: center;">
-            <a href="index.html" style="padding: 8px 16px; background: #c9a961; color: #1a1410; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">🏠 Início</a>
-            <a href="visualizador.html" style="padding: 8px 16px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">🌐 Visualizador</a>
-            <a href="rankings.html" style="padding: 8px 16px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">📊 Rankings</a>
-            <a href="timelapse.html" style="padding: 8px 16px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">⏱️ Timelapse</a>
-            <a href="metricas.html" style="padding: 8px 16px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">📚 Métricas</a>
+        <div class="nav-links">
+            <a href="index.html" style="background:#c9a961;color:#1a1410;">🏠 Início</a>
+            <a href="visualizador.html" style="background:rgba(20,15,10,0.8);color:#c9a961;">🌐 Visualizador</a>
+            <a href="rankings.html" style="background:rgba(20,15,10,0.8);color:#c9a961;">📊 Rankings</a>
+            <a href="timelapse.html" style="background:rgba(20,15,10,0.8);color:#c9a961;">⏱️ Timelapse</a>
+            <a href="metricas.html" style="background:rgba(20,15,10,0.8);color:#c9a961;">📚 Métricas</a>
         </div>
         
         <h1>🎬 Eventos Importantes de Game of Thrones</h1>

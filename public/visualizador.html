@@ -2,52 +2,59 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Game of Thrones - Rede de Personagens 3D</title>
     <style>
-        * { margin: 0; padding: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { overflow: hidden; font-family: Arial, sans-serif; }
+        canvas { touch-action: none; }
         #info {
             position: absolute;
             top: 10px;
             left: 10px;
+            right: 60px;
             color: #c9a961;
             background: transparent;
-            padding: 15px;
+            padding: 8px;
             border: none;
             z-index: 100;
         }
         #info h3 {
             color: #c9a961;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+        #info p { font-size: 11px; line-height: 1.4; }
+        #info .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 6px;
         }
         #info button {
-            margin-top: 5px;
-            margin-right: 5px;
-            padding: 8px 16px;
+            padding: 6px 10px;
             background: #c9a961;
             color: #1a1410;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
-            display: inline-block;
+            font-size: 11px;
         }
-        #info button:hover {
-            background: #d4b76a;
-        }
+        #info button:hover { background: #d4b76a; }
         #controls {
             position: absolute;
             top: 10px;
             right: 10px;
-            width: 300px;
+            width: 280px;
+            max-width: calc(100vw - 20px);
             color: #e8dcc4;
             background: rgba(20,15,10,0.9);
-            padding: 15px;
+            padding: 12px;
             border: 2px solid #c9a961;
             border-radius: 5px;
             z-index: 100;
-            max-height: 90vh;
+            max-height: 85vh;
             overflow-y: auto;
             overflow-x: hidden;
             transition: transform 0.3s;
@@ -70,7 +77,7 @@
             color: #c9a961;
         }
         #controls.minimized {
-            transform: translateX(340px);
+            transform: translateX(calc(100% + 20px));
         }
         #toggleControls {
             position: absolute;
@@ -88,10 +95,11 @@
             position: absolute;
             bottom: 10px;
             left: 10px;
-            width: 300px;
+            width: 260px;
+            max-width: calc(100vw - 20px);
             color: white;
             background: rgba(0,0,0,0.9);
-            padding: 15px;
+            padding: 12px;
             border-radius: 5px;
             z-index: 100;
             display: none;
@@ -121,7 +129,10 @@
             color: #e8dcc4;
         }
         #charList, #searchFrom, #searchTo {
-            height: 200px !important;
+            height: 120px !important;
+        }
+        @media (min-height: 700px) {
+            #charList, #searchFrom, #searchTo { height: 180px !important; }
         }
         #controls select::-webkit-scrollbar {
             width: 8px;
@@ -187,14 +198,17 @@
             transform: translateX(-50%);
             display: none;
             background: rgba(0,0,0,0.9);
-            padding: 15px;
+            padding: 10px;
             border-radius: 10px;
             border: 2px solid #c9a961;
+            max-width: calc(100vw - 20px);
+            overflow-x: auto;
         }
         #pathVisual .path-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
+            min-width: max-content;
         }
         #pathVisual .char-item {
             display: flex;
@@ -203,42 +217,93 @@
             gap: 5px;
         }
         #pathVisual img {
-            width: 60px;
-            height: 60px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             border: 2px solid #c9a961;
             object-fit: cover;
         }
         #pathVisual .char-name {
             color: #e8dcc4;
-            font-size: 11px;
+            font-size: 10px;
             text-align: center;
-            max-width: 80px;
+            max-width: 60px;
+            word-break: break-word;
         }
         #pathVisual .arrow {
             color: #c9a961;
-            font-size: 24px;
+            font-size: 18px;
+        }
+        /* Joystick virtual mobile */
+        #mobileControls {
+            display: none;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 200;
+        }
+        #joystick {
+            width: 100px;
+            height: 100px;
+            background: rgba(201,169,97,0.2);
+            border: 2px solid rgba(201,169,97,0.6);
+            border-radius: 50%;
+            position: relative;
+            touch-action: none;
+        }
+        #joystickKnob {
+            width: 40px;
+            height: 40px;
+            background: rgba(201,169,97,0.7);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        #lockBtn {
+            display: block;
+            margin-top: 10px;
+            width: 100px;
+            padding: 10px;
+            background: rgba(201,169,97,0.8);
+            color: #1a1410;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 13px;
+            text-align: center;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            #info .hints { display: none; }
+            #mobileControls { display: block; }
+            #controls { width: calc(100vw - 20px); right: 10px; }
+            #toggleControls { right: 10px; }
         }
     </style>
 </head>
 <body>
     <div id="info">
-        <button onclick="window.location.href='index.html'">🏠 Início</button>
-        <button onclick="window.location.href='rankings.html'">📊 Rankings</button>
-        <button onclick="window.location.href='eventos.html'">🎬 Eventos</button>
-        <button onclick="window.location.href='timelapse.html'">⏱️ Timelapse</button>
-        <h3 style="margin-top: 15px;">Game of Thrones - Rede 3D</h3>
-        <p>🖱️ Tab para ativar/desativar modo voo</p>
-        <p>🎮 WASD para mover</p>
-        <p>⚡ Shift para acelerar</p>
-        <p>👁️ Mouse para olhar</p>
-        <p>Personagens: <span id="nodeCount">0</span></p>
-        <p>Conexões: <span id="edgeCount">0</span></p>
+        <div class="nav-buttons">
+            <button onclick="window.location.href='index.html'">🏠 Início</button>
+            <button onclick="window.location.href='rankings.html'">📊 Rankings</button>
+            <button onclick="window.location.href='eventos.html'">🎬 Eventos</button>
+            <button onclick="window.location.href='timelapse.html'">⏱️ Timelapse</button>
+            <button onclick="window.location.href='caminhos.html'">🗺️ Caminhos</button>
+        </div>
+        <h3>Game of Thrones - Rede 3D</h3>
+        <div class="hints">
+            <p>🖱️ Tab para ativar/desativar modo voo</p>
+            <p>🎮 WASD para mover | ⚡ Shift acelerar</p>
+        </div>
+        <p>Personagens: <span id="nodeCount">0</span> | Conexões: <span id="edgeCount">0</span></p>
     </div>
     <div id="charInfo">
         <img id="charPhoto" src="" alt="" />
         <h3 id="charName"></h3>
         <p><strong>Comunidade:</strong> <span id="charCommunity"></span></p>
+        <p><strong>Família:</strong> <span id="charFamilia"></span></p>
         <p><strong>Influence Score:</strong> <span id="charInfluence"></span></p>
         <p><strong>PageRank:</strong> <span id="charPageRank"></span></p>
         <p><strong>Betweenness:</strong> <span id="charBetweenness"></span></p>
@@ -280,15 +345,23 @@
     <div id="pathVisual">
         <div class="path-container"></div>
     </div>
+    <div id="mobileControls">
+        <div id="joystick"><div id="joystickKnob"></div></div>
+        <button id="lockBtn" onclick="resetView()">🔄 Reset</button>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/PointerLockControls.js"></script>
     <script>
+        const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 600;
+
         let scene, camera, renderer, controls;
         let moveForward = false, moveBackward = false, moveLeft = false, moveRight = false, sprint = false;
         const velocity = new THREE.Vector3();
         const direction = new THREE.Vector3();
         let prevTime = performance.now();
+        // Rotação manual para mobile (sem PointerLock)
+        let mobileYaw = 0, mobilePitch = 0;
         
         let allNodes = [];
         let allEdges = [];
@@ -322,7 +395,8 @@
             camera.position.set(0, 0, 15000);
 
             // Renderer
-            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer = new THREE.WebGLRenderer({ antialias: !isMobile });
+            renderer.setPixelRatio(isMobile ? 1 : window.devicePixelRatio);
             renderer.setSize(window.innerWidth, window.innerHeight);
             document.body.appendChild(renderer.domElement);
 
@@ -358,10 +432,9 @@
                 case 'ShiftLeft': sprint = true; break;
                 case 'Tab': 
                     event.preventDefault();
-                    if (controls.isLocked) {
-                        controls.unlock();
-                    } else {
-                        controls.lock();
+                    if (!isMobile) {
+                        if (controls.isLocked) controls.unlock();
+                        else controls.lock();
                     }
                     break;
             }
@@ -378,18 +451,18 @@
         }
         
         function onMouseClick(event) {
-            if (controls.isLocked) return;
-            
-            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-            
+            if (controls.isLocked || isMobile) return;
+            doRaycast(event.clientX, event.clientY);
+        }
+
+        function doRaycast(clientX, clientY) {
+            mouse.x = (clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(clientY / window.innerHeight) * 2 + 1;
             raycaster.setFromCamera(mouse, camera);
             const sprites = allNodes.map(n => n.sphere);
             const intersects = raycaster.intersectObjects(sprites);
-            
             if (intersects.length > 0) {
-                const clickedSprite = intersects[0].object;
-                const charName = clickedSprite.userData.name;
+                const charName = intersects[0].object.userData.name;
                 document.getElementById('charList').value = charName;
                 selectCharacter();
             }
@@ -418,7 +491,7 @@
 
         async function loadData() {
             try {
-                const response = await fetch('graph_data.json');
+                const response = await fetch('graph_data.json?v=' + Date.now());
                 graphData = await response.json();
                 
                 document.getElementById('loading').style.display = 'none';
@@ -504,11 +577,13 @@
                 document.getElementById('charPhoto').src = imgPath;
                 document.getElementById('charName').textContent = selected;
                 document.getElementById('charCommunity').textContent = commName;
+                document.getElementById('charFamilia').textContent = nodeData.familia || 'N/A';
                 document.getElementById('charInfluence').textContent = `${nodeData.influence_score.toFixed(4)} (#${influenceRank})`;
                 document.getElementById('charPageRank').textContent = `${nodeData.pagerank.toFixed(4)} (#${pagerankRank})`;
                 document.getElementById('charBetweenness').textContent = `${nodeData.betweenness.toFixed(4)} (#${betweennessRank})`;
                 document.getElementById('charConnections').textContent = `${nodeData.connections} (peso: ${Math.round(nodeData.weighted_degree)} #${weightedRank})`;
                 document.getElementById('charInfo').style.display = 'block';
+                if (isMobile) document.getElementById('pathVisual').style.display = 'none';
             }
             
             updateVisibility();
@@ -597,6 +672,7 @@
         
         function highlightPath(path) {
             clearPath();
+            if (isMobile) document.getElementById('charInfo').style.display = 'none';
             
             // Armazenar personagens do caminho
             pathCharacters = new Set(path);
@@ -753,22 +829,27 @@
             });
         }
 
+        const TEX_SIZE = isMobile ? 128 : 512;
+        const FONT_SIZE = isMobile ? 20 : 80;
+        const FONT_OFFSET = isMobile ? 70 : 280;
+        const HALF = TEX_SIZE / 2;
+
         function drawCircularImage(ctx, img, color, name) {
-            ctx.clearRect(0, 0, 512, 512);
+            ctx.clearRect(0, 0, TEX_SIZE, TEX_SIZE);
             if (img) {
                 ctx.beginPath();
-                ctx.arc(256, 256, 256, 0, Math.PI * 2);
+                ctx.arc(HALF, HALF, HALF, 0, Math.PI * 2);
                 ctx.clip();
-                ctx.drawImage(img, 0, 0, 512, 512);
+                ctx.drawImage(img, 0, 0, TEX_SIZE, TEX_SIZE);
             } else {
                 ctx.fillStyle = `#${color.toString(16).padStart(6, '0')}`;
                 ctx.beginPath();
-                ctx.arc(256, 256, 256, 0, Math.PI * 2);
+                ctx.arc(HALF, HALF, HALF, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.fillStyle = 'white';
-                ctx.font = 'bold 80px Arial';
+                ctx.font = `bold ${FONT_SIZE}px Arial`;
                 ctx.textAlign = 'center';
-                ctx.fillText(name.substring(0, 2), 256, 280);
+                ctx.fillText(name.substring(0, 2), HALF, FONT_OFFSET);
             }
         }
         
@@ -791,8 +872,8 @@
                 
                 // Canvas com foto circular
                 const photoCanvas = document.createElement('canvas');
-                photoCanvas.width = 512;
-                photoCanvas.height = 512;
+                photoCanvas.width = TEX_SIZE;
+                photoCanvas.height = TEX_SIZE;
                 const photoCtx = photoCanvas.getContext('2d');
                 
                 // Verificar cache
@@ -823,13 +904,13 @@
                 
                 // Borda colorida (círculo)
                 const canvas = document.createElement('canvas');
-                canvas.width = 512;
-                canvas.height = 512;
+                canvas.width = TEX_SIZE;
+                canvas.height = TEX_SIZE;
                 const ctx = canvas.getContext('2d');
                 ctx.strokeStyle = `#${colors[node.community % colors.length].toString(16).padStart(6, '0')}`;
-                ctx.lineWidth = 20;
+                ctx.lineWidth = isMobile ? 5 : 20;
                 ctx.beginPath();
-                ctx.arc(256, 256, 236, 0, Math.PI * 2);
+                ctx.arc(HALF, HALF, HALF - (isMobile ? 3 : 16), 0, Math.PI * 2);
                 ctx.stroke();
                 
                 const ringTexture = new THREE.CanvasTexture(canvas);
@@ -845,27 +926,39 @@
                 scene.add(sprite);
                 scene.add(ring);
 
-                // Label
-                const labelCanvas = document.createElement('canvas');
-                const context = labelCanvas.getContext('2d');
-                labelCanvas.width = 256;
-                labelCanvas.height = 64;
-                context.fillStyle = 'white';
-                context.font = '20px Arial';
-                context.fillText(node.id, 10, 30);
-                
-                const labelTexture = new THREE.CanvasTexture(labelCanvas);
-                const labelMaterial = new THREE.SpriteMaterial({ map: labelTexture });
-                const labelSprite = new THREE.Sprite(labelMaterial);
-                labelSprite.position.set(node.x, node.y + node.size + 50, node.z);
-                labelSprite.scale.set(300, 75, 1);
-                scene.add(labelSprite);
+                let labelSprite;
+                if (!isMobile) {
+                    const labelCanvas = document.createElement('canvas');
+                    const context = labelCanvas.getContext('2d');
+                    labelCanvas.width = 256;
+                    labelCanvas.height = 64;
+                    context.fillStyle = 'white';
+                    context.font = '20px Arial';
+                    context.fillText(node.id, 10, 30);
+                    const labelTexture = new THREE.CanvasTexture(labelCanvas);
+                    const labelMaterial = new THREE.SpriteMaterial({ map: labelTexture });
+                    labelSprite = new THREE.Sprite(labelMaterial);
+                    labelSprite.position.set(node.x, node.y + node.size + 50, node.z);
+                    labelSprite.scale.set(300, 75, 1);
+                    scene.add(labelSprite);
+                } else {
+                    // Sprite vazio para não quebrar referências
+                    labelSprite = new THREE.Sprite(new THREE.SpriteMaterial());
+                    labelSprite.visible = false;
+                }
                 
                 allNodes.push({ sphere: sprite, label: labelSprite, ring, id: node.id });
             });
 
-            // Criar arestas (conexões)
-            data.edges.forEach(edge => {
+            // Criar arestas (conexões) — no mobile limita para reduzir uso de memória
+            const MAX_EDGES = isMobile ? 300 : Infinity;
+            let edgeCount = 0;
+            // Ordenar por peso para manter as mais relevantes
+            const sortedEdges = isMobile
+                ? [...data.edges].sort((a, b) => (b.weight || 0) - (a.weight || 0)).slice(0, MAX_EDGES)
+                : data.edges;
+
+            sortedEdges.forEach(edge => {
                 const sourceNode = data.nodes.find(n => n.id === edge.source);
                 const targetNode = data.nodes.find(n => n.id === edge.target);
                 
@@ -894,7 +987,37 @@
             const time = performance.now();
             const delta = (time - prevTime) / 1000;
 
-            if (controls.isLocked) {
+            if (isMobile) {
+                // Aplicar rotação manual no mobile
+                camera.rotation.order = 'YXZ';
+                camera.rotation.y = mobileYaw;
+                camera.rotation.x = mobilePitch;
+
+                if (moveForward || moveBackward || moveLeft || moveRight) {
+                    velocity.x -= velocity.x * 10.0 * delta;
+                    velocity.z -= velocity.z * 10.0 * delta;
+                    velocity.y -= velocity.y * 10.0 * delta;
+                    const speed = 4000.0 * delta;
+                    if (moveForward || moveBackward) {
+                        camera.getWorldDirection(direction);
+                        const s = moveForward ? 1 : -1;
+                        velocity.x += direction.x * speed * s;
+                        velocity.y += direction.y * speed * s;
+                        velocity.z += direction.z * speed * s;
+                    }
+                    if (moveLeft || moveRight) {
+                        camera.getWorldDirection(direction);
+                        const right = new THREE.Vector3();
+                        right.crossVectors(camera.up, direction).normalize();
+                        const s = moveRight ? 1 : -1;
+                        velocity.x -= right.x * speed * s;
+                        velocity.z -= right.z * speed * s;
+                    }
+                    camera.position.x += velocity.x * delta;
+                    camera.position.y += velocity.y * delta;
+                    camera.position.z += velocity.z * delta;
+                }
+            } else if (controls.isLocked) {
                 velocity.x -= velocity.x * 10.0 * delta;
                 velocity.z -= velocity.z * 10.0 * delta;
                 velocity.y -= velocity.y * 10.0 * delta;
@@ -936,10 +1059,112 @@
         }
 
         init();
+        setupMobileControls();
         
         window.addEventListener('load', () => {
             showTab('personagem');
         });
+
+        function resetView() {
+            camera.position.set(0, 0, 15000);
+            mobileYaw = 0;
+            mobilePitch = 0;
+            velocity.set(0, 0, 0);
+            clearSelection();
+        }
+
+        function setupMobileControls() {
+            const joystick = document.getElementById('joystick');
+            const knob = document.getElementById('joystickKnob');
+            if (!joystick) return;
+
+            let joyActive = false;
+            let joyOrigin = { x: 0, y: 0 };
+            const maxDist = 30;
+
+            joystick.addEventListener('touchstart', e => {
+                e.preventDefault();
+                joyActive = true;
+                const t = e.touches[0];
+                const rect = joystick.getBoundingClientRect();
+                joyOrigin = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+            }, { passive: false });
+
+            joystick.addEventListener('touchmove', e => {
+                e.preventDefault();
+                if (!joyActive) return;
+                const t = e.touches[0];
+                let dx = t.clientX - joyOrigin.x;
+                let dy = t.clientY - joyOrigin.y;
+                const dist = Math.min(Math.sqrt(dx*dx + dy*dy), maxDist);
+                const angle = Math.atan2(dy, dx);
+                dx = Math.cos(angle) * dist;
+                dy = Math.sin(angle) * dist;
+                knob.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
+                const nx = dx / maxDist;
+                const ny = dy / maxDist;
+                moveForward = ny < -0.3;
+                moveBackward = ny > 0.3;
+                moveLeft = nx < -0.3;
+                moveRight = nx > 0.3;
+            }, { passive: false });
+
+            const endJoy = () => {
+                joyActive = false;
+                knob.style.transform = 'translate(-50%, -50%)';
+                moveForward = moveBackward = moveLeft = moveRight = false;
+            };
+            joystick.addEventListener('touchend', endJoy);
+            joystick.addEventListener('touchcancel', endJoy);
+
+            // Pan com 1 dedo no canvas = rotacionar câmera
+            let panLast = null;
+            let lastPinchDist = 0;
+            renderer.domElement.addEventListener('touchstart', e => {
+                e.preventDefault();
+                if (e.touches.length === 1) panLast = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                if (e.touches.length === 2) {
+                    const dx = e.touches[0].clientX - e.touches[1].clientX;
+                    const dy = e.touches[0].clientY - e.touches[1].clientY;
+                    lastPinchDist = Math.sqrt(dx*dx + dy*dy);
+                    panLast = null;
+                }
+            }, { passive: false });
+            renderer.domElement.addEventListener('touchmove', e => {
+                e.preventDefault();
+                if (e.touches.length === 1 && panLast) {
+                    const dx = e.touches[0].clientX - panLast.x;
+                    const dy = e.touches[0].clientY - panLast.y;
+                    mobileYaw   += dx * 0.003;
+                    mobilePitch += dy * 0.003;
+                    mobilePitch = Math.max(-Math.PI/2, Math.min(Math.PI/2, mobilePitch));
+                    panLast = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                } else if (e.touches.length === 2) {
+                    const dx = e.touches[0].clientX - e.touches[1].clientX;
+                    const dy = e.touches[0].clientY - e.touches[1].clientY;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    const delta = lastPinchDist - dist;
+                    camera.getWorldDirection(direction);
+                    camera.position.addScaledVector(direction, delta * 20);
+                    lastPinchDist = dist;
+                    panLast = null;
+                }
+            }, { passive: false });
+            renderer.domElement.addEventListener('touchend', e => {
+                e.preventDefault();
+                // Tap curto no canvas = selecionar personagem
+                if (e.changedTouches.length === 1 && panLast) {
+                    const t = e.changedTouches[0];
+                    const dx = t.clientX - panLast.x;
+                    const dy = t.clientY - panLast.y;
+                    // Só considera tap se não houve movimento significativo
+                    if (Math.sqrt(dx*dx + dy*dy) < 10) {
+                        doRaycast(t.clientX, t.clientY);
+                    }
+                }
+                panLast = null;
+            }, { passive: false });
+        }
     </script>
 </body>
 </html>
