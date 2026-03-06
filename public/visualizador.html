@@ -490,7 +490,7 @@
 
         async function loadData() {
             try {
-                const response = await fetch('graph_data.json');
+                const response = await fetch('graph_data.json?v=' + Date.now());
                 graphData = await response.json();
                 
                 document.getElementById('loading').style.display = 'none';
@@ -576,7 +576,7 @@
                 document.getElementById('charPhoto').src = imgPath;
                 document.getElementById('charName').textContent = selected;
                 document.getElementById('charCommunity').textContent = commName;
-                document.getElementById('charFamilia').textContent = nodeData.familia || '—';
+                document.getElementById('charFamilia').textContent = nodeData.familia || 'N/A';
                 document.getElementById('charInfluence').textContent = `${nodeData.influence_score.toFixed(4)} (#${influenceRank})`;
                 document.getElementById('charPageRank').textContent = `${nodeData.pagerank.toFixed(4)} (#${pagerankRank})`;
                 document.getElementById('charBetweenness').textContent = `${nodeData.betweenness.toFixed(4)} (#${betweennessRank})`;
