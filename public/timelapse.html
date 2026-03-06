@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game of Thrones - Timelapse 3D</title>
     <style>
-        * { margin: 0; padding: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { overflow: hidden; font-family: Arial, sans-serif; }
         #info {
             position: absolute;
@@ -13,18 +13,19 @@
             left: 10px;
             color: #c9a961;
             background: transparent;
-            padding: 15px;
+            padding: 10px;
             border: none;
             z-index: 100;
+            max-width: calc(100vw - 20px);
         }
         #legend {
             position: absolute;
             top: 10px;
             right: 10px;
-            width: 250px;
+            width: min(250px, 40vw);
             color: #e8dcc4;
             background: rgba(20,15,10,0.9);
-            padding: 15px;
+            padding: 10px;
             border-radius: 5px;
             border: 2px solid #c9a961;
             z-index: 100;
@@ -32,17 +33,34 @@
             display: flex;
             flex-direction: column;
         }
+        #legend.collapsed #legendContent,
+        #legend.collapsed .filter-buttons { display: none; }
+        #legend.collapsed { max-height: none; }
+        #legendToggle {
+            background: none;
+            border: none;
+            color: #c9a961;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 0;
+            float: right;
+        }
+        .nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 5px;
+            margin-bottom: 8px;
+        }
         #info button {
-            margin-top: 5px;
-            margin-right: 5px;
-            padding: 8px 16px;
+            padding: 6px 8px;
             background: #c9a961;
             color: #1a1410;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
-            display: inline-block;
+            font-size: clamp(10px, 2.5vw, 13px);
+            white-space: nowrap;
         }
         #info button:hover { background: #d4b76a; }
         #legendContent {
@@ -65,18 +83,20 @@
             background: #d4b76a;
         }
         .filter-buttons {
-            display: flex;
-            gap: 5px;
-            margin-bottom: 10px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px;
+            margin-bottom: 8px;
         }
         .filter-btn {
-            padding: 5px 10px;
+            padding: 5px 4px;
             background: rgba(20,15,10,0.8);
             border: 1px solid #c9a961;
             color: #e8dcc4;
             cursor: pointer;
             border-radius: 3px;
-            font-size: 11px;
+            font-size: clamp(9px, 2.5vw, 11px);
+            text-align: center;
         }
         .filter-btn.active {
             background: #c9a961;
@@ -104,39 +124,41 @@
         }
         #controls {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            max-width: 450px;
             background: rgba(20,15,10,0.9);
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 10px;
             border: 2px solid #c9a961;
-            width: 450px;
             color: #e8dcc4;
             z-index: 100;
         }
         #episodeLabel {
             text-align: center;
-            font-size: 18px;
+            font-size: clamp(14px, 4vw, 18px);
             color: #c9a961;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         #slider {
             width: 100%;
             margin-bottom: 15px;
         }
         .buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
         }
         button {
-            padding: 10px 20px;
+            padding: 8px 10px;
             background: #c9a961;
             color: #1a1410;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
+            font-size: clamp(11px, 3vw, 14px);
         }
         button:hover { background: #d4b76a; }
         .back-btn {
@@ -146,18 +168,20 @@
 </head>
 <body>
     <div id="info">
-        <button onclick="window.location.href='index.html'">🏠 Início</button>
-        <button onclick="window.location.href='rankings.html'">📊 Rankings</button>
-        <button onclick="window.location.href='eventos.html'">🎬 Eventos</button>
-        <button onclick="window.location.href='visualizador.html'">🌐 Visualizador</button>
-        <h3 style="margin-top: 15px;">⏱️ Timelapse</h3>
+        <div class="nav">
+            <button onclick="window.location.href='index.html'">🏠 Início</button>
+            <button onclick="window.location.href='rankings.html'">📊 Rankings</button>
+            <button onclick="window.location.href='eventos.html'">🎬 Eventos</button>
+            <button onclick="window.location.href='visualizador.html'">🌐 Visualizador</button>
+        </div>
+        <h3 style="font-size: clamp(13px, 3.5vw, 16px); margin-bottom: 4px;">⏱️ Timelapse</h3>
         <p>Visíveis: <span id="visibleCount">0</span></p>
         <p>Total: <span id="totalCount">0</span></p>
         <p>Comunidade: <span id="topCommunity">-</span></p>
     </div>
     
     <div id="legend">
-        <h3>Personagens</h3>
+        <h3>Personagens <button id="legendToggle" onclick="toggleLegend()">▼</button></h3>
         <div class="filter-buttons">
             <button class="filter-btn active" onclick="toggleFilter('all')">Todos</button>
             <button class="filter-btn" onclick="toggleFilter('active')">Ativos</button>
@@ -461,6 +485,14 @@
             document.getElementById('legendContent').innerHTML = legendHtml;
         }
         
+        const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 600;
+        if (isMobile) document.getElementById('legend').classList.add('collapsed');
+        function toggleLegend() {
+            const leg = document.getElementById('legend');
+            const btn = document.getElementById('legendToggle');
+            leg.classList.toggle('collapsed');
+            btn.textContent = leg.classList.contains('collapsed') ? '▶' : '▼';
+        }
         function toggleFilter(filter) {
             legendFilter = filter;
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));

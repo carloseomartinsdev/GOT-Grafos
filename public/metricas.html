@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif; 
             background: #000000;
             color: white;
-            padding: 40px 20px;
+            padding: 20px 15px;
             line-height: 1.6;
             position: relative;
             overflow-x: hidden;
@@ -24,25 +24,45 @@
             z-index: -1;
         }
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+        .nav a {
+            padding: 8px 12px;
+            text-decoration: none;
+            border: 2px solid #c9a961;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        .nav a.active { background: #c9a961; color: #1a1410; }
+        .nav a:not(.active) { background: rgba(20,15,10,0.8); color: #c9a961; }
         h1 { 
             text-align: center; 
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             color: #c9a961;
+            font-size: clamp(20px, 5vw, 32px);
         }
         .metric {
             background: rgba(20,15,10,0.9);
-            padding: 25px;
-            margin-bottom: 25px;
+            padding: 20px 15px;
+            margin-bottom: 20px;
             border-radius: 8px;
             border-left: 4px solid #c9a961;
             color: #e8dcc4;
         }
         h2 {
             color: #c9a961;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            font-size: clamp(15px, 4vw, 20px);
         }
         .formula {
             background: rgba(0,0,0,0.5);
@@ -80,12 +100,12 @@
 <body>
     <canvas id="stars"></canvas>
     <div class="container">
-        <div style="display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: nowrap; align-items: center;">
-            <a href="index.html" style="padding: 8px 16px; background: #c9a961; color: #1a1410; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">🏠 Início</a>
-            <a href="visualizador.html" style="padding: 8px 16px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">🌐 Visualizador</a>
-            <a href="rankings.html" style="padding: 8px 16px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">📊 Rankings</a>
-            <a href="eventos.html" style="padding: 8px 16px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">🎬 Eventos</a>
-            <a href="timelapse.html" style="padding: 8px 16px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; border-radius: 5px; font-weight: bold; white-space: nowrap;">⏱️ Timelapse</a>
+        <div class="nav">
+            <a href="index.html" class="active">🏠 Início</a>
+            <a href="visualizador.html">🌐 Visualizador</a>
+            <a href="rankings.html">📊 Rankings</a>
+            <a href="eventos.html">🎬 Eventos</a>
+            <a href="timelapse.html">⏱️ Timelapse</a>
         </div>
         
         <div class="metric">

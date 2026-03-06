@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif; 
             background: #000000;
             color: white;
-            padding: 20px;
+            padding: 0;
             position: relative;
             overflow-x: hidden;
         }
@@ -25,28 +25,31 @@
         .container {
             position: relative;
             z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
         }
         h1 { 
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #c9a961;
-            font-size: 32px;
+            font-size: clamp(18px, 5vw, 32px);
         }
         .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 8px;
+            margin-bottom: 20px;
         }
         button {
-            padding: 12px 24px;
+            padding: 10px 8px;
             background: rgba(20,15,10,0.8);
             color: #e8dcc4;
             border: 2px solid #c9a961;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
+            width: 100%;
         }
         button:hover { 
             background: rgba(30,25,20,0.9);
@@ -58,20 +61,29 @@
             color: #1a1410;
             font-weight: bold;
         }
+        .table-wrap {
+            width: 100%;
+            overflow: hidden;
+        }
         table {
             width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
             border-collapse: collapse;
             background: rgba(20,15,10,0.9);
             border: 2px solid #c9a961;
+            table-layout: fixed;
         }
         th, td {
-            padding: 12px;
+            padding: 10px 8px;
             text-align: left;
             border-bottom: 1px solid #c9a961;
             color: #e8dcc4;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
+        th:nth-child(1), td:nth-child(1) { width: 40px; }
+        th:nth-child(3), td:nth-child(3) { width: 90px; }
+        th:nth-child(4), td:nth-child(4) { width: 110px; }
         th {
             background: rgba(30,25,20,0.95);
             position: sticky;
@@ -92,12 +104,29 @@
         .value { color: #d4b76a; }
         .top3 { background: rgba(201,169,97,0.2); }
         img {
-            width: 40px;
-            height: 40px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             object-fit: cover;
             vertical-align: middle;
-            margin-right: 10px;
+            margin-right: 6px;
+            flex-shrink: 0;
+        }
+        .nav-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .nav-links a {
+            display: block;
+            padding: 10px 8px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px solid #c9a961;
+            font-weight: bold;
+            font-size: 13px;
         }
     </style>
 </head>
@@ -106,12 +135,12 @@
     <div class="container">
     <h1>Game of Thrones - Rankings de Personagens</h1>
     
-    <div style="text-align: center; margin-bottom: 20px;">
-        <a href="index.html" style="display: inline-block; padding: 10px 20px; background: #c9a961; color: #1a1410; text-decoration: none; border-radius: 5px; margin-right: 10px; font-weight: bold; border: 2px solid #c9a961;">🏠 Início</a>
-        <a href="visualizador.html" style="display: inline-block; padding: 10px 20px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border-radius: 5px; margin-right: 10px; border: 2px solid #c9a961; font-weight: bold;">🌐 Visualizador</a>
-        <a href="eventos.html" style="display: inline-block; padding: 10px 20px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border-radius: 5px; margin-right: 10px; border: 2px solid #c9a961; font-weight: bold;">🎬 Eventos</a>
-        <a href="timelapse.html" style="display: inline-block; padding: 10px 20px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border-radius: 5px; margin-right: 10px; border: 2px solid #c9a961; font-weight: bold;">⏱️ Timelapse</a>
-        <a href="metricas.html" style="display: inline-block; padding: 10px 20px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border-radius: 5px; border: 2px solid #c9a961; font-weight: bold;">📚 Métricas</a>
+    <div class="nav-links">
+        <a href="index.html" style="background:#c9a961;color:#1a1410;">🏠 Início</a>
+        <a href="visualizador.html" style="background:rgba(20,15,10,0.8);color:#c9a961;">🌐 Visualizador</a>
+        <a href="eventos.html" style="background:rgba(20,15,10,0.8);color:#c9a961;">🎬 Eventos</a>
+        <a href="timelapse.html" style="background:rgba(20,15,10,0.8);color:#c9a961;">⏱️ Timelapse</a>
+        <a href="metricas.html" style="background:rgba(20,15,10,0.8);color:#c9a961;">📚 Métricas</a>
     </div>
     
     <div class="buttons">
@@ -122,6 +151,7 @@
         <button onclick="sortBy('connections')" id="btn-connections">Conexões</button>
     </div>
     
+    <div class="table-wrap">
     <table>
         <thead>
             <tr>
@@ -135,6 +165,7 @@
             <tr><td colspan="4" style="text-align: center;">Carregando...</td></tr>
         </tbody>
     </table>
+    </div>
     </div>
 
     <script>
