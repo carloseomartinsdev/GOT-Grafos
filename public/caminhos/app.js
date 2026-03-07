@@ -89,8 +89,9 @@ function openModal(path) {
 
 function pairThumbHTML(name) {
     const src = getCharacterImage(name);
+    const defaultSrc = getResourcePath('imagens/got-logo.png');
     const ini = name.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
-    return `<img src="${src}" alt="${name}" onerror="this.outerHTML='<div class=\'pair-thumb\'>${ini}</div>'" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #c9a961;flex-shrink:0">`;
+    return `<img src="${src}" alt="${name}" onerror="this.src='${defaultSrc}'" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #c9a961;flex-shrink:0">`;
 }
 
 function closeModal() {
@@ -191,22 +192,7 @@ function charThumb(name, size = 32) {
     img.style.objectFit = 'cover';
     img.style.border = '2px solid #c9a961';
     img.onerror = function() {
-        const div = document.createElement('div');
-        div.className = 'node-thumb';
-        div.style.width = size + 'px';
-        div.style.height = size + 'px';
-        div.style.borderRadius = '50%';
-        div.style.background = '#c9a961';
-        div.style.color = '#1a1410';
-        div.style.display = 'flex';
-        div.style.alignItems = 'center';
-        div.style.justifyContent = 'center';
-        div.style.fontSize = (size * 0.28) + 'px';
-        div.style.fontWeight = '700';
-        div.style.border = '2px solid #c9a961';
-        div.style.flexShrink = '0';
-        div.textContent = initials(name);
-        this.replaceWith(div);
+        this.src = getResourcePath('imagens/got-logo.png');
     };
     return img;
 }

@@ -15,6 +15,11 @@ function getCharacterImage(characterName) {
     return getResourcePath(`imagens/personagens/${imageName}.JPG`);
 }
 
+// Retorna o caminho para imagem padrão
+function getDefaultImage() {
+    return getResourcePath('imagens/got-logo.png');
+}
+
 // Carrega arquivo JSON
 async function loadJSON(filename) {
     const path = getResourcePath(`jsons/${filename}.json`);

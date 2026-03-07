@@ -61,7 +61,7 @@ function sortBy(metric) {
             <tr class="${rowClass}">
                 <td class="rank">${index + 1}</td>
                 <td class="name">
-                    <img src="${imgPath}" onerror="this.style.display='none'" />
+                    <img src="${imgPath}" onerror="this.src='${getResourcePath('imagens/got-logo.png')}'" />
                     ${node.id}
                 </td>
                 <td class="value">${value}</td>

@@ -89,16 +89,18 @@ function createGraph(data) {
             sprite.material.needsUpdate = true;
         };
         img.onerror = () => {
-            photoCtx.fillStyle = `#${colors[node.community % colors.length].toString(16).padStart(6, '0')}`;
-            photoCtx.beginPath();
-            photoCtx.arc(256, 256, 256, 0, Math.PI * 2);
-            photoCtx.fill();
-            photoCtx.fillStyle = 'white';
-            photoCtx.font = 'bold 80px Arial';
-            photoCtx.textAlign = 'center';
-            photoCtx.fillText(node.id.substring(0, 2), 256, 280);
-            sprite.material.map = new THREE.CanvasTexture(photoCanvas);
-            sprite.material.needsUpdate = true;
+            const defaultImg = new Image();
+            defaultImg.crossOrigin = 'anonymous';
+            defaultImg.onload = () => {
+                photoCtx.clearRect(0, 0, 512, 512);
+                photoCtx.beginPath();
+                photoCtx.arc(256, 256, 256, 0, Math.PI * 2);
+                photoCtx.clip();
+                photoCtx.drawImage(defaultImg, 0, 0, 512, 512);
+                sprite.material.map = new THREE.CanvasTexture(photoCanvas);
+                sprite.material.needsUpdate = true;
+            };
+            defaultImg.src = getResourcePath('imagens/got-logo.png');
         };
         img.src = imgPath;
         

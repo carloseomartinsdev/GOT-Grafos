@@ -219,6 +219,7 @@ const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || w
                 const imgPath = getCharacterImage(selected);
                 
                 document.getElementById('charPhoto').src = imgPath;
+                document.getElementById('charPhoto').onerror = function() { this.src = getResourcePath('imagens/got-logo.png'); };
                 document.getElementById('charName').textContent = selected;
                 document.getElementById('charCommunity').textContent = commName;
                 document.getElementById('charFamilia').textContent = nodeData.familia || 'N/A';
@@ -353,8 +354,9 @@ const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || w
                 charItem.className = 'char-item';
                 
                 const img = document.createElement('img');
-                img.src = `../resources/imagens/personagens/${char.replace(/ /g, '_').replace(/\//g, '_')}.jpg`;
+                img.src = getCharacterImage(char);
                 img.title = char;
+                img.onerror = function() { this.src = getResourcePath('imagens/got-logo.png'); };
                 
                 const name = document.createElement('div');
                 name.className = 'char-name';
@@ -536,9 +538,19 @@ const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || w
                         sprite.material.needsUpdate = true;
                     };
                     img.onerror = () => {
-                        drawCircularImage(photoCtx, null, colors[node.community % colors.length], node.id);
-                        sprite.material.map = new THREE.CanvasTexture(photoCanvas);
-                        sprite.material.needsUpdate = true;
+                        const defaultImg = new Image();
+                        defaultImg.crossOrigin = 'anonymous';
+                        defaultImg.onload = () => {
+                            drawCircularImage(photoCtx, defaultImg, colors[node.community % colors.length], node.id);
+                            sprite.material.map = new THREE.CanvasTexture(photoCanvas);
+                            sprite.material.needsUpdate = true;
+                        };
+                        defaultImg.onerror = () => {
+                            drawCircularImage(photoCtx, null, colors[node.community % colors.length], node.id);
+                            sprite.material.map = new THREE.CanvasTexture(photoCanvas);
+                            sprite.material.needsUpdate = true;
+                        };
+                        defaultImg.src = getResourcePath('imagens/got-logo.png');
                     };
                     img.src = imgPath;
                 }
