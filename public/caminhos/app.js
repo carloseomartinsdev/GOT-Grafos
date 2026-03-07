@@ -4,15 +4,15 @@ let interactionsIndex = null;
 
 async function loadInteractions() {
     try {
-        const res = await fetch(loadJSON('interactions_index'));
-        interactionsIndex = await res.json();
+        interactionsIndex = await loadJSON('interactions_index');
     } catch(e) { interactionsIndex = {}; }
 }
 
 function getInteractions(a, b) {
     if (!interactionsIndex) return [];
-    const key = [a, b].sort().join('|||');
-    return interactionsIndex[key] || [];
+    const key1 = `${a}|||${b}`;
+    const key2 = `${b}|||${a}`;
+    return interactionsIndex[key1] || interactionsIndex[key2] || [];
 }
 
 function openModal(path) {
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function loadData() {
-    loadInteractions();
+    await loadInteractions();
     graphData = await loadJSON('graph_data');
 
     // Montar adjacência
