@@ -28,6 +28,19 @@ def extrair_personagens_falas(genius_path):
     
     return contador_falas
 
+# Nomes genéricos a serem removidos do dataset final
+NOMES_GENERICOS = [
+    "ALL", "MAN", "MEN", "WOMAN", "WOMEN", "SOLDIER", "CAPTAIN", "QUICK", "STRONG",
+    "GUARD", "CROWD", "BOY", "GIRL", "CHILD", "EVERYONE", "EVERYBODY", "TOGETHER",
+    "ALL THREE", "ALL TOGETHER", "THE GROUP", "THE OTHERS AT THE TABLE",
+    "BOTH", "SAME", "BROTHERS", "SLAVES", "ARCHERS", "HUNTERS", "BYSTANDERS",
+    "PRISONER", "RIDER", "MASTER", "SERVANT", "OFFICER", "RANGER", "MESSENGER",
+    "PRIEST", "SEPTON", "MERCHANT", "INNKEEPER", "DRIVER", "ANNOUNCER",
+    "PROSTITUTE", "WHORE", "BROTHER", "FATHER", "DAUGHTER", "LEADER",
+    "KNIGHT", "SQUIRE", "BLACKSMITH", "TAILOR", "WAITRESS", "MUSICIAN",
+    "INT", "EXT", "CUT TO",
+]
+
 def main():
     genius_path = 'genius'
     
@@ -59,6 +72,19 @@ def main():
     # Cria pasta datasets se não existir
     os.makedirs('datasets', exist_ok=True)
     
+    # Remove nomes genéricos (match exato ou contém palavra genérica)
+    nomes_genericos_upper = {n.upper() for n in NOMES_GENERICOS}
+    def eh_generico(nome):
+        upper = nome.upper()
+        if upper in nomes_genericos_upper:
+            return True
+        palavras = set(upper.split())
+        return bool(palavras & nomes_genericos_upper)
+    contador_oficial = Counter({
+        p: q for p, q in contador_oficial.items()
+        if not eh_generico(p)
+    })
+
     # Salva dataset
     with open('datasets/dataset_personagens.csv', 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)

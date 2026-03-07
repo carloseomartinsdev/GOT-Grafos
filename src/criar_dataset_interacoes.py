@@ -8,21 +8,7 @@ def extrair_personagem(linha):
         return None
     
     personagem = match.group(1).strip().upper()
-    
-    # Lista de termos que não são personagens
-    bloqueados = [
-        'CUT TO', 'INT', 'EXT', 'FADE', 'CREDITS', 'MAIN CREDITS',
-        'TITLE SEQUENCE', 'BLACKOUT', 'FADE OUT', 'FADE IN',
-        'OPENING CREDITS', 'END CREDITS', 'SCENE', 'ACT'
-    ]
-    
-    if personagem in bloqueados:
-        return None
-    
-    # Bloqueia padrões genéricos
-    if re.match(r'^(GUARD|SOLDIER|MAN|WOMAN|BOY|GIRL|CHILD)\s*\d*$', personagem):
-        return None
-    
+        
     return personagem
 
 def extrair_cena_personagens(texto):
