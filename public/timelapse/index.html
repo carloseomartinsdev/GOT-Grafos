@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Thrones - Timelapse 3D</title>
+    <link rel="stylesheet" href="../assets/geral.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div id="info">
+        <div id="nav-menu"></div>
+        <h3 style="font-size: clamp(13px, 3.5vw, 16px); margin-bottom: 4px;">⏱️ Timelapse</h3>
+        <p>Visíveis: <span id="visibleCount">0</span></p>
+        <p>Total: <span id="totalCount">0</span></p>
+        <p>Comunidade: <span id="topCommunity">-</span></p>
+    </div>
+    
+    <div id="legend">
+        <h3>Personagens <button id="legendToggle" onclick="toggleLegend()">▼</button></h3>
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="toggleFilter('all')">Todos</button>
+            <button class="filter-btn" onclick="toggleFilter('active')">Ativos</button>
+            <button class="filter-btn" onclick="toggleFilter('left')">Saíram</button>
+            <button class="filter-btn" onclick="toggleFilter('notyet')">Não apareceram</button>
+        </div>
+        <div id="legendContent"></div>
+    </div>
+    
+    <div id="controls">
+        <div id="episodeLabel">S1E1</div>
+        <input type="range" id="slider" min="0" max="72" value="0" step="1">
+        <div class="buttons">
+            <button onclick="prevEpisode()">◀ Anterior</button>
+            <button onclick="togglePlay()" id="playBtn">▶ Play</button>
+            <button onclick="nextEpisode()">Próximo ▶</button>
+        </div>
+    </div>
+
+    <script src="../assets/geral.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

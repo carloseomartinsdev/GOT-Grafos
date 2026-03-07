@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação — A Rede de Poder de Westeros</title>
+    <link rel="stylesheet" href="../assets/geral.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+<canvas id="stars"></canvas>
+
+<nav class="nav">
+    <a href="../">🏠 Início</a>
+    <a href="../visualizador/">🌐 Visualizador</a>
+    <a href="../rankings/">📊 Rankings</a>
+    <a href="../eventos/">🎬 Eventos</a>
+    <a href="../timelapse/">⏱️ Timelapse</a>
+    <a href="../metricas/">📚 Métricas</a>
+    <a href="../caminhos/">🗺️ Caminhos</a>
+    <a href="../apresentacao/" class="active">🎤 Apresentação</a>
+</nav>
+
+<div class="hero">
+    <img src="got-logo.png" alt="Game of Thrones">
+    <h1>A Rede de Poder de Westeros</h1>
+    <p class="sub">Mineração em Grafos — MBA em Ciência de Dados</p>
+    <p class="meta">Prof. Túlio Ribeiro &nbsp;|&nbsp; Prazo: 06/03/2025</p>
+</div>
+
+<div class="container">
+
+    <!-- SLIDE DECK -->
+    <div class="section">
+        <h2>🎤 Apresentação dos Resultados</h2>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width:14.28%"></div>
+        </div>
+
+        <div class="slides">
+
+            <!-- SLIDE 1: O DESAFIO -->
+            <div class="slide active" id="slide-1">
+                <div class="slide-header">
+                    <div class="slide-num">1</div>
+                    <div class="slide-title">O Desafio</div>
+                </div>
+                <div class="quote">"Matematicamente, quem é o personagem mais importante da saga e como os grupos de poder se organizam?"</div>
+                <p>Recebemos os scripts completos das <strong>8 temporadas</strong> de Game of Thrones — texto bruto, sem estrutura. O objetivo foi transformar esses diálogos em uma <strong>rede de interações</strong> e aplicar algoritmos de grafos para responder à pergunta de negócio.</p>
+                <ul>
+                    <li>Dado de entrada: scripts em texto puro (.txt)</li>
+                    <li>Desafio de engenharia: extrair entidades, padronizar nomes, definir arestas</li>
+                    <li>Saída: grafo ponderado com métricas de centralidade e comunidades</li>
+                </ul>
+            </div>
+
+            <!-- SLIDE 2: ENGENHARIA DE DADOS -->
+            <div class="slide" id="slide-2">
+                <div class="slide-header">
+                    <div class="slide-num">2</div>
+                    <div class="slide-title">Tratamento dos Dados</div>
+                </div>
+                <p>O maior desafio foi a <strong>limpeza e padronização</strong> dos nomes. Um mesmo personagem aparece de dezenas de formas diferentes nos scripts.</p>
+                <ul>
+                    <li><strong>Regex + NLP:</strong> extração de falas e identificação de personagens</li>
+                    <li><strong>IA (DeepSeek):</strong> mapeamento automático de variações — "Jon", "Lord Snow", "Jon Snow" → mesmo nó</li>
+                    <li><strong>Dicionário de personagens:</strong> 375 personagens únicos após deduplicação</li>
+                    <li><strong>Definição de aresta:</strong> dois personagens compartilham uma aresta se interagem na mesma cena; o peso é o número de interações</li>
+                </ul>
+                <div class="stats">
+                    <div class="stat"><div class="stat-num">375</div><div class="stat-lbl">Personagens únicos</div></div>
+                    <div class="stat"><div class="stat-num">500k+</div><div class="stat-lbl">Interações extraídas</div></div>
+                    <div class="stat"><div class="stat-num">73</div><div class="stat-lbl">Episódios processados</div></div>
+                    <div class="stat"><div class="stat-num">8</div><div class="stat-lbl">Temporadas</div></div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: O GRAFO -->
+            <div class="slide" id="slide-3">
+                <div class="slide-header">
+                    <div class="slide-num">3</div>
+                    <div class="slide-title">Construção do Grafo</div>
+                </div>
+                <p>O grafo foi construído com <strong>NetworkX</strong> como um grafo não-direcionado ponderado:</p>
+                <ul>
+                    <li><strong>Vértice:</strong> cada personagem único (após padronização)</li>
+                    <li><strong>Aresta:</strong> co-ocorrência em cena ou diálogo direto</li>
+                    <li><strong>Peso:</strong> número total de interações entre o par</li>
+                    <li><strong>Filtro:</strong> arestas com peso &lt; 3 removidas para visualização limpa</li>
+                </ul>
+                <p>A visualização 3D interativa usa <strong>Three.js</strong> com fotos reais dos personagens como nós, tamanho proporcional ao Influence Score e cores por comunidade.</p>
+                <div style="text-align:center; margin-top:20px;">
+                    <a href="../visualizador/" class="link-btn" style="display:inline-block; padding: 14px 32px;">🌐 Abrir Visualizador 3D</a>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: MÉTRICAS -->
+            <div class="slide" id="slide-4">
+                <div class="slide-header">
+                    <div class="slide-num">4</div>
+                    <div class="slide-title">Métricas de Centralidade</div>
+                </div>
+                <p>Aplicamos cinco métricas para responder à pergunta de negócio de ângulos diferentes:</p>
+                <table class="ranking-table">
+                    <thead>
+                        <tr><th>Métrica</th><th>O que revela</th><th>#1</th></tr>
+                    </thead>
+                    <tbody id="metricsPreview">
+                        <tr><td><strong>Influence Score</strong></td><td>Influência real (qualidade + quantidade)</td><td id="m-influence">—</td></tr>
+                        <tr><td><strong>PageRank</strong></td><td>Importância pela rede (quem te conhece)</td><td id="m-pagerank">—</td></tr>
+                        <tr><td><strong>Betweenness</strong></td><td>Ponte entre comunidades</td><td id="m-betweenness">—</td></tr>
+                        <tr><td><strong>Weighted Degree</strong></td><td>Volume total de interações</td><td id="m-weighted">—</td></tr>
+                        <tr><td><strong>Connections</strong></td><td>Diversidade social</td><td id="m-connections">—</td></tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:14px; font-size:0.9em; color:#888;">Carregando dados do grafo...</p>
+            </div>
+
+            <!-- SLIDE 5: COMUNIDADES -->
+            <div class="slide" id="slide-5">
+                <div class="slide-header">
+                    <div class="slide-num">5</div>
+                    <div class="slide-title">Detecção de Comunidades</div>
+                </div>
+                <p>Usamos o algoritmo <strong>Greedy Modularity (Clauset-Newman-Moore)</strong> para detectar comunidades emergentes — grupos que interagem mais entre si do que com o resto da rede.</p>
+                <ul>
+                    <li><strong>Comunidade ≠ Família:</strong> o algoritmo ignora lealdade, agrupa por volume de interações</li>
+                    <li>Tyrion Lannister aparece na comunidade Stark/Norte por ter mais interações com Jon, Sansa e Daenerys nas temporadas finais</li>
+                    <li>8 comunidades detectadas, com cores distintas no visualizador</li>
+                </ul>
+                <div class="stats" style="margin-top:20px;">
+                    <div class="stat"><div class="stat-num">8</div><div class="stat-lbl">Comunidades</div></div>
+                    <div class="stat"><div class="stat-num" id="comm-modularity">—</div><div class="stat-lbl">Modularidade</div></div>
+                </div>
+                <p style="margin-top:14px;">As comunidades revelam as <strong>facções reais de poder</strong> da série, baseadas em dados — não em percepção do espectador.</p>
+            </div>
+
+            <!-- SLIDE 6: CONCLUSÃO -->
+            <div class="slide" id="slide-6">
+                <div class="slide-header">
+                    <div class="slide-num">6</div>
+                    <div class="slide-title">Conclusão — Quem é o mais importante?</div>
+                </div>
+                <div class="highlight-box">
+                    <div class="big" id="conclusion-char">Tyrion Lannister</div>
+                    <div class="desc">O personagem matematicamente mais importante de Game of Thrones</div>
+                </div>
+                <p><strong>Por quê?</strong> Tyrion lidera em <strong>Influence Score</strong> e <strong>Weighted Degree</strong>, possui alto <strong>PageRank</strong> e transita entre as principais comunidades da série — Lannister, Stark e Targaryen. Ele não é apenas popular: ele conecta os núcleos de poder.</p>
+                <ul>
+                    <li>Maior volume de falas da série (1644 falas)</li>
+                    <li>Interage com personagens de todas as grandes casas</li>
+                    <li>Alta betweenness: ponte entre facções inimigas</li>
+                    <li>Sobrevive às 8 temporadas mantendo relevância crescente</li>
+                </ul>
+                <div class="quote">"A mind needs books like a sword needs a whetstone." — Tyrion Lannister</div>
+            </div>
+
+            <!-- SLIDE 7: EQUIPE -->
+            <div class="slide" id="slide-7">
+                <div class="slide-header">
+                    <div class="slide-num">7</div>
+                    <div class="slide-title">Equipe & Entregáveis</div>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-avatar">CE</div>
+                        <div class="team-name">Carlos E O Martins</div>
+                        <div class="team-role">Engenharia de Dados & Visualização</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">ME</div>
+                        <div class="team-name">Maria Eduardo R Nobre</div>
+                        <div class="team-role">Análise de Grafos</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">AC</div>
+                        <div class="team-name">Ana Caroline V Amorim</div>
+                        <div class="team-role">Métricas & Comunidades</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">JC</div>
+                        <div class="team-name">Julio C Ferreira</div>
+                        <div class="team-role">Análise Temporal</div>
+                    </div>
+                </div>
+                <div class="link-grid" style="margin-top:24px;">
+                    <a href="https://github.com/carloseomartinsdev/GOT-Grafos" target="_blank" class="link-btn">
+                        <span class="icon">💻</span>Repositório GitHub
+                    </a>
+                    <a href="../visualizador/" class="link-btn">
+                        <span class="icon">🌐</span>Visualizador 3D
+                    </a>
+                    <a href="../rankings/" class="link-btn">
+                        <span class="icon">📊</span>Rankings Completos
+                    </a>
+                    <a href="../metricas/" class="link-btn">
+                        <span class="icon">📚</span>Métricas Explicadas
+                    </a>
+                </div>
+            </div>
+
+        </div><!-- /slides -->
+
+        <div class="slide-nav">
+            <button id="btnPrev" onclick="changeSlide(-1)" disabled>← Anterior</button>
+            <span class="slide-counter" id="slideCounter">1 / 7</span>
+            <button id="btnNext" onclick="changeSlide(1)">Próximo →</button>
+        </div>
+    </div>
+
+    <!-- EXPLORAR -->
+    <div class="section">
+        <h2>🔍 Explorar o Projeto</h2>
+        <div class="link-grid">
+            <a href="../visualizador/" class="link-btn"><span class="icon">🌐</span>Visualizador 3D</a>
+            <a href="../rankings/" class="link-btn"><span class="icon">📊</span>Rankings</a>
+            <a href="../eventos/" class="link-btn"><span class="icon">🎬</span>Eventos</a>
+            <a href="../timelapse/" class="link-btn"><span class="icon">⏱️</span>Timelapse</a>
+            <a href="../metricas/" class="link-btn"><span class="icon">📚</span>Métricas</a>
+            <a href="../caminhos/" class="link-btn"><span class="icon">🗺️</span>Caminhos</a>
+        </div>
+    </div>
+
+</div><!-- /container -->
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Thrones - Rankings</title>
+    <link rel="stylesheet" href="../assets/geral.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <canvas id="stars"></canvas>
+    <div class="container">
+    <h1>Game of Thrones - Rankings de Personagens</h1>
+    
+    <div id="nav-menu"></div>
+    
+    <div class="buttons">
+        <button onclick="sortBy('influence_score')" class="active" id="btn-influence">Influence Score</button>
+        <button onclick="sortBy('pagerank')" id="btn-pagerank">PageRank</button>
+        <button onclick="sortBy('betweenness')" id="btn-betweenness">Betweenness</button>
+        <button onclick="sortBy('weighted_degree')" id="btn-weighted">Weighted Degree</button>
+        <button onclick="sortBy('connections')" id="btn-connections">Conexões</button>
+    </div>
+    
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th class="rank">#</th>
+                <th>Personagem</th>
+                <th>Valor</th>
+                <th>Comunidade</th>
+            </tr>
+        </thead>
+        <tbody id="rankingTable">
+            <tr><td colspan="4" style="text-align: center;">Carregando...</td></tr>
+        </tbody>
+    </table>
+    </div>
+    </div>
+
+    <script src="../assets/geral.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

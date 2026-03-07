@@ -5,248 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game of Thrones - Análise de Redes</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="manifest" href="site.webmanifest">
+    <link rel="manifest" href="resources/site.webmanifest">
     <meta name="theme-color" content="#c9a961">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://got.momsys.com.br">
     <meta property="og:title" content="Game of Thrones - Análise de Redes">
     <meta property="og:description" content="Análise de redes de personagens de Game of Thrones com visualização 3D, rankings e métricas.">
-    <meta property="og:image" content="https://got.momsys.com.br/got-logo-512.png">
+    <meta property="og:image" content="https://got.momsys.com.br/resources/imagens/got-logo-512.png">
     <meta property="og:image:width" content="512">
     <meta property="og:image:height" content="512">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Crimson Text', serif;
-            background: #0a0a0a url('hero-bg.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #e8dcc4;
-            min-height: 100vh;
-            position: relative;
-        }
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(20,15,10,0.95) 100%);
-            z-index: -1;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-            padding: 60px 0;
-            border-bottom: 3px solid #c9a961;
-            position: relative;
-        }
-        .logo {
-            width: 400px;
-            max-width: 90%;
-            margin-bottom: 20px;
-        }
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 4em;
-            margin-bottom: 10px;
-            color: #c9a961;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
-            letter-spacing: 3px;
-        }
-        .subtitle {
-            font-size: 1.5em;
-            color: #b8a88a;
-            font-style: italic;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
-        .section {
-            background: rgba(20,15,10,0.85);
-            padding: 40px;
-            margin-bottom: 30px;
-            border-radius: 0;
-            border: 2px solid #c9a961;
-            box-shadow: 0 0 20px rgba(201,169,97,0.3);
-        }
-        h2 {
-            font-family: 'Cinzel', serif;
-            color: #c9a961;
-            margin-bottom: 25px;
-            font-size: 2.2em;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 2px solid #c9a961;
-            padding-bottom: 10px;
-        }
-        p {
-            line-height: 1.9;
-            margin-bottom: 18px;
-            font-size: 1.15em;
-            text-align: justify;
-        }
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-        .stat-card {
-            background: rgba(201,169,97,0.15);
-            padding: 30px;
-            border: 2px solid #c9a961;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(201,169,97,0.3), transparent);
-            transition: 0.5s;
-        }
-        .stat-card:hover::before {
-            left: 100%;
-        }
-        .stat-number {
-            font-family: 'Cinzel', serif;
-            font-size: 3em;
-            color: #c9a961;
-            font-weight: bold;
-        }
-        .stat-label {
-            color: #b8a88a;
-            margin-top: 10px;
-            font-size: 1.1em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-        .feature-card {
-            background: rgba(20,15,10,0.9);
-            padding: 30px;
-            border: 2px solid #c9a961;
-            transition: all 0.3s;
-            position: relative;
-        }
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(201,169,97,0.4);
-            border-color: #d4b76a;
-        }
-        .feature-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-            filter: sepia(1) hue-rotate(20deg);
-        }
-        .feature-title {
-            font-family: 'Cinzel', serif;
-            color: #c9a961;
-            font-size: 1.4em;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 50px;
-            flex-wrap: wrap;
-        }
-        .btn {
-            padding: 18px 45px;
-            background: linear-gradient(135deg, #c9a961 0%, #a88a4d 100%);
-            color: #1a1410;
-            text-decoration: none;
-            font-family: 'Cinzel', serif;
-            font-size: 1.1em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s;
-            display: inline-block;
-            border: 2px solid #c9a961;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(201,169,97,0.6);
-        }
-        .btn-secondary {
-            background: linear-gradient(135deg, #3a3025 0%, #2a2015 100%);
-            color: #c9a961;
-        }
-        ul {
-            margin-left: 30px;
-            line-height: 2.2;
-        }
-        li {
-            margin-bottom: 12px;
-            font-size: 1.1em;
-        }
-        strong {
-            color: #c9a961;
-            font-weight: 600;
-        }
-        .quote {
-            font-style: italic;
-            font-size: 1.3em;
-            text-align: center;
-            color: #c9a961;
-            margin: 30px 0;
-            padding: 20px;
-            border-left: 4px solid #c9a961;
-            background: rgba(201,169,97,0.1);
-        }
-    </style>
+    <link rel="stylesheet" href="assets/geral.css">
+    <link rel="stylesheet" href="app.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <img src="got-logo.png" alt="Game of Thrones" class="logo">
+            <img src="resources/imagens/got-logo.png" alt="Game of Thrones" class="logo">
             <h1>GAME OF THRONES</h1>
             <p class="subtitle">Análise de Redes de Personagens</p>
-            <nav style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="visualizador.html" style="padding: 10px 22px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; font-family: 'Cinzel', serif; font-size: 0.95em; letter-spacing: 1px; transition: all 0.3s;" onmouseover="this.style.background='#c9a961';this.style.color='#1a1410'" onmouseout="this.style.background='rgba(20,15,10,0.8)';this.style.color='#c9a961'">🌐 Visualizador 3D</a>
-                <a href="rankings.html" style="padding: 10px 22px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; font-family: 'Cinzel', serif; font-size: 0.95em; letter-spacing: 1px; transition: all 0.3s;" onmouseover="this.style.background='#c9a961';this.style.color='#1a1410'" onmouseout="this.style.background='rgba(20,15,10,0.8)';this.style.color='#c9a961'">📊 Rankings</a>
-                <a href="eventos.html" style="padding: 10px 22px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; font-family: 'Cinzel', serif; font-size: 0.95em; letter-spacing: 1px; transition: all 0.3s;" onmouseover="this.style.background='#c9a961';this.style.color='#1a1410'" onmouseout="this.style.background='rgba(20,15,10,0.8)';this.style.color='#c9a961'">🎬 Eventos</a>
-                <a href="timelapse.html" style="padding: 10px 22px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; font-family: 'Cinzel', serif; font-size: 0.95em; letter-spacing: 1px; transition: all 0.3s;" onmouseover="this.style.background='#c9a961';this.style.color='#1a1410'" onmouseout="this.style.background='rgba(20,15,10,0.8)';this.style.color='#c9a961'">⏱️ Timelapse</a>
-                <a href="metricas.html" style="padding: 10px 22px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; font-family: 'Cinzel', serif; font-size: 0.95em; letter-spacing: 1px; transition: all 0.3s;" onmouseover="this.style.background='#c9a961';this.style.color='#1a1410'" onmouseout="this.style.background='rgba(20,15,10,0.8)';this.style.color='#c9a961'">📚 Métricas</a>
-                <a href="caminhos.html" style="padding: 10px 22px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; font-family: 'Cinzel', serif; font-size: 0.95em; letter-spacing: 1px; transition: all 0.3s;" onmouseover="this.style.background='#c9a961';this.style.color='#1a1410'" onmouseout="this.style.background='rgba(20,15,10,0.8)';this.style.color='#c9a961'">🗺️ Caminhos</a>
-                <a href="apresentacao.html" style="padding: 10px 22px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; font-family: 'Cinzel', serif; font-size: 0.95em; letter-spacing: 1px; transition: all 0.3s;" onmouseover="this.style.background='#c9a961';this.style.color='#1a1410'" onmouseout="this.style.background='rgba(20,15,10,0.8)';this.style.color='#c9a961'">🎤 Apresentação</a>
-                <a href="#sobre" style="padding: 10px 22px; background: rgba(20,15,10,0.8); color: #c9a961; text-decoration: none; border: 2px solid #c9a961; font-family: 'Cinzel', serif; font-size: 0.95em; letter-spacing: 1px; transition: all 0.3s;" onmouseover="this.style.background='#c9a961';this.style.color='#1a1410'" onmouseout="this.style.background='rgba(20,15,10,0.8)';this.style.color='#c9a961'">👤 Sobre</a>
-            </nav>
+            <div id="nav-menu" style="margin-top: 30px;"></div>
         </header>
 
         <div class="section">
@@ -333,11 +110,13 @@
         </div>
 
         <div class="cta-buttons">
-            <a href="visualizador.html" class="btn">⚔️ Explorar Visualização 3D</a>
-            <a href="rankings.html" class="btn btn-secondary">👑 Ver Rankings</a>
-            <a href="eventos.html" class="btn btn-secondary">🔥 Análise de Eventos</a>
-            <a href="timelapse.html" class="btn btn-secondary">⏳ Timelapse</a>
+            <a href="visualizador/" class="btn">⚔️ Explorar Visualização 3D</a>
+            <a href="rankings/" class="btn btn-secondary">👑 Ver Rankings</a>
+            <a href="eventos/" class="btn btn-secondary">🔥 Análise de Eventos</a>
+            <a href="timelapse/" class="btn btn-secondary">⏳ Timelapse</a>
         </div>
     </div>
+    <script src="assets/geral.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

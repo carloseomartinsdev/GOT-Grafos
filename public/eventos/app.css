@@ -1,0 +1,111 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #000000;
+            color: white;
+            padding: 15px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        #stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        h1 { 
+            text-align: center; 
+            margin-bottom: 20px;
+            color: #c9a961;
+            font-size: clamp(16px, 5vw, 28px);
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #c9a961;
+            color: #1a1410;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            border: 2px solid #c9a961;
+        }
+        .tabs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 8px;
+            background: rgba(20,15,10,0.8);
+            border: 2px solid #c9a961;
+            color: #e8dcc4;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 13px;
+            text-align: center;
+        }
+        .tab:hover {
+            background: rgba(30,25,20,0.9);
+        }
+        .tab.active {
+            background: #c9a961;
+            color: #1a1410;
+            font-weight: bold;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .card {
+            background: rgba(20,15,10,0.9);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #c9a961;
+            color: #e8dcc4;
+        }
+        .card h3 {
+            color: #c9a961;
+            margin-bottom: 10px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: rgba(201,169,97,0.2);
+            border: 1px solid #c9a961;
+            color: #e8dcc4;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .score {
+            color: #c9a961;
+            font-weight: bold;
+        }
+        .personagens {
+            margin-top: 10px;
+        }
+        .turning {
+            border-left-color: #8b0000;
+        }
+        .novo {
+            background: rgba(0,100,0,0.4);
+            border-color: #4CAF50;
+        }
+        .saiu {
+            background: rgba(139,0,0,0.4);
+            border-color: #ff5555;
+        }

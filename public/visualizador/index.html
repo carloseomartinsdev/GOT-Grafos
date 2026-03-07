@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Game of Thrones - Rede de Personagens 3D</title>
+    <link rel="stylesheet" href="../assets/geral.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div id="info">
+        <div id="nav-menu"></div>
+        <h3>Game of Thrones - Rede 3D</h3>
+        <div class="hints">
+            <p>🖱️ Tab para ativar/desativar modo voo</p>
+            <p>🎮 WASD para mover | ⚡ Shift acelerar</p>
+        </div>
+        <p>Personagens: <span id="nodeCount">0</span> | Conexões: <span id="edgeCount">0</span></p>
+    </div>
+    <div id="charInfo">
+        <img id="charPhoto" src="" alt="" />
+        <h3 id="charName"></h3>
+        <p><strong>Comunidade:</strong> <span id="charCommunity"></span></p>
+        <p><strong>Família:</strong> <span id="charFamilia"></span></p>
+        <p><strong>Influence Score:</strong> <span id="charInfluence"></span></p>
+        <p><strong>PageRank:</strong> <span id="charPageRank"></span></p>
+        <p><strong>Betweenness:</strong> <span id="charBetweenness"></span></p>
+        <p><strong>Conexões:</strong> <span id="charConnections"></span></p>
+    </div>
+    <button id="toggleControls" onclick="toggleControls()">☰</button>
+    <div id="controls">
+        <h3>Controles</h3>
+        <div style="display: flex; gap: 5px; margin: 10px 0;">
+            <button onclick="showTab('personagem')" id="tabPersonagem" style="flex: 1; padding: 5px; font-size: 11px;">Personagem</button>
+            <button onclick="showTab('caminho')" id="tabCaminho" style="flex: 1; padding: 5px; font-size: 11px;">Caminho</button>
+            <button onclick="showTab('comunidades')" id="tabComunidades" style="flex: 1; padding: 5px; font-size: 11px;">Comunidades</button>
+        </div>
+        
+        <div id="contentPersonagem">
+            <h4 style="margin-top: 15px;">Pesquisar Personagem</h4>
+            <input type="text" id="searchChar" placeholder="Digite o nome..." />
+            <select id="charList" size="5"></select>
+            <button onclick="selectCharacter()">Selecionar</button>
+            <button onclick="centerOnCharacter()">Centralizar</button>
+            <button onclick="clearSelection()">Limpar Seleção</button>
+        </div>
+        
+        <div id="contentCaminho" style="display: none;">
+            <h4 style="margin-top: 15px;">Busca Avançada</h4>
+            <select id="searchFrom" size="3"></select>
+            <select id="searchTo" size="3"></select>
+            <button onclick="findPath()">Encontrar Caminho</button>
+            <button onclick="clearSelection()">Resetar</button>
+            <div id="pathResult" style="margin-top: 10px; font-size: 12px; display: none;"></div>
+        </div>
+        
+        <div id="contentComunidades" style="display: none;">
+            <h4 style="margin-top: 15px;">Filtrar Comunidades</h4>
+            <div id="communityFilters"></div>
+        </div>
+    </div>
+    <div id="loading">Carregando dados...</div>
+    <div id="pathVisual">
+        <div class="path-container"></div>
+    </div>
+    <div id="mobileControls">
+        <div id="joystick"><div id="joystickKnob"></div></div>
+        <button id="lockBtn" onclick="resetView()">🔄 Reset</button>
+    </div>
+
+    <script src="../assets/geral.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/PointerLockControls.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

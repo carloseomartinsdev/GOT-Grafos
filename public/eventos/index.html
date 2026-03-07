@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Thrones - Eventos Importantes</title>
+    <link rel="stylesheet" href="../assets/geral.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <canvas id="stars"></canvas>
+    <div class="container">
+        <div id="nav-menu"></div>
+        
+        <h1>🎬 Eventos Importantes de Game of Thrones</h1>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('cenas')">Cenas Importantes</button>
+            <button class="tab" onclick="showTab('episodios')">Episódios Densos</button>
+            <button class="tab" onclick="showTab('turning')">Turning Points</button>
+        </div>
+        
+        <div id="cenas" class="section active">
+            <h2 style="margin-bottom: 20px;">Top 50 Cenas com Personagens Mais Importantes</h2>
+            <div id="cenasContent">Carregando...</div>
+        </div>
+        
+        <div id="episodios" class="section">
+            <h2 style="margin-bottom: 20px;">Top 30 Episódios Mais Densos</h2>
+            <p style="margin-bottom: 20px; color: #aaa;">Densidade = Número de interações / Número de personagens</p>
+            <div id="episodiosContent">Carregando...</div>
+        </div>
+        
+        <div id="turning" class="section">
+            <h2 style="margin-bottom: 20px;">Turning Points - Mudanças Bruscas na Rede</h2>
+            <p style="margin-bottom: 20px; color: #aaa;">Episódios onde muitos personagens entram ou saem da narrativa</p>
+            <div id="turningContent">Carregando...</div>
+        </div>
+    </div>
+
+    <script src="../assets/geral.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
