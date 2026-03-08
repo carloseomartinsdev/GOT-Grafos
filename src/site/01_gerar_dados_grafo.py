@@ -3,6 +3,7 @@ import networkx as nx
 import json
 import os
 from networkx.algorithms import community
+from sklearn.preprocessing import MinMaxScaler
 
 # Carregar dados
 print("Carregando dados...")
@@ -81,16 +82,27 @@ for node in G.nodes():
     
     influence_score[node] = score
 
-# Calcular ranking consolidado
+# Calcular ranking consolidado (CORRIGIDO)
 print("Calculando ranking consolidado...")
+
+# Normalizar cada métrica entre 0-1
+scaler = MinMaxScaler()
+nodes_list = list(G.nodes())
+
+norm_dc = scaler.fit_transform([[degree_centrality[n]] for n in nodes_list]).flatten()
+norm_bt = scaler.fit_transform([[betweenness[n]] for n in nodes_list]).flatten()
+norm_pr = scaler.fit_transform([[pagerank[n]] for n in nodes_list]).flatten()
+norm_cc = scaler.fit_transform([[closeness_centrality[n]] for n in nodes_list]).flatten()
+
+# Score consolidado com pesos justificados
 consolidated_score = {}
-for node in G.nodes():
+for i, node in enumerate(nodes_list):
     consolidated_score[node] = (
-        degree_centrality[node] +
-        betweenness[node] +
-        pagerank[node] * 100 +
-        closeness_centrality[node]
-    ) / 4
+        norm_pr[i] * 0.30 +  # PageRank: importância global
+        norm_bt[i] * 0.25 +  # Betweenness: ponte entre grupos
+        norm_dc[i] * 0.25 +  # Degree: diversidade de conexões
+        norm_cc[i] * 0.20    # Closeness: proximidade média
+    )
 
 # Normalizar scores
 min_inf = min(influence_score.values())
