@@ -25,9 +25,10 @@ const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || w
             'Targaryen',
             'Night\'s Watch',
             'Baratheon',
-            'Outros',
-            'Secundários',
-            'Terciários'
+            'Martell/Dorne',
+            'Greyjoy',
+            'Outros Nobres',
+            'Outros'
         ];
 
         function init() {

@@ -10,7 +10,7 @@ def criar_grafo():
     df = pd.read_csv("datasets/interacoes.csv")
 
     # filtrar interações diretas (single)
-    df_direct = df[df["tipo_interacao"] == "single"]
+    df_direct = df#[df["tipo_interacao"] == "single"]
 
     # agrupar e contar interações
     df_grouped = df_direct.groupby(['falante', 'ouvinte']).size().reset_index(name='weight')
@@ -51,7 +51,7 @@ def subgrafo_top_personagens(G, top_n=20):
 
 def visualizar_grafo(G, mostrar_pesos=True, peso_minimo_label=50):
 
-    plt.figure(figsize=(16,16))
+    plt.figure(figsize=(30,30))
 
     # layout reproduzível
     pos = nx.spring_layout(G, k=1.2, iterations=100, seed=42)
@@ -102,7 +102,7 @@ def visualizar_grafo(G, mostrar_pesos=True, peso_minimo_label=50):
             font_size=7
         )
 
-    plt.title("Rede de Interações de Game of Thrones", fontsize=20, fontweight='bold')
+    plt.title("Rede de Interações de Game of Thrones", fontsize=10, fontweight='bold')
     plt.axis("off")
     plt.tight_layout()
     plt.savefig('saidas/grafo_interacoes.png', dpi=300, bbox_inches='tight')

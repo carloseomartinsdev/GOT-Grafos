@@ -28,7 +28,28 @@ print(f"Nós: {G.number_of_nodes()}, Arestas: {G.number_of_edges()}")
 
 # Detectar comunidades
 print("Detectando comunidades...")
-communities = community.greedy_modularity_communities(G, weight='weight')
+communities_raw = community.greedy_modularity_communities(G, weight='weight')
+
+# Agrupar comunidades pequenas (< 10 personagens)
+print("Agrupando comunidades pequenas...")
+communities = []
+small_communities = []
+
+for comm in communities_raw:
+    if len(comm) >= 10:
+        communities.append(comm)
+    else:
+        small_communities.extend(list(comm))
+
+# Adicionar comunidade "Outros" se houver personagens de comunidades pequenas
+if small_communities:
+    communities.append(set(small_communities))
+    print(f"  Agrupadas {len(small_communities)} personagens de comunidades pequenas em 'Outros'")
+
+print(f"  Total de comunidades: {len(communities)}")
+for i, comm in enumerate(communities):
+    print(f"    Comunidade {i}: {len(comm)} personagens")
+
 node_community = {}
 for i, comm in enumerate(communities):
     for node in comm:
