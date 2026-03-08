@@ -2,7 +2,9 @@ import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
 from collections import Counter
-from criar_grafo import criar_grafo  # Reutilizar função existente
+from criar_grafo import criar_grafo
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np
 
 def calcular_centralidade_grau(G, top_n=10):
     """Centralidade de Grau: Quem tem mais conexões diretas?"""
@@ -65,10 +67,44 @@ def calcular_centralidade_proximidade(G, top_n=10):
     
     return closeness_cent, output
 
+def calcular_eigenvector_centrality(G, top_n=10):
+    """Eigenvector Centrality: Importância baseada na importância dos vizinhos"""
+    output = []
+    output.append("\n[5] EIGENVECTOR CENTRALITY (Importancia dos Aliados)")
+    output.append("    Mede importancia baseada na importancia dos vizinhos\n")
+    
+    try:
+        eigenvector_cent = nx.eigenvector_centrality(G, weight='weight', max_iter=1000)
+    except:
+        eigenvector_cent = nx.eigenvector_centrality_numpy(G, weight='weight')
+    
+    top_eigenvector = sorted(eigenvector_cent.items(), key=lambda x: x[1], reverse=True)[:top_n]
+    
+    output.append(f"Top {top_n} personagens com aliados importantes:")
+    for i, (personagem, score) in enumerate(top_eigenvector, 1):
+        output.append(f"  {i:2d}. {personagem:25s} - {score:.4f}")
+    
+    return eigenvector_cent, output
+
+def calcular_weighted_degree(G, top_n=10):
+    """Weighted Degree: Frequência total de interações"""
+    output = []
+    output.append("\n[6] WEIGHTED DEGREE (Frequencia de Interacoes)")
+    output.append("    Considera a frequencia das interacoes, nao so o numero\n")
+    
+    weighted_degree = dict(G.degree(weight='weight'))
+    top_weighted = sorted(weighted_degree.items(), key=lambda x: x[1], reverse=True)[:top_n]
+    
+    output.append(f"Top {top_n} personagens com mais interacoes:")
+    for i, (personagem, score) in enumerate(top_weighted, 1):
+        output.append(f"  {i:2d}. {personagem:25s} - {score:.0f} interacoes")
+    
+    return weighted_degree, output
+
 def detectar_comunidades(G, top_n=5):
     """Detecção de Comunidades: Identifica grupos de poder"""
     output = []
-    output.append("\n[5] DETECCAO DE COMUNIDADES (Grupos de Poder)")
+    output.append("\n[7] DETECCAO DE COMUNIDADES (Grupos de Poder)")
     output.append("    Identifica clusters naturais na rede\n")
     
     try:
@@ -93,22 +129,45 @@ def detectar_comunidades(G, top_n=5):
     
     return communities, output
 
-def ranking_consolidado(degree, betweenness, pagerank, closeness, top_n=15):
-    """Cria ranking consolidado normalizando todas as métricas"""
+def ranking_consolidado(degree, betweenness, pagerank, closeness, eigenvector, weighted_degree, top_n=15):
+    """Cria ranking consolidado com normalização e pesos por importância"""
     output = []
-    output.append("\n[6] RANKING CONSOLIDADO - PERSONAGEM MAIS IMPORTANTE")
-    output.append("    Media normalizada de todas as metricas\n")
+    output.append("\n[8] RANKING CONSOLIDADO - PERSONAGEM MAIS IMPORTANTE")
+    output.append("    Metricas normalizadas com pesos por importancia\n")
+    output.append("    Pesos: PageRank(40%), Betweenness(30%), Weighted Degree(20%), Eigenvector(10%)\n")
     
-    personagens = set(degree.keys())
+    personagens = list(degree.keys())
+    
+    # Criar arrays para normalização
+    metrics = {
+        'pagerank': np.array([pagerank.get(p, 0) for p in personagens]),
+        'betweenness': np.array([betweenness.get(p, 0) for p in personagens]),
+        'weighted_degree': np.array([weighted_degree.get(p, 0) for p in personagens]),
+        'eigenvector': np.array([eigenvector.get(p, 0) for p in personagens])
+    }
+    
+    # Normalizar cada métrica entre 0-1
+    scaler = MinMaxScaler()
+    normalized = {}
+    for name, values in metrics.items():
+        normalized[name] = scaler.fit_transform(values.reshape(-1, 1)).flatten()
+    
+    # Calcular score ponderado
+    weights = {
+        'pagerank': 0.40,
+        'betweenness': 0.30,
+        'weighted_degree': 0.20,
+        'eigenvector': 0.10
+    }
     
     scores = {}
-    for p in personagens:
+    for i, p in enumerate(personagens):
         score = (
-            degree.get(p, 0) +
-            betweenness.get(p, 0) +
-            pagerank.get(p, 0) * 100 +
-            closeness.get(p, 0)
-        ) / 4
+            normalized['pagerank'][i] * weights['pagerank'] +
+            normalized['betweenness'][i] * weights['betweenness'] +
+            normalized['weighted_degree'][i] * weights['weighted_degree'] +
+            normalized['eigenvector'][i] * weights['eigenvector']
+        )
         scores[p] = score
     
     top_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:top_n]
@@ -116,10 +175,10 @@ def ranking_consolidado(degree, betweenness, pagerank, closeness, top_n=15):
     output.append(f"Top {top_n} personagens MAIS IMPORTANTES matematicamente:\n")
     for i, (personagem, score) in enumerate(top_scores, 1):
         output.append(f"  {i:2d}. {personagem:25s} - Score: {score:.4f}")
-        output.append(f"      Grau: {degree[personagem]:.3f} | "
-              f"Intermediacao: {betweenness[personagem]:.3f} | "
-              f"PageRank: {pagerank[personagem]:.3f} | "
-              f"Proximidade: {closeness[personagem]:.3f}")
+        output.append(f"      PageRank: {pagerank[personagem]:.4f} | "
+              f"Betweenness: {betweenness[personagem]:.4f} | "
+              f"W.Degree: {weighted_degree[personagem]:.0f} | "
+              f"Eigenvector: {eigenvector[personagem]:.4f}")
     
     return scores, output
 
@@ -210,13 +269,21 @@ def main():
     all_output.extend(out4)
     print("\n".join(out4))
     
-    communities, out5 = detectar_comunidades(G, top_n=5)
+    eigenvector, out5 = calcular_eigenvector_centrality(G, top_n=10)
     all_output.extend(out5)
     print("\n".join(out5))
     
-    scores, out6 = ranking_consolidado(degree, betweenness, pagerank, closeness, top_n=15)
+    weighted_deg, out6 = calcular_weighted_degree(G, top_n=10)
     all_output.extend(out6)
     print("\n".join(out6))
+    
+    communities, out7 = detectar_comunidades(G, top_n=5)
+    all_output.extend(out7)
+    print("\n".join(out7))
+    
+    scores, out8 = ranking_consolidado(degree, betweenness, pagerank, closeness, eigenvector, weighted_deg, top_n=15)
+    all_output.extend(out8)
+    print("\n".join(out8))
     
     visualizar_top_personagens(G, scores, top_n=20)
     
