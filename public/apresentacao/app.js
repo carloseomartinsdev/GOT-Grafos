@@ -50,6 +50,16 @@ function updateMetrics() {
     document.getElementById('m-degree').textContent = topDegree.id;
     document.getElementById('m-closeness').textContent = topCloseness.id;
     document.getElementById('m-weighted').textContent = topWeighted.id;
+    
+    // Atualizar conclusão
+    document.getElementById('conclusion-char').textContent = topConsolidated.id;
+    document.getElementById('conclusion-points').innerHTML = `
+        <li>Score Consolidado: ${topConsolidated.consolidated_score.toFixed(4)} (maior de todos)</li>
+        <li>PageRank: ${topConsolidated.pagerank.toFixed(4)} - Importância global na rede</li>
+        <li>Betweenness: ${topConsolidated.betweenness.toFixed(4)} - Ponte entre comunidades</li>
+        <li>Degree: ${topConsolidated.degree_centrality.toFixed(4)} - Diversidade de conexões</li>
+        <li>Weighted Degree: ${topConsolidated.weighted_degree} interações totais</li>
+    `;
 }
 
 // Estrelas de fundo
