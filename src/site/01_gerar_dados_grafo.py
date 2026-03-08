@@ -7,7 +7,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 # Carregar dados
 print("Carregando dados...")
-df_interacoes = pd.read_csv('datasets/interacoes.csv', low_memory=False)
+df = pd.read_csv('datasets/interacoes.csv', low_memory=False)
 df_dicionario = pd.read_csv('datasets/personagens_dicionario.csv')
 df_dicionario.columns = df_dicionario.columns.str.strip()
 familia_map = {}
@@ -18,21 +18,11 @@ for _, row in df_dicionario.iterrows():
     for var in str(row['VARIACOES']).split('|'):
         familia_map[var.strip().upper()] = familia
 
-# Construir grafo
+# Construir grafo (apenas interações single como no notebook)
 print("Construindo grafo...")
-G = nx.Graph()
-
-interacoes = df_interacoes[['falante', 'ouvinte']].dropna()
-
-for _, row in interacoes.iterrows():
-    falante = str(row['falante']).upper()
-    ouvinte = str(row['ouvinte']).upper()
-    
-    if falante != ouvinte:
-        if G.has_edge(falante, ouvinte):
-            G[falante][ouvinte]['weight'] += 1
-        else:
-            G.add_edge(falante, ouvinte, weight=1)
+df_direct = df[df["tipo_interacao"] == "single"]
+df_grouped = df_direct.groupby(['falante', 'ouvinte']).size().reset_index(name='weight')
+G = nx.from_pandas_edgelist(df_grouped, 'falante', 'ouvinte', edge_attr='weight', create_using=nx.Graph())
 
 print(f"Nós: {G.number_of_nodes()}, Arestas: {G.number_of_edges()}")
 
@@ -44,48 +34,31 @@ for i, comm in enumerate(communities):
     for node in comm:
         node_community[node] = i
 
-# Calcular métricas
+# Calcular métricas (exatamente como no notebook)
 print("Calculando métricas...")
-pagerank = nx.pagerank(G, weight='weight')
+degree_centrality = nx.degree_centrality(G)
 betweenness = nx.betweenness_centrality(G, weight='weight')
+pagerank = nx.pagerank(G, weight='weight')
+closeness_centrality = nx.closeness_centrality(G, distance='weight')
 weighted_degree = dict(G.degree(weight='weight'))
 
-# Métricas adicionais de centralidade
-print("Calculando métricas de centralidade...")
-degree_centrality = nx.degree_centrality(G)
-closeness_centrality = nx.closeness_centrality(G, distance='weight')
-
-# Calcular Influence Score customizado
+# Calcular Influence Score (mantido para compatibilidade)
 print("Calculando Influence Score...")
-# Tamanho médio das falas por personagem
-fala_stats = df_interacoes.groupby('falante')['tamanho_fala'].agg(['sum', 'mean', 'count']).to_dict('index')
-
+fala_stats = df.groupby('falante')['tamanho_fala'].agg(['sum', 'mean', 'count']).to_dict('index')
 influence_score = {}
 for node in G.nodes():
     score = 0
-    
-    # Estatísticas de fala do personagem
     total_fala = fala_stats.get(node, {}).get('sum', 0)
     media_fala = fala_stats.get(node, {}).get('mean', 0)
-    num_falas = fala_stats.get(node, {}).get('count', 0)
-    
-    # Para cada conexão
     for neighbor in G.neighbors(node):
         peso_conexao = G[node][neighbor]['weight']
         importancia_vizinho = pagerank.get(neighbor, 0)
-        
-        # Score = peso_conexão * importância_do_vizinho * média_de_fala
         score += peso_conexao * importancia_vizinho * (media_fala / 100)
-    
-    # Adicionar componente de volume total de fala
     score += (total_fala / 10000)
-    
     influence_score[node] = score
 
-# Calcular ranking consolidado (CORRIGIDO)
+# Calcular ranking consolidado (igual ao notebook)
 print("Calculando ranking consolidado...")
-
-# Normalizar cada métrica entre 0-1
 scaler = MinMaxScaler()
 nodes_list = list(G.nodes())
 
@@ -94,14 +67,13 @@ norm_bt = scaler.fit_transform([[betweenness[n]] for n in nodes_list]).flatten()
 norm_pr = scaler.fit_transform([[pagerank[n]] for n in nodes_list]).flatten()
 norm_cc = scaler.fit_transform([[closeness_centrality[n]] for n in nodes_list]).flatten()
 
-# Score consolidado com pesos justificados
 consolidated_score = {}
 for i, node in enumerate(nodes_list):
     consolidated_score[node] = (
-        norm_pr[i] * 0.30 +  # PageRank: importância global
-        norm_bt[i] * 0.25 +  # Betweenness: ponte entre grupos
-        norm_dc[i] * 0.25 +  # Degree: diversidade de conexões
-        norm_cc[i] * 0.20    # Closeness: proximidade média
+        norm_pr[i] * 0.30 +
+        norm_bt[i] * 0.25 +
+        norm_dc[i] * 0.25 +
+        norm_cc[i] * 0.20
     )
 
 # Normalizar scores
