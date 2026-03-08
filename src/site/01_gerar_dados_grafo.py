@@ -20,7 +20,7 @@ for _, row in df_dicionario.iterrows():
 
 # Construir grafo (apenas interações single como no notebook)
 print("Construindo grafo...")
-df_direct = df[df["tipo_interacao"] == "single"]
+df_direct = df#[df["tipo_interacao"] == "single"]
 df_grouped = df_direct.groupby(['falante', 'ouvinte']).size().reset_index(name='weight')
 G = nx.from_pandas_edgelist(df_grouped, 'falante', 'ouvinte', edge_attr='weight', create_using=nx.Graph())
 
@@ -38,7 +38,7 @@ for i, comm in enumerate(communities):
 print("Calculando métricas...")
 degree_centrality = nx.degree_centrality(G)
 betweenness = nx.betweenness_centrality(G, weight='weight')
-pagerank = nx.pagerank(G, weight='weight')
+pagerank = nx.pagerank(G, weight='weight', max_iter=100, tol=1e-06)
 closeness_centrality = nx.closeness_centrality(G, distance='weight')
 weighted_degree = dict(G.degree(weight='weight'))
 

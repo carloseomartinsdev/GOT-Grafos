@@ -1,5 +1,5 @@
 let graphData = null;
-let currentMetric = 'influence_score';
+let currentMetric = 'consolidated_score';
 
 const communityNames = [
     'Stark/Norte',
@@ -13,17 +13,18 @@ const communityNames = [
 ];
 
 const metricLabels = {
-    'influence_score': 'Influence Score',
+    'consolidated_score': 'Score Consolidado',
     'pagerank': 'PageRank',
     'betweenness': 'Betweenness',
-    'weighted_degree': 'Weighted Degree',
-    'connections': 'Conexões'
+    'degree_centrality': 'Degree Centrality',
+    'closeness_centrality': 'Closeness Centrality',
+    'weighted_degree': 'Weighted Degree'
 };
 
 async function loadData() {
     try {
         graphData = await loadJSON('graph_data');
-        sortBy('influence_score');
+        sortBy('consolidated_score');
     } catch (error) {
         console.error('Erro ao carregar dados:', error);
         document.getElementById('rankingTable').innerHTML = 
@@ -37,11 +38,12 @@ function sortBy(metric) {
     // Atualizar botões
     document.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
     const btnMap = {
-        'influence_score': 'btn-influence',
+        'consolidated_score': 'btn-consolidated',
         'pagerank': 'btn-pagerank',
         'betweenness': 'btn-betweenness',
-        'weighted_degree': 'btn-weighted',
-        'connections': 'btn-connections'
+        'degree_centrality': 'btn-degree',
+        'closeness_centrality': 'btn-closeness',
+        'weighted_degree': 'btn-weighted'
     };
     const btn = document.getElementById(btnMap[metric]);
     if (btn) btn.classList.add('active');
@@ -54,7 +56,7 @@ function sortBy(metric) {
     tbody.innerHTML = sorted.map((node, index) => {
         const imgPath = getCharacterImage(node.id);
         const commName = communityNames[node.community] || `Comunidade ${node.community}`;
-        const value = metric === 'connections' ? node[metric] : node[metric].toFixed(4);
+        const value = node[metric].toFixed(4);
         const rowClass = index < 3 ? 'top3' : '';
         
         return `
