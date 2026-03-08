@@ -13,25 +13,27 @@
         <div id="nav-menu"></div>
         
         <div class="metric">
-            <h2>1. Influence Score (Score de Influência)</h2>
-            <p><strong>O que mede:</strong> A influência real de um personagem considerando com QUEM ele fala, QUANTO fala, e a QUALIDADE das suas interações.</p>
+            <h2>1. Score Consolidado</h2>
+            <p><strong>O que mede:</strong> Ranking final que combina as 4 principais métricas de centralidade em um único score normalizado.</p>
             
             <div class="formula">
-Influence Score = Σ(peso_conexão × PageRank_vizinho × média_fala/100) + (total_fala/10000)
+Score = PageRank(30%) + Betweenness(25%) + Degree(25%) + Closeness(20%)
             </div>
             
             <p><strong>Como é calculado:</strong></p>
             <ul>
-                <li>Para cada conexão do personagem, multiplica-se o número de interações pela importância do outro personagem (PageRank)</li>
-                <li>Pondera-se pelo tamanho médio das falas do personagem</li>
-                <li>Adiciona-se um bônus pelo volume total de fala</li>
+                <li>Cada métrica é normalizada entre 0 e 1 usando MinMaxScaler</li>
+                <li>Aplica-se pesos baseados na importância de cada métrica</li>
+                <li>PageRank tem maior peso (30%) por capturar importância global</li>
+                <li>Betweenness e Degree têm peso igual (25%) por medirem aspectos complementares</li>
+                <li>Closeness tem menor peso (20%) por ser mais sensível à estrutura do grafo</li>
             </ul>
             
             <div class="example">
-                <strong>Exemplo:</strong> Lord Baelish tem poucas conexões (27), mas fala com pessoas muito importantes (Stark, Lannister). Seu Influence Score será alto porque a importância dos seus vizinhos é alta, mesmo tendo menos conexões que outros personagens.
+                <strong>Exemplo:</strong> Tyrion Lannister tem o maior score consolidado porque ele pontua bem em TODAS as métricas: alto PageRank (conexões importantes), alto Betweenness (ponte entre facções), alto Degree (muitas conexões), e boa Closeness (próximo de todos).
             </div>
             
-            <p><strong>Uso:</strong> Identifica personagens que são verdadeiramente influentes na trama, não apenas populares. Tamanho dos nós no visualizador é baseado nesta métrica.</p>
+            <p><strong>Uso:</strong> Identifica os personagens matematicamente mais importantes considerando múltiplas dimensões de centralidade. Tamanho dos nós no visualizador é baseado nesta métrica.</p>
         </div>
 
         <div class="metric">
@@ -75,14 +77,58 @@ Onde: σst = caminhos mais curtos entre s e t
             </ul>
             
             <div class="example">
-                <strong>Exemplo:</strong> Lord Baelish tem alta betweenness porque ele conecta diferentes facções (Stark ↔ Baelish ↔ Lannister). Ele é uma "ponte" entre comunidades que não se falam diretamente.
+                <strong>Exemplo:</strong> Brienne de Tarth tem a maior betweenness (0.215) porque ela conecta diferentes facções (Stark ↔ Brienne ↔ Lannister). Ela é uma "ponte" entre comunidades que não se falam diretamente.
             </div>
             
             <p><strong>Uso:</strong> Identifica personagens que controlam o fluxo de informação, negociadores, espiões, e intermediários políticos.</p>
         </div>
 
         <div class="metric">
-            <h2>4. Weighted Degree (Grau Ponderado)</h2>
+            <h2>4. Degree Centrality (Centralidade de Grau)</h2>
+            <p><strong>O que mede:</strong> Diversidade de conexões — quantos personagens diferentes interagem com o personagem analisado.</p>
+            
+            <div class="formula">
+Degree Centrality = (número de conexões) / (total de nós - 1)
+            </div>
+            
+            <p><strong>Como é calculado:</strong></p>
+            <ul>
+                <li>Conta quantos personagens diferentes aparecem em cenas/diálogos com o personagem</li>
+                <li>Normaliza pelo número máximo possível de conexões</li>
+                <li>Não considera quantas vezes interagem, apenas SE interagem</li>
+            </ul>
+            
+            <div class="example">
+                <strong>Exemplo:</strong> Joffrey Baratheon tem a maior Degree Centrality (0.518) porque interage com 71 personagens diferentes. Mesmo que fale pouco com alguns, a diversidade de suas conexões é muito alta.
+            </div>
+            
+            <p><strong>Uso:</strong> Mede alcance social. Personagens com alto degree conhecem muita gente diferente e têm acesso a informações de múltiplas fontes.</p>
+        </div>
+
+        <div class="metric">
+            <h2>5. Closeness Centrality (Centralidade de Proximidade)</h2>
+            <p><strong>O que mede:</strong> Quão "perto" um personagem está de todos os outros na rede. Personagens com alta closeness podem alcançar qualquer outro rapidamente.</p>
+            
+            <div class="formula">
+Closeness = (n - 1) / Σ(distância até todos os outros nós)
+            </div>
+            
+            <p><strong>Como é calculado:</strong></p>
+            <ul>
+                <li>Calcula a distância (caminho mais curto) do personagem até todos os outros</li>
+                <li>Inverte a soma dessas distâncias (quanto menor a distância total, maior a closeness)</li>
+                <li>Considera o peso das conexões (interações mais frequentes = distância menor)</li>
+            </ul>
+            
+            <div class="example">
+                <strong>Exemplo:</strong> Um personagem central como Tyrion tem alta closeness porque está a poucos "passos" de qualquer outro personagem. Já um personagem isolado geograficamente (como além da Muralha) terá baixa closeness.
+            </div>
+            
+            <p><strong>Uso:</strong> Identifica personagens que podem disseminar informação rapidamente ou que estão no "centro" da rede social.</p>
+        </div>
+
+        <div class="metric">
+            <h2>6. Weighted Degree (Grau Ponderado)</h2>
             <p><strong>O que mede:</strong> Intensidade total das interações de um personagem (soma dos pesos de todas as conexões).</p>
             
             <div class="formula">
@@ -96,35 +142,14 @@ Weighted Degree = Σ(peso de cada conexão)
             </ul>
             
             <div class="example">
-                <strong>Exemplo:</strong> Se Jon Snow fala 50 vezes com Daenerys, 30 vezes com Sansa, e 20 vezes com Arya, seu Weighted Degree = 50 + 30 + 20 = 100.
+                <strong>Exemplo:</strong> Tyrion Lannister tem Weighted Degree de 2614, o maior de todos. Isso significa que ele teve 2614 interações totais com todos os seus vizinhos somados.
             </div>
             
-            <p><strong>Uso:</strong> Mede o volume total de interações. Personagens com alto weighted degree são muito ativos socialmente.</p>
+            <p><strong>Uso:</strong> Mede o volume total de interações. Personagens com alto weighted degree são muito ativos socialmente e têm muita "tela".</p>
         </div>
 
         <div class="metric">
-            <h2>5. Connections (Conexões)</h2>
-            <p><strong>O que mede:</strong> Número simples de personagens diferentes com quem o personagem interage.</p>
-            
-            <div class="formula">
-Connections = Número de vizinhos no grafo
-            </div>
-            
-            <p><strong>Como é calculado:</strong></p>
-            <ul>
-                <li>Conta quantos personagens diferentes aparecem em cenas/diálogos com o personagem analisado</li>
-                <li>Não considera quantas vezes interagem, apenas SE interagem</li>
-            </ul>
-            
-            <div class="example">
-                <strong>Exemplo:</strong> Se Tyrion fala com 50 personagens diferentes (mesmo que fale 1 vez com cada), ele tem 50 conexões. Se Jon fala 100 vezes com apenas 10 personagens, ele tem 10 conexões.
-            </div>
-            
-            <p><strong>Uso:</strong> Mede diversidade social. Personagens com muitas conexões conhecem muita gente diferente.</p>
-        </div>
-
-        <div class="metric">
-            <h2>6. Comunidades (Detecção de Grupos)</h2>
+            <h2>7. Comunidades (Detecção de Grupos)</h2>
             <p><strong>O que mede:</strong> Agrupa personagens que interagem mais entre si do que com o resto da rede — revelando alianças, facções e grupos sociais emergentes.</p>
 
             <div class="formula">
@@ -152,11 +177,12 @@ Onde: Aij = peso da aresta, m = total de arestas, ki/kj = grau dos nós
         <div class="metric" style="border-left-color: #c9a961;">
             <h2>📌 Resumo Comparativo</h2>
             <ul>
-                <li><strong>Connections:</strong> Quantas pessoas você conhece</li>
+                <li><strong>Score Consolidado:</strong> Ranking final que combina todas as métricas</li>
+                <li><strong>Degree Centrality:</strong> Quantas pessoas você conhece</li>
                 <li><strong>Weighted Degree:</strong> Quanto você fala no total</li>
                 <li><strong>PageRank:</strong> Quão importantes são as pessoas que você conhece</li>
                 <li><strong>Betweenness:</strong> O quanto você conecta grupos diferentes</li>
-                <li><strong>Influence Score:</strong> Combinação de tudo acima + qualidade das falas</li>
+                <li><strong>Closeness:</strong> Quão perto você está de todos os outros</li>
                 <li><strong>Comunidades:</strong> Com quem você mais interage (independente de família)</li>
             </ul>
         </div>
