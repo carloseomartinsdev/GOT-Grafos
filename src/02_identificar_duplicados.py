@@ -191,18 +191,6 @@ if __name__ == '__main__':
             time.sleep(2)
     
     resultados_finais = mesclar_resultados(todos_resultados)
-    
-    print(f'\nVerificando duplicados entre nomes oficiais...')
-    nomes_oficiais = [r['NOME_OFICIAL'] for r in resultados_finais]
-    duplicados_oficiais = verificar_duplicados_oficiais(nomes_oficiais)
-    
-    if duplicados_oficiais:
-        print(f'Encontrados {len(duplicados_oficiais)} grupos de duplicados oficiais')
-        resultados_finais = mesclar_duplicados_oficiais(resultados_finais, duplicados_oficiais)
-    else:
-        print('Nenhum duplicado oficial encontrado')
-    
-    salvar_dicionario(resultados_finais, falas_map)
-    
+        
     print(f'\nDicionário criado: datasets/personagens_dicionario.csv')
     print(f'Total de personagens oficiais: {len(resultados_finais)}')

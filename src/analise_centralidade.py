@@ -134,40 +134,21 @@ def ranking_consolidado(degree, betweenness, pagerank, closeness, eigenvector, w
     output = []
     output.append("\n[8] RANKING CONSOLIDADO - PERSONAGEM MAIS IMPORTANTE")
     output.append("    Metricas normalizadas com pesos por importancia\n")
-    output.append("    Pesos: PageRank(40%), Betweenness(30%), Weighted Degree(20%), Eigenvector(10%)\n")
+    output.append("    Pesos: PageRank(30%), Betweenness(25%), Degree(25%), Closeness(20%)\n")
     
     personagens = list(degree.keys())
     
     # Criar arrays para normalização
-    metrics = {
-        'pagerank': np.array([pagerank.get(p, 0) for p in personagens]),
-        'betweenness': np.array([betweenness.get(p, 0) for p in personagens]),
-        'weighted_degree': np.array([weighted_degree.get(p, 0) for p in personagens]),
-        'eigenvector': np.array([eigenvector.get(p, 0) for p in personagens])
-    }
-    
-    # Normalizar cada métrica entre 0-1
     scaler = MinMaxScaler()
-    normalized = {}
-    for name, values in metrics.items():
-        normalized[name] = scaler.fit_transform(values.reshape(-1, 1)).flatten()
+    norm_pr = scaler.fit_transform(np.array([pagerank[p] for p in personagens]).reshape(-1, 1)).flatten()
+    norm_bt = scaler.fit_transform(np.array([betweenness[p] for p in personagens]).reshape(-1, 1)).flatten()
+    norm_dc = scaler.fit_transform(np.array([degree[p] for p in personagens]).reshape(-1, 1)).flatten()
+    norm_cc = scaler.fit_transform(np.array([closeness[p] for p in personagens]).reshape(-1, 1)).flatten()
     
     # Calcular score ponderado
-    weights = {
-        'pagerank': 0.40,
-        'betweenness': 0.30,
-        'weighted_degree': 0.20,
-        'eigenvector': 0.10
-    }
-    
     scores = {}
     for i, p in enumerate(personagens):
-        score = (
-            normalized['pagerank'][i] * weights['pagerank'] +
-            normalized['betweenness'][i] * weights['betweenness'] +
-            normalized['weighted_degree'][i] * weights['weighted_degree'] +
-            normalized['eigenvector'][i] * weights['eigenvector']
-        )
+        score = norm_pr[i] * 0.30 + norm_bt[i] * 0.25 + norm_dc[i] * 0.25 + norm_cc[i] * 0.20
         scores[p] = score
     
     top_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:top_n]
@@ -177,8 +158,8 @@ def ranking_consolidado(degree, betweenness, pagerank, closeness, eigenvector, w
         output.append(f"  {i:2d}. {personagem:25s} - Score: {score:.4f}")
         output.append(f"      PageRank: {pagerank[personagem]:.4f} | "
               f"Betweenness: {betweenness[personagem]:.4f} | "
-              f"W.Degree: {weighted_degree[personagem]:.0f} | "
-              f"Eigenvector: {eigenvector[personagem]:.4f}")
+              f"Degree: {degree[personagem]:.4f} | "
+              f"Closeness: {closeness[personagem]:.4f}")
     
     return scores, output
 
