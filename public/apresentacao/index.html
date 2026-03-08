@@ -65,12 +65,12 @@
                 <ul>
                     <li><strong>Regex + NLP:</strong> extração de falas e identificação de personagens</li>
                     <li><strong>IA (DeepSeek):</strong> mapeamento automático de variações — "Jon", "Lord Snow", "Jon Snow" → mesmo nó</li>
-                    <li><strong>Dicionário de personagens:</strong> 375 personagens únicos após deduplicação</li>
+                    <li><strong>Dicionário de personagens:</strong> 138 personagens únicos após deduplicação e filtros</li>
                     <li><strong>Definição de aresta:</strong> dois personagens compartilham uma aresta se interagem na mesma cena; o peso é o número de interações</li>
                 </ul>
                 <div class="stats">
-                    <div class="stat"><div class="stat-num">375</div><div class="stat-lbl">Personagens únicos</div></div>
-                    <div class="stat"><div class="stat-num">500k+</div><div class="stat-lbl">Interações extraídas</div></div>
+                    <div class="stat"><div class="stat-num">138</div><div class="stat-lbl">Personagens no grafo</div></div>
+                    <div class="stat"><div class="stat-num">1091</div><div class="stat-lbl">Arestas (conexões)</div></div>
                     <div class="stat"><div class="stat-num">73</div><div class="stat-lbl">Episódios processados</div></div>
                     <div class="stat"><div class="stat-num">8</div><div class="stat-lbl">Temporadas</div></div>
                 </div>
@@ -89,7 +89,7 @@
                     <li><strong>Peso:</strong> número total de interações entre o par</li>
                     <li><strong>Filtro:</strong> arestas com peso &lt; 3 removidas para visualização limpa</li>
                 </ul>
-                <p>A visualização 3D interativa usa <strong>Three.js</strong> com fotos reais dos personagens como nós, tamanho proporcional ao Influence Score e cores por comunidade.</p>
+                <p>A visualização 3D interativa usa <strong>Three.js</strong> com fotos reais dos personagens como nós, tamanho proporcional ao <strong>Score Consolidado</strong> e cores por comunidade.</p>
                 <div style="text-align:center; margin-top:20px;">
                     <a href="../visualizador/" class="link-btn" style="display:inline-block; padding: 14px 32px;">🌐 Abrir Visualizador 3D</a>
                 </div>
@@ -101,17 +101,18 @@
                     <div class="slide-num">4</div>
                     <div class="slide-title">Métricas de Centralidade</div>
                 </div>
-                <p>Aplicamos cinco métricas para responder à pergunta de negócio de ângulos diferentes:</p>
+                <p>Aplicamos seis métricas para responder à pergunta de negócio de ângulos diferentes:</p>
                 <table class="ranking-table">
                     <thead>
                         <tr><th>Métrica</th><th>O que revela</th><th>#1</th></tr>
                     </thead>
                     <tbody id="metricsPreview">
-                        <tr><td><strong>Influence Score</strong></td><td>Influência real (qualidade + quantidade)</td><td id="m-influence">—</td></tr>
+                        <tr><td><strong>Score Consolidado</strong></td><td>Ranking final (combina todas as métricas)</td><td id="m-consolidated">—</td></tr>
                         <tr><td><strong>PageRank</strong></td><td>Importância pela rede (quem te conhece)</td><td id="m-pagerank">—</td></tr>
                         <tr><td><strong>Betweenness</strong></td><td>Ponte entre comunidades</td><td id="m-betweenness">—</td></tr>
+                        <tr><td><strong>Degree Centrality</strong></td><td>Diversidade de conexões</td><td id="m-degree">—</td></tr>
+                        <tr><td><strong>Closeness</strong></td><td>Proximidade de todos os outros</td><td id="m-closeness">—</td></tr>
                         <tr><td><strong>Weighted Degree</strong></td><td>Volume total de interações</td><td id="m-weighted">—</td></tr>
-                        <tr><td><strong>Connections</strong></td><td>Diversidade social</td><td id="m-connections">—</td></tr>
                     </tbody>
                 </table>
                 <p style="margin-top:14px; font-size:0.9em; color:#888;">Carregando dados do grafo...</p>
@@ -146,9 +147,9 @@
                     <div class="big" id="conclusion-char">Tyrion Lannister</div>
                     <div class="desc">O personagem matematicamente mais importante de Game of Thrones</div>
                 </div>
-                <p><strong>Por quê?</strong> Tyrion lidera em <strong>Influence Score</strong> e <strong>Weighted Degree</strong>, possui alto <strong>PageRank</strong> e transita entre as principais comunidades da série — Lannister, Stark e Targaryen. Ele não é apenas popular: ele conecta os núcleos de poder.</p>
+                <p><strong>Por quê?</strong> Tyrion lidera no <strong>Score Consolidado</strong> (combinação de PageRank 30%, Betweenness 25%, Degree 25%, Closeness 20%) e possui o maior <strong>Weighted Degree</strong> (2614 interações). Ele transita entre as principais comunidades da série — Lannister, Stark e Targaryen.</p>
                 <ul>
-                    <li>Maior volume de falas da série (1644 falas)</li>
+                    <li>Maior volume de interações da série (2614 weighted degree)</li>
                     <li>Interage com personagens de todas as grandes casas</li>
                     <li>Alta betweenness: ponte entre facções inimigas</li>
                     <li>Sobrevive às 8 temporadas mantendo relevância crescente</li>

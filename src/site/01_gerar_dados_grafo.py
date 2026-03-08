@@ -191,7 +191,7 @@ for comm_id, comm_nodes in enumerate(communities):
 # Preparar arestas
 edges_data = []
 for u, v, data in G.edges(data=True):
-    if data['weight'] > 5:
+    if data['weight'] > 1:
         edges_data.append({
             'source': str(u),
             'target': str(v),
